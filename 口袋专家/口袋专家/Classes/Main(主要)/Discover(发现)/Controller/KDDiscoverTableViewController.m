@@ -9,25 +9,40 @@
 #import "KDDiscoverTableViewController.h"
 #import "KDListingViewController.h"
 #import "KDFirstTableViewCell.h"
+#import "KDConst.h"
+
+
 #define Width [[UIScreen mainScreen] bounds].size.width
+
 @interface KDDiscoverTableViewController ()<UIScrollViewDelegate>
+
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIPageControl *pageControl;
-@property (nonatomic,strong)NSTimer * timer;
+@property (nonatomic,strong) NSTimer * timer;
 @end
 
 @implementation KDDiscoverTableViewController
+
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+    if (self = [super initWithStyle:style]) {
+        
+//    self.tableView.frame = CGRectMake(0, 65, ScreenW, ScreenH - 65);
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"发现";
     
-    // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     self.tableView.showsVerticalScrollIndicator = NO;
     
     [self initWithImageAndPageControl];
@@ -36,6 +51,10 @@
 
 - (void)initWithImageAndPageControl
 {
+    self.scrollView = [[UIScrollView alloc] init];
+    
+    self.scrollView.frame = CGRectMake(0, 0, 0, 180);
+    
     self.scrollView.contentSize = CGSizeMake(Width*10, 0);
     
     self.scrollView.showsHorizontalScrollIndicator = NO;
@@ -46,7 +65,7 @@
         picImage.backgroundColor = [UIColor redColor];
         [self.scrollView addSubview:picImage];
     }
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(Width/2-50, 170, 100, 30)];
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(Width/3, 130, 150, 50)];
     _pageControl.pageIndicatorTintColor = [UIColor blackColor];
     self.pageControl.numberOfPages = 10;
     
@@ -58,6 +77,11 @@
     [self addTimer];
     [self.scrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didEnterListing:)]];
     
+    self.tableView.tableHeaderView = self.scrollView;
+    
+    [self.tableView addSubview:self.pageControl];
+    
+    self.scrollView.delegate = self;
 }
 //点击pageControl
 - (void)didClickPageChange:(UIPageControl *)pageControl
@@ -99,7 +123,7 @@
 {
     if (scrollView == _scrollView) {
         int page = scrollView.contentOffset.x/Width;
-        _pageControl.currentPage = page;
+        self.pageControl.currentPage = page;
     }
 }
 //将要滑动

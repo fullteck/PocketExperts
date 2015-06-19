@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C7249D601B33C46E009C448C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7249D5E1B33C46E009C448C /* Main.storyboard */; };
 		C7249D621B33C46E009C448C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7249D611B33C46E009C448C /* Images.xcassets */; };
-		C7249D651B33C46E009C448C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7249D631B33C46E009C448C /* LaunchScreen.xib */; };
 		C7249D711B33C46E009C448C /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249D701B33C46E009C448C /* ____Tests.m */; };
 		C7249D9C1B33C552009C448C /* KDBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249D901B33C552009C448C /* KDBaseNavigationController.m */; };
 		C7249D9D1B33C552009C448C /* KDConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249D921B33C552009C448C /* KDConst.m */; };
@@ -33,7 +31,7 @@
 		C7249DE11B33EF1F009C448C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE01B33EF1F009C448C /* QuartzCore.framework */; };
 		C7249DE31B33EF28009C448C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE21B33EF28009C448C /* CoreLocation.framework */; };
 		C7249DE51B33EF35009C448C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE41B33EF35009C448C /* SystemConfiguration.framework */; };
-		E828E50393AA8D6697C89573 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 532417BE14BA7656F678F002 /* libPods.a */; };
+		E828E50393AA8D6697C89573 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 532417BE14BA7656F678F002 /* libPods.a */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -515,8 +513,6 @@
 			files = (
 				C7249DD01B33ED8A009C448C /* KDFirstTableViewCell.xib in Resources */,
 				C7249DDF1B33EF0B009C448C /* QMapKit.bundle in Resources */,
-				C7249D601B33C46E009C448C /* Main.storyboard in Resources */,
-				C7249D651B33C46E009C448C /* LaunchScreen.xib in Resources */,
 				C7249D621B33C46E009C448C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -720,6 +716,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
@@ -736,6 +733,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};
