@@ -34,6 +34,7 @@
     [self.window makeKeyAndVisible];
     NSLog(@"====");
     NSLog(@"123");
+    NSLog(@"232332");
     
     return YES;
 }
