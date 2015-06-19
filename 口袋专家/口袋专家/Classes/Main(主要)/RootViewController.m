@@ -10,6 +10,8 @@
 #import "KDExpertViewController.h"
 #import "KDDiscoverTableViewController.h"
 #import "KDConst.h"
+#import "LeftViewController.h"
+#import "PPRevealSideViewController.h"
 
 @interface RootViewController (){
     KDExpertViewController * _expertVC;
@@ -24,7 +26,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self settingTopItem];
+    
     [self settingTitleView];
+}
+#pragma mark - 设置 item
+- (void)settingTopItem
+{
+    UIBarButtonItem *userItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-gerenzhongxin"] style:UIBarButtonItemStyleDone target:self action:@selector(pushUserPage:)];
+    self.navigationItem.leftBarButtonItem = userItem;
+}
+
+- (void)pushUserPage:(UIBarButtonItem *)item
+{
+    LeftViewController *configureVieController = [[LeftViewController alloc] init];
+    
+    [self.revealSideViewController pushViewController:configureVieController
+                                          onDirection:PPRevealSideDirectionLeft
+                                           withOffset:CGRectGetWidth(self.view.bounds) / 5.0f
+                                             animated:YES];
 }
 
 #pragma mark - 设置 TitleView
@@ -32,11 +52,9 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _segmentedC = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"专家",@"发现", nil]];
+    _segmentedC = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"发现",@"专家", nil]];
     
     _segmentedC.bounds = CGRectMake(0, 0, 200, 30);
-    
-    _segmentedC.selectedSegmentIndex = 0;
     
     [_segmentedC addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
     
@@ -49,12 +67,16 @@
     
     _discoverTVC = [[KDDiscoverTableViewController alloc] init];
     
-    _discoverTVC.tableView.frame = CGRectMake(0, 44, ScreenW, ScreenH);
+    _discoverTVC = [[KDDiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    _discoverTVC.tableView.frame = CGRectMake(0, 0, ScreenW, ScreenH);
+
     
     [self addChildViewController:_expertVC];
     [self addChildViewController:_discoverTVC];
     
-    [self.view addSubview:_expertVC.view];
+    [self.view addSubview:_discoverTVC.view];
+    
+    _segmentedC.selectedSegmentIndex = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,17 +112,17 @@
 #pragma mark - 选择第一个视图
 - (void)selectOneView
 {
-    if (_expertVC.view.superview == nil) {
-        [self.view addSubview:_expertVC.view];
-        [_discoverTVC.view removeFromSuperview];
+    if (_discoverTVC.view.superview == nil) {
+        [self.view addSubview:_discoverTVC.view];
+        [_expertVC.view removeFromSuperview];
     }
 }
 #pragma mark - 选择第二个视图
 - (void)selectTwoView
 {
-    if (_discoverTVC.view.superview == nil) {
-        [self.view addSubview:_discoverTVC.view];
-        [_expertVC.view removeFromSuperview];
+    if (_expertVC.view.superview == nil) {
+        [self.view addSubview:_expertVC.view];
+        [_discoverTVC.view removeFromSuperview];
     }
 }
 
