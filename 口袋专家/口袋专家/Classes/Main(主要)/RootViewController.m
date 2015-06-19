@@ -45,7 +45,7 @@
     //将专家和发现两个视图添加到视图容器控制器
     _expertVC = [[KDExpertViewController alloc] init];
     
-    _expertVC.view.frame = CGRectMake(0, 44, ScreenW, ScreenH);
+    _expertVC.view.frame = CGRectMake(0, 0, ScreenW, ScreenH);
     
     _discoverTVC = [[KDDiscoverTableViewController alloc] init];
     

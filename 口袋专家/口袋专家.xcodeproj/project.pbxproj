@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A02A67331B33F29D0057FC28 /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02A67321B33F29D0057FC28 /* QMapKit.framework */; };
+		A02A67361B33F67B0057FC28 /* KDExpertList.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A67351B33F67B0057FC28 /* KDExpertList.m */; };
+		A02A673A1B33FA170057FC28 /* KDExpertListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A67381B33FA170057FC28 /* KDExpertListCell.m */; };
+		A02A673B1B33FA170057FC28 /* KDExpertListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A02A67391B33FA170057FC28 /* KDExpertListCell.xib */; };
+		A02A673E1B3402E40057FC28 /* KDExpertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A673D1B3402E40057FC28 /* KDExpertDetailViewController.m */; };
+		A02A67421B3408AA0057FC28 /* KDExpertTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A67401B3408AA0057FC28 /* KDExpertTopicCell.m */; };
+		A02A67431B3408AA0057FC28 /* KDExpertTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A02A67411B3408AA0057FC28 /* KDExpertTopicCell.xib */; };
+		A02A67461B3410EA0057FC28 /* KDExpertTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A67451B3410EA0057FC28 /* KDExpertTopic.m */; };
+		A02A674A1B3412F10057FC28 /* KDExpertCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A67481B3412F10057FC28 /* KDExpertCommentCell.m */; };
+		A02A674B1B3412F10057FC28 /* KDExpertCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A02A67491B3412F10057FC28 /* KDExpertCommentCell.xib */; };
+		A02A674E1B3419190057FC28 /* KDExpertComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A674D1B3419190057FC28 /* KDExpertComment.m */; };
+		A02A67521B341B540057FC28 /* KDExpertIntroCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A67501B341B540057FC28 /* KDExpertIntroCell.m */; };
+		A02A67531B341B540057FC28 /* KDExpertIntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A02A67511B341B540057FC28 /* KDExpertIntroCell.xib */; };
 		C7249D601B33C46E009C448C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7249D5E1B33C46E009C448C /* Main.storyboard */; };
 		C7249D621B33C46E009C448C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7249D611B33C46E009C448C /* Images.xcassets */; };
 		C7249D651B33C46E009C448C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7249D631B33C46E009C448C /* LaunchScreen.xib */; };
@@ -28,7 +41,6 @@
 		C7249DD31B33ED8A009C448C /* KDProfessorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DCD1B33ED8A009C448C /* KDProfessorView.m */; };
 		C7249DD71B33ED9C009C448C /* KDExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DD51B33ED9C009C448C /* KDExpertViewController.m */; };
 		C7249DDB1B33EE19009C448C /* KDExpertMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DDA1B33EE19009C448C /* KDExpertMapViewController.m */; };
-		C7249DDD1B33EEDE009C448C /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DDC1B33EEDE009C448C /* QMapKit.framework */; };
 		C7249DDF1B33EF0B009C448C /* QMapKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7249DDE1B33EF0B009C448C /* QMapKit.bundle */; };
 		C7249DE11B33EF1F009C448C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE01B33EF1F009C448C /* QuartzCore.framework */; };
 		C7249DE31B33EF28009C448C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE21B33EF28009C448C /* CoreLocation.framework */; };
@@ -48,6 +60,27 @@
 
 /* Begin PBXFileReference section */
 		532417BE14BA7656F678F002 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A02A67321B33F29D0057FC28 /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QMapKit.framework; path = ../../Downloads/iOS_2D_Map_v_1_1_0_15053/Demos/QMapKitSample/frameworks/QMapKit.framework; sourceTree = "<group>"; };
+		A02A67341B33F67B0057FC28 /* KDExpertList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertList.h; sourceTree = SOURCE_ROOT; };
+		A02A67351B33F67B0057FC28 /* KDExpertList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertList.m; sourceTree = SOURCE_ROOT; };
+		A02A67371B33FA170057FC28 /* KDExpertListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertListCell.h; sourceTree = SOURCE_ROOT; };
+		A02A67381B33FA170057FC28 /* KDExpertListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertListCell.m; sourceTree = SOURCE_ROOT; };
+		A02A67391B33FA170057FC28 /* KDExpertListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDExpertListCell.xib; sourceTree = SOURCE_ROOT; };
+		A02A673C1B3402E40057FC28 /* KDExpertDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertDetailViewController.h; sourceTree = "<group>"; };
+		A02A673D1B3402E40057FC28 /* KDExpertDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertDetailViewController.m; sourceTree = "<group>"; };
+		A02A673F1B3408AA0057FC28 /* KDExpertTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDExpertTopicCell.h; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertTopicCell.h"; sourceTree = SOURCE_ROOT; };
+		A02A67401B3408AA0057FC28 /* KDExpertTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDExpertTopicCell.m; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertTopicCell.m"; sourceTree = SOURCE_ROOT; };
+		A02A67411B3408AA0057FC28 /* KDExpertTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KDExpertTopicCell.xib; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertTopicCell.xib"; sourceTree = SOURCE_ROOT; };
+		A02A67441B3410EA0057FC28 /* KDExpertTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDExpertTopic.h; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertTopic.h"; sourceTree = SOURCE_ROOT; };
+		A02A67451B3410EA0057FC28 /* KDExpertTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDExpertTopic.m; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertTopic.m"; sourceTree = SOURCE_ROOT; };
+		A02A67471B3412F10057FC28 /* KDExpertCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDExpertCommentCell.h; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertCommentCell.h"; sourceTree = SOURCE_ROOT; };
+		A02A67481B3412F10057FC28 /* KDExpertCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDExpertCommentCell.m; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertCommentCell.m"; sourceTree = SOURCE_ROOT; };
+		A02A67491B3412F10057FC28 /* KDExpertCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KDExpertCommentCell.xib; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertCommentCell.xib"; sourceTree = SOURCE_ROOT; };
+		A02A674C1B3419190057FC28 /* KDExpertComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDExpertComment.h; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertComment.h"; sourceTree = SOURCE_ROOT; };
+		A02A674D1B3419190057FC28 /* KDExpertComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDExpertComment.m; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertComment.m"; sourceTree = SOURCE_ROOT; };
+		A02A674F1B341B540057FC28 /* KDExpertIntroCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDExpertIntroCell.h; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertIntroCell.h"; sourceTree = SOURCE_ROOT; };
+		A02A67501B341B540057FC28 /* KDExpertIntroCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDExpertIntroCell.m; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertIntroCell.m"; sourceTree = SOURCE_ROOT; };
+		A02A67511B341B540057FC28 /* KDExpertIntroCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KDExpertIntroCell.xib; path = "口袋专家/Classes/Main(主要)/Expert(专家)/Controller/KDExpertIntroCell.xib"; sourceTree = SOURCE_ROOT; };
 		C7249D511B33C46E009C448C /* 口袋专家.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "口袋专家.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7249D551B33C46E009C448C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7249D5F1B33C46E009C448C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,10 +135,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A02A67331B33F29D0057FC28 /* QMapKit.framework in Frameworks */,
 				C7249DE51B33EF35009C448C /* SystemConfiguration.framework in Frameworks */,
 				C7249DE31B33EF28009C448C /* CoreLocation.framework in Frameworks */,
 				C7249DE11B33EF1F009C448C /* QuartzCore.framework in Frameworks */,
-				C7249DDD1B33EEDE009C448C /* QMapKit.framework in Frameworks */,
 				E828E50393AA8D6697C89573 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +165,7 @@
 		A1C8CEE4A1F3123AD74C50C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A02A67321B33F29D0057FC28 /* QMapKit.framework */,
 				C7249DE41B33EF35009C448C /* SystemConfiguration.framework */,
 				C7249DE21B33EF28009C448C /* CoreLocation.framework */,
 				C7249DE01B33EF1F009C448C /* QuartzCore.framework */,
@@ -299,6 +333,8 @@
 				C7249DD51B33ED9C009C448C /* KDExpertViewController.m */,
 				C7249DD91B33EE19009C448C /* KDExpertMapViewController.h */,
 				C7249DDA1B33EE19009C448C /* KDExpertMapViewController.m */,
+				A02A673C1B3402E40057FC28 /* KDExpertDetailViewController.h */,
+				A02A673D1B3402E40057FC28 /* KDExpertDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,6 +342,12 @@
 		C7249D831B33C552009C448C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A02A67341B33F67B0057FC28 /* KDExpertList.h */,
+				A02A67351B33F67B0057FC28 /* KDExpertList.m */,
+				A02A67441B3410EA0057FC28 /* KDExpertTopic.h */,
+				A02A67451B3410EA0057FC28 /* KDExpertTopic.m */,
+				A02A674C1B3419190057FC28 /* KDExpertComment.h */,
+				A02A674D1B3419190057FC28 /* KDExpertComment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +355,18 @@
 		C7249D841B33C552009C448C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A02A67371B33FA170057FC28 /* KDExpertListCell.h */,
+				A02A67381B33FA170057FC28 /* KDExpertListCell.m */,
+				A02A67391B33FA170057FC28 /* KDExpertListCell.xib */,
+				A02A673F1B3408AA0057FC28 /* KDExpertTopicCell.h */,
+				A02A67401B3408AA0057FC28 /* KDExpertTopicCell.m */,
+				A02A67411B3408AA0057FC28 /* KDExpertTopicCell.xib */,
+				A02A67471B3412F10057FC28 /* KDExpertCommentCell.h */,
+				A02A67481B3412F10057FC28 /* KDExpertCommentCell.m */,
+				A02A67491B3412F10057FC28 /* KDExpertCommentCell.xib */,
+				A02A674F1B341B540057FC28 /* KDExpertIntroCell.h */,
+				A02A67501B341B540057FC28 /* KDExpertIntroCell.m */,
+				A02A67511B341B540057FC28 /* KDExpertIntroCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -515,8 +569,12 @@
 			files = (
 				C7249DD01B33ED8A009C448C /* KDFirstTableViewCell.xib in Resources */,
 				C7249DDF1B33EF0B009C448C /* QMapKit.bundle in Resources */,
+				A02A674B1B3412F10057FC28 /* KDExpertCommentCell.xib in Resources */,
 				C7249D601B33C46E009C448C /* Main.storyboard in Resources */,
 				C7249D651B33C46E009C448C /* LaunchScreen.xib in Resources */,
+				A02A67531B341B540057FC28 /* KDExpertIntroCell.xib in Resources */,
+				A02A67431B3408AA0057FC28 /* KDExpertTopicCell.xib in Resources */,
+				A02A673B1B33FA170057FC28 /* KDExpertListCell.xib in Resources */,
 				C7249D621B33C46E009C448C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,15 +630,23 @@
 				C7249DCE1B33ED8A009C448C /* KDExpertPicAndName.m in Sources */,
 				C7249D9D1B33C552009C448C /* KDConst.m in Sources */,
 				C7249D9C1B33C552009C448C /* KDBaseNavigationController.m in Sources */,
+				A02A67421B3408AA0057FC28 /* KDExpertTopicCell.m in Sources */,
+				A02A673A1B33FA170057FC28 /* KDExpertListCell.m in Sources */,
 				C7249DCF1B33ED8A009C448C /* KDFirstTableViewCell.m in Sources */,
 				C7249DB51B33E68F009C448C /* RootViewController.m in Sources */,
 				C7249DA61B33C7B9009C448C /* main.m in Sources */,
+				A02A67521B341B540057FC28 /* KDExpertIntroCell.m in Sources */,
+				A02A673E1B3402E40057FC28 /* KDExpertDetailViewController.m in Sources */,
 				C7249DB81B33E70C009C448C /* LeftViewController.m in Sources */,
+				A02A674E1B3419190057FC28 /* KDExpertComment.m in Sources */,
 				C7249DA51B33C7B9009C448C /* AppDelegate.m in Sources */,
 				C7249DDB1B33EE19009C448C /* KDExpertMapViewController.m in Sources */,
 				C7249DC01B33ED77009C448C /* KDDiscoverTableViewController.m in Sources */,
+				A02A67361B33F67B0057FC28 /* KDExpertList.m in Sources */,
 				C7249DD11B33ED8A009C448C /* KDListingCell.m in Sources */,
+				A02A67461B3410EA0057FC28 /* KDExpertTopic.m in Sources */,
 				C7249DB21B33C8B1009C448C /* PPRevealSideViewController.m in Sources */,
+				A02A674A1B3412F10057FC28 /* KDExpertCommentCell.m in Sources */,
 				C7249DD31B33ED8A009C448C /* KDProfessorView.m in Sources */,
 				C7249DD71B33ED9C009C448C /* KDExpertViewController.m in Sources */,
 				C7249DD21B33ED8A009C448C /* KDListingHeadView.m in Sources */,
@@ -715,11 +781,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/fullteck/Downloads/iOS_2D_Map_v1_1_1_15361-4/Demos/QMapKitSample/frameworks",
+					/Users/fuyaozhishang/Downloads/iOS_2D_Map_v_1_1_0_15053/Demos/QMapKitSample/frameworks,
 				);
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
@@ -731,11 +799,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/fullteck/Downloads/iOS_2D_Map_v1_1_1_15361-4/Demos/QMapKitSample/frameworks",
+					/Users/fuyaozhishang/Downloads/iOS_2D_Map_v_1_1_0_15053/Demos/QMapKitSample/frameworks,
 				);
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};
