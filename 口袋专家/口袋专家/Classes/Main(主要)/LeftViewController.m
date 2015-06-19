@@ -1,25 +1,24 @@
 //
-//  KDBaseNavigationController.m
+//  LeftViewController.m
 //  口袋专家
 //
-//  Created by 扶摇直上 on 15/6/18.
-//  Copyright © 2015年 扶摇直上. All rights reserved.
+//  Created by 扶摇直上 on 15/6/19.
+//  Copyright (c) 2015年 扶摇直上. All rights reserved.
 //
 
-#import "KDBaseNavigationController.h"
+#import "LeftViewController.h"
 
-@interface KDBaseNavigationController ()
+@interface LeftViewController ()
 
 @end
 
-@implementation KDBaseNavigationController
+@implementation LeftViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

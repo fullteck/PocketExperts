@@ -16,6 +16,23 @@
 		C7249DA51B33C7B9009C448C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DA31B33C7B9009C448C /* AppDelegate.m */; };
 		C7249DA61B33C7B9009C448C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DA41B33C7B9009C448C /* main.m */; };
 		C7249DB21B33C8B1009C448C /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DB11B33C8B1009C448C /* PPRevealSideViewController.m */; };
+		C7249DB51B33E68F009C448C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DB41B33E68F009C448C /* RootViewController.m */; };
+		C7249DB81B33E70C009C448C /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DB71B33E70C009C448C /* LeftViewController.m */; };
+		C7249DC01B33ED77009C448C /* KDDiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DBC1B33ED77009C448C /* KDDiscoverTableViewController.m */; };
+		C7249DC21B33ED77009C448C /* KDListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DBF1B33ED77009C448C /* KDListingViewController.m */; };
+		C7249DCE1B33ED8A009C448C /* KDExpertPicAndName.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DC41B33ED8A009C448C /* KDExpertPicAndName.m */; };
+		C7249DCF1B33ED8A009C448C /* KDFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DC61B33ED8A009C448C /* KDFirstTableViewCell.m */; };
+		C7249DD01B33ED8A009C448C /* KDFirstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7249DC71B33ED8A009C448C /* KDFirstTableViewCell.xib */; };
+		C7249DD11B33ED8A009C448C /* KDListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DC91B33ED8A009C448C /* KDListingCell.m */; };
+		C7249DD21B33ED8A009C448C /* KDListingHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DCB1B33ED8A009C448C /* KDListingHeadView.m */; };
+		C7249DD31B33ED8A009C448C /* KDProfessorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DCD1B33ED8A009C448C /* KDProfessorView.m */; };
+		C7249DD71B33ED9C009C448C /* KDExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DD51B33ED9C009C448C /* KDExpertViewController.m */; };
+		C7249DDB1B33EE19009C448C /* KDExpertMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DDA1B33EE19009C448C /* KDExpertMapViewController.m */; };
+		C7249DDD1B33EEDE009C448C /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DDC1B33EEDE009C448C /* QMapKit.framework */; };
+		C7249DDF1B33EF0B009C448C /* QMapKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7249DDE1B33EF0B009C448C /* QMapKit.bundle */; };
+		C7249DE11B33EF1F009C448C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE01B33EF1F009C448C /* QuartzCore.framework */; };
+		C7249DE31B33EF28009C448C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE21B33EF28009C448C /* CoreLocation.framework */; };
+		C7249DE51B33EF35009C448C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE41B33EF35009C448C /* SystemConfiguration.framework */; };
 		E828E50393AA8D6697C89573 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 532417BE14BA7656F678F002 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +65,34 @@
 		C7249DA41B33C7B9009C448C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7249DB01B33C8B1009C448C /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
 		C7249DB11B33C8B1009C448C /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
+		C7249DB31B33E68F009C448C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		C7249DB41B33E68F009C448C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		C7249DB61B33E70C009C448C /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		C7249DB71B33E70C009C448C /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		C7249DBB1B33ED77009C448C /* KDDiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDDiscoverTableViewController.h; sourceTree = "<group>"; };
+		C7249DBC1B33ED77009C448C /* KDDiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDDiscoverTableViewController.m; sourceTree = "<group>"; };
+		C7249DBE1B33ED77009C448C /* KDListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDListingViewController.h; sourceTree = "<group>"; };
+		C7249DBF1B33ED77009C448C /* KDListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDListingViewController.m; sourceTree = "<group>"; };
+		C7249DC31B33ED8A009C448C /* KDExpertPicAndName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertPicAndName.h; sourceTree = "<group>"; };
+		C7249DC41B33ED8A009C448C /* KDExpertPicAndName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertPicAndName.m; sourceTree = "<group>"; };
+		C7249DC51B33ED8A009C448C /* KDFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDFirstTableViewCell.h; sourceTree = "<group>"; };
+		C7249DC61B33ED8A009C448C /* KDFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDFirstTableViewCell.m; sourceTree = "<group>"; };
+		C7249DC71B33ED8A009C448C /* KDFirstTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDFirstTableViewCell.xib; sourceTree = "<group>"; };
+		C7249DC81B33ED8A009C448C /* KDListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDListingCell.h; sourceTree = "<group>"; };
+		C7249DC91B33ED8A009C448C /* KDListingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDListingCell.m; sourceTree = "<group>"; };
+		C7249DCA1B33ED8A009C448C /* KDListingHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDListingHeadView.h; sourceTree = "<group>"; };
+		C7249DCB1B33ED8A009C448C /* KDListingHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDListingHeadView.m; sourceTree = "<group>"; };
+		C7249DCC1B33ED8A009C448C /* KDProfessorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDProfessorView.h; sourceTree = "<group>"; };
+		C7249DCD1B33ED8A009C448C /* KDProfessorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDProfessorView.m; sourceTree = "<group>"; };
+		C7249DD41B33ED9C009C448C /* KDExpertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertViewController.h; sourceTree = "<group>"; };
+		C7249DD51B33ED9C009C448C /* KDExpertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertViewController.m; sourceTree = "<group>"; };
+		C7249DD91B33EE19009C448C /* KDExpertMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertMapViewController.h; sourceTree = "<group>"; };
+		C7249DDA1B33EE19009C448C /* KDExpertMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertMapViewController.m; sourceTree = "<group>"; };
+		C7249DDC1B33EEDE009C448C /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QMapKit.framework; path = "../../../Downloads/iOS_2D_Map_v1_1_1_15361-4/Demos/QMapKitSample/frameworks/QMapKit.framework"; sourceTree = "<group>"; };
+		C7249DDE1B33EF0B009C448C /* QMapKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QMapKit.bundle; sourceTree = "<group>"; };
+		C7249DE01B33EF1F009C448C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C7249DE21B33EF28009C448C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C7249DE41B33EF35009C448C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C8E33FE7688BD8C629BEE673 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C91EDF832B0BDB2B511AF0A6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +102,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7249DE51B33EF35009C448C /* SystemConfiguration.framework in Frameworks */,
+				C7249DE31B33EF28009C448C /* CoreLocation.framework in Frameworks */,
+				C7249DE11B33EF1F009C448C /* QuartzCore.framework in Frameworks */,
+				C7249DDD1B33EEDE009C448C /* QMapKit.framework in Frameworks */,
 				E828E50393AA8D6697C89573 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +132,10 @@
 		A1C8CEE4A1F3123AD74C50C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7249DE41B33EF35009C448C /* SystemConfiguration.framework */,
+				C7249DE21B33EF28009C448C /* CoreLocation.framework */,
+				C7249DE01B33EF1F009C448C /* QuartzCore.framework */,
+				C7249DDC1B33EEDE009C448C /* QMapKit.framework */,
 				532417BE14BA7656F678F002 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -91,6 +144,7 @@
 		C7249D481B33C46E009C448C = {
 			isa = PBXGroup;
 			children = (
+				C7249DDE1B33EF0B009C448C /* QMapKit.bundle */,
 				C7249D531B33C46E009C448C /* 口袋专家 */,
 				C7249D6D1B33C46E009C448C /* 口袋专家Tests */,
 				C7249D521B33C46E009C448C /* Products */,
@@ -174,6 +228,10 @@
 				C7249D811B33C552009C448C /* Expert(专家) */,
 				C7249D851B33C552009C448C /* Login(登录) */,
 				C7249D891B33C552009C448C /* User(个人中心) */,
+				C7249DB31B33E68F009C448C /* RootViewController.h */,
+				C7249DB41B33E68F009C448C /* RootViewController.m */,
+				C7249DB61B33E70C009C448C /* LeftViewController.h */,
+				C7249DB71B33E70C009C448C /* LeftViewController.m */,
 			);
 			path = "Main(主要)";
 			sourceTree = "<group>";
@@ -191,6 +249,10 @@
 		C7249D7E1B33C552009C448C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C7249DBB1B33ED77009C448C /* KDDiscoverTableViewController.h */,
+				C7249DBC1B33ED77009C448C /* KDDiscoverTableViewController.m */,
+				C7249DBE1B33ED77009C448C /* KDListingViewController.h */,
+				C7249DBF1B33ED77009C448C /* KDListingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -205,6 +267,17 @@
 		C7249D801B33C552009C448C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C7249DC31B33ED8A009C448C /* KDExpertPicAndName.h */,
+				C7249DC41B33ED8A009C448C /* KDExpertPicAndName.m */,
+				C7249DC51B33ED8A009C448C /* KDFirstTableViewCell.h */,
+				C7249DC61B33ED8A009C448C /* KDFirstTableViewCell.m */,
+				C7249DC71B33ED8A009C448C /* KDFirstTableViewCell.xib */,
+				C7249DC81B33ED8A009C448C /* KDListingCell.h */,
+				C7249DC91B33ED8A009C448C /* KDListingCell.m */,
+				C7249DCA1B33ED8A009C448C /* KDListingHeadView.h */,
+				C7249DCB1B33ED8A009C448C /* KDListingHeadView.m */,
+				C7249DCC1B33ED8A009C448C /* KDProfessorView.h */,
+				C7249DCD1B33ED8A009C448C /* KDProfessorView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +295,10 @@
 		C7249D821B33C552009C448C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C7249DD41B33ED9C009C448C /* KDExpertViewController.h */,
+				C7249DD51B33ED9C009C448C /* KDExpertViewController.m */,
+				C7249DD91B33EE19009C448C /* KDExpertMapViewController.h */,
+				C7249DDA1B33EE19009C448C /* KDExpertMapViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -399,6 +476,7 @@
 		C7249D491B33C46E009C448C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = KD;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "扶摇直上";
 				TargetAttributes = {
@@ -435,6 +513,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7249DD01B33ED8A009C448C /* KDFirstTableViewCell.xib in Resources */,
+				C7249DDF1B33EF0B009C448C /* QMapKit.bundle in Resources */,
 				C7249D601B33C46E009C448C /* Main.storyboard in Resources */,
 				C7249D651B33C46E009C448C /* LaunchScreen.xib in Resources */,
 				C7249D621B33C46E009C448C /* Images.xcassets in Resources */,
@@ -488,11 +568,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7249DC21B33ED77009C448C /* KDListingViewController.m in Sources */,
+				C7249DCE1B33ED8A009C448C /* KDExpertPicAndName.m in Sources */,
 				C7249D9D1B33C552009C448C /* KDConst.m in Sources */,
 				C7249D9C1B33C552009C448C /* KDBaseNavigationController.m in Sources */,
+				C7249DCF1B33ED8A009C448C /* KDFirstTableViewCell.m in Sources */,
+				C7249DB51B33E68F009C448C /* RootViewController.m in Sources */,
 				C7249DA61B33C7B9009C448C /* main.m in Sources */,
+				C7249DB81B33E70C009C448C /* LeftViewController.m in Sources */,
 				C7249DA51B33C7B9009C448C /* AppDelegate.m in Sources */,
+				C7249DDB1B33EE19009C448C /* KDExpertMapViewController.m in Sources */,
+				C7249DC01B33ED77009C448C /* KDDiscoverTableViewController.m in Sources */,
+				C7249DD11B33ED8A009C448C /* KDListingCell.m in Sources */,
 				C7249DB21B33C8B1009C448C /* PPRevealSideViewController.m in Sources */,
+				C7249DD31B33ED8A009C448C /* KDProfessorView.m in Sources */,
+				C7249DD71B33ED9C009C448C /* KDExpertViewController.m in Sources */,
+				C7249DD21B33ED8A009C448C /* KDListingHeadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +712,10 @@
 			baseConfigurationReference = C8E33FE7688BD8C629BEE673 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/fullteck/Downloads/iOS_2D_Map_v1_1_1_15361-4/Demos/QMapKitSample/frameworks",
+				);
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -633,6 +728,10 @@
 			baseConfigurationReference = C91EDF832B0BDB2B511AF0A6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/fullteck/Downloads/iOS_2D_Map_v1_1_1_15361-4/Demos/QMapKitSample/frameworks",
+				);
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

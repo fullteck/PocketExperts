@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "KDBaseNavigationController.h"
 #import "PPRevealSideViewController.h"
+#import "RootViewController.h"
+#import "LeftViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,16 +27,16 @@
     //    [QMapServices sharedServices].apiKey = @"";
     
 //    MainViewController *mainViewController = [[MainViewController alloc] init];
-    KDBaseNavigationController *navigationController = [[KDBaseNavigationController alloc] init];
     
+    RootViewController *rootVC = [[RootViewController alloc] init];
+    
+    KDBaseNavigationController *navigationController = [[KDBaseNavigationController alloc] initWithRootViewController:rootVC];
+
     self.window.rootViewController = [[PPRevealSideViewController alloc] initWithRootViewController:navigationController];
     
     self.window.backgroundColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];
-    NSLog(@"====");
-    NSLog(@"123");
-    NSLog(@"232332");
     
     return YES;
 }

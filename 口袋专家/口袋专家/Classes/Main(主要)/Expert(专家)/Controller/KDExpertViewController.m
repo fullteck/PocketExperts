@@ -1,25 +1,24 @@
 //
-//  KDBaseNavigationController.m
-//  口袋专家
+//  ExpertViewController.m
+//  PocketExperts
 //
-//  Created by 扶摇直上 on 15/6/18.
-//  Copyright © 2015年 扶摇直上. All rights reserved.
+//  Created by 扶摇直上 on 15/6/4.
+//  Copyright (c) 2015年 扶摇直上. All rights reserved.
 //
 
-#import "KDBaseNavigationController.h"
+#import "KDExpertViewController.h"
 
-@interface KDBaseNavigationController ()
-
+@interface KDExpertViewController ()
 @end
 
-@implementation KDBaseNavigationController
+@implementation KDExpertViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    
+    // Do any additional setup after loading the view from its nib.
+    self.title = @"专家";
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

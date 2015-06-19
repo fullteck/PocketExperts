@@ -1,25 +1,30 @@
 //
-//  KDBaseNavigationController.m
+//  ExpertMapViewController.m
 //  口袋专家
 //
-//  Created by 扶摇直上 on 15/6/18.
-//  Copyright © 2015年 扶摇直上. All rights reserved.
+//  Created by 扶摇直上 on 15/6/19.
+//  Copyright (c) 2015年 扶摇直上. All rights reserved.
 //
 
-#import "KDBaseNavigationController.h"
+#import "KDExpertMapViewController.h"
+#import <QMapKit/QMapKit.h>
 
-@interface KDBaseNavigationController ()
+@interface KDExpertMapViewController ()<QMapViewDelegate>
+@property (nonatomic, strong) QMapView *mapView;
 
 @end
 
-@implementation KDBaseNavigationController
+@implementation KDExpertMapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    self.mapView = [[QMapView alloc] initWithFrame:self.view.bounds];
+    self.mapView.delegate = self;
+    [self.view addSubview:self.mapView];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
