@@ -2,10 +2,11 @@
 //  ____Tests.m
 //  口袋专家Tests
 //
-//  Created by 扶摇直上 on 15/6/18.
-//  Copyright © 2015年 扶摇直上. All rights reserved.
+//  Created by 扶摇直上 on 15/6/19.
+//  Copyright (c) 2015年 扶摇直上. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
 @interface ____Tests : XCTestCase
@@ -26,7 +27,7 @@
 
 - (void)testExample {
     // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    XCTAssert(YES, @"Pass");
 }
 
 - (void)testPerformanceExample {
