@@ -11,7 +11,7 @@
 #import "PPRevealSideViewController.h"
 #import "RootViewController.h"
 #import "LeftViewController.h"
-
+#import <QMapKit/QMapKit.h>
 @interface AppDelegate ()
 
 @end
@@ -24,8 +24,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    //    [QMapServices sharedServices].apiKey = @"";
-    
+    [QMapServices sharedServices].apiKey = @"ORWBZ-6L43O-PG6W5-STY6F-QFF63-AEFD6";
 //    MainViewController *mainViewController = [[MainViewController alloc] init];
     
     RootViewController *rootVC = [[RootViewController alloc] init];

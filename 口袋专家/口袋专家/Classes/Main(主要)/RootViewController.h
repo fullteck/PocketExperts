@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController
+typedef enum {
+    ExpertStatusList,
+    ExpertStatusMap
+} ExpertStatus;
 
+@protocol KDRootViewControllerDelegate <NSObject>
+
+- (void)KDRootViewControllerChangeStatus:(ExpertStatus)status;
+
+@end
+@interface RootViewController : UIViewController
+@property (nonatomic, assign)id<KDRootViewControllerDelegate> delegate;
 @end

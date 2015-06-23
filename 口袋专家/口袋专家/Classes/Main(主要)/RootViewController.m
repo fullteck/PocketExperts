@@ -13,10 +13,12 @@
 #import "LeftViewController.h"
 #import "PPRevealSideViewController.h"
 
-@interface RootViewController (){
+@interface RootViewController ()<KDExpertViewControllerDelegate>{
     KDExpertViewController * _expertVC;
     KDDiscoverTableViewController * _discoverTVC;
     UISegmentedControl * _segmentedC;
+    UIBarButtonItem *_rightItem;
+    UIBarButtonItem *_ListItem;
 }
 
 @end
@@ -35,6 +37,9 @@
 {
     UIBarButtonItem *userItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-gerenzhongxin"] style:UIBarButtonItemStyleDone target:self action:@selector(pushUserPage:)];
     self.navigationItem.leftBarButtonItem = userItem;
+    
+    _rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-ditu"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeMapPage:)];
+    _ListItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-liebiao"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeListPage:)];
 }
 
 - (void)pushUserPage:(UIBarButtonItem *)item
@@ -64,12 +69,9 @@
     _expertVC = [[KDExpertViewController alloc] init];
     
     _expertVC.view.frame = CGRectMake(0, 0, ScreenW, ScreenH);
-    
-    _discoverTVC = [[KDDiscoverTableViewController alloc] init];
-    
+
     _discoverTVC = [[KDDiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
     _discoverTVC.tableView.frame = CGRectMake(0, 0, ScreenW, ScreenH);
-
     
     [self addChildViewController:_expertVC];
     [self addChildViewController:_discoverTVC];
@@ -77,11 +79,31 @@
     [self.view addSubview:_discoverTVC.view];
     
     _segmentedC.selectedSegmentIndex = 0;
+    
+    self.delegate =(id <KDRootViewControllerDelegate>)_expertVC;
+    
+    _expertVC.delegate = (id <KDExpertViewControllerDelegate>)self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)KDExpertViewControllerNavigationBar:(ExpertStatus)status
+{
+    switch (status) {
+        case ExpertStatusList:
+            self.navigationItem.rightBarButtonItem =_rightItem;
+            break;
+        case ExpertStatusMap:
+            self.navigationItem.rightBarButtonItem = _ListItem;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - segment 的点击事件
@@ -115,6 +137,7 @@
     if (_discoverTVC.view.superview == nil) {
         [self.view addSubview:_discoverTVC.view];
         [_expertVC.view removeFromSuperview];
+        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 #pragma mark - 选择第二个视图
@@ -123,7 +146,18 @@
     if (_expertVC.view.superview == nil) {
         [self.view addSubview:_expertVC.view];
         [_discoverTVC.view removeFromSuperview];
+        self.navigationItem.rightBarButtonItem = _rightItem;
     }
+}
+
+- (void)ChangeListPage:(UIBarButtonItem *)btn
+{
+    [self.delegate KDRootViewControllerChangeStatus:ExpertStatusList];
+}
+
+- (void)ChangeMapPage:(UIBarButtonItem *)btn
+{
+    [self.delegate KDRootViewControllerChangeStatus:ExpertStatusMap];
 }
 
 /*

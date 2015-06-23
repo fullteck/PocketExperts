@@ -44,6 +44,11 @@
 		C7249DE11B33EF1F009C448C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE01B33EF1F009C448C /* QuartzCore.framework */; };
 		C7249DE31B33EF28009C448C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE21B33EF28009C448C /* CoreLocation.framework */; };
 		C7249DE51B33EF35009C448C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE41B33EF35009C448C /* SystemConfiguration.framework */; };
+		C7CA87E51B390426002C167F /* KDLeftHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CA87E31B390426002C167F /* KDLeftHeadTableViewCell.m */; };
+		C7CA87E61B390426002C167F /* KDLeftHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CA87E41B390426002C167F /* KDLeftHeadTableViewCell.xib */; };
+		C7CA87EA1B39075E002C167F /* KDLeftSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CA87E81B39075E002C167F /* KDLeftSwitchTableViewCell.m */; };
+		C7CA87EB1B39075E002C167F /* KDLeftSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CA87E91B39075E002C167F /* KDLeftSwitchTableViewCell.xib */; };
+		C7CA87F01B393468002C167F /* KDExpertListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CA87EF1B393468002C167F /* KDExpertListTableViewController.m */; };
 		E828E50393AA8D6697C89573 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 532417BE14BA7656F678F002 /* libPods.a */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -125,6 +130,14 @@
 		C7249DE01B33EF1F009C448C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C7249DE21B33EF28009C448C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C7249DE41B33EF35009C448C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C7CA87E21B390426002C167F /* KDLeftHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDLeftHeadTableViewCell.h; sourceTree = "<group>"; };
+		C7CA87E31B390426002C167F /* KDLeftHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDLeftHeadTableViewCell.m; sourceTree = "<group>"; };
+		C7CA87E41B390426002C167F /* KDLeftHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDLeftHeadTableViewCell.xib; sourceTree = "<group>"; };
+		C7CA87E71B39075E002C167F /* KDLeftSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDLeftSwitchTableViewCell.h; sourceTree = "<group>"; };
+		C7CA87E81B39075E002C167F /* KDLeftSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDLeftSwitchTableViewCell.m; sourceTree = "<group>"; };
+		C7CA87E91B39075E002C167F /* KDLeftSwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDLeftSwitchTableViewCell.xib; sourceTree = "<group>"; };
+		C7CA87EE1B393468002C167F /* KDExpertListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertListTableViewController.h; sourceTree = "<group>"; };
+		C7CA87EF1B393468002C167F /* KDExpertListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertListTableViewController.m; sourceTree = "<group>"; };
 		C8E33FE7688BD8C629BEE673 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C91EDF832B0BDB2B511AF0A6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -330,6 +343,8 @@
 			children = (
 				C7249DD41B33ED9C009C448C /* KDExpertViewController.h */,
 				C7249DD51B33ED9C009C448C /* KDExpertViewController.m */,
+				C7CA87EE1B393468002C167F /* KDExpertListTableViewController.h */,
+				C7CA87EF1B393468002C167F /* KDExpertListTableViewController.m */,
 				C7249DD91B33EE19009C448C /* KDExpertMapViewController.h */,
 				C7249DDA1B33EE19009C448C /* KDExpertMapViewController.m */,
 				A02A673C1B3402E40057FC28 /* KDExpertDetailViewController.h */,
@@ -428,6 +443,12 @@
 		C7249D8C1B33C552009C448C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C7CA87E21B390426002C167F /* KDLeftHeadTableViewCell.h */,
+				C7CA87E31B390426002C167F /* KDLeftHeadTableViewCell.m */,
+				C7CA87E41B390426002C167F /* KDLeftHeadTableViewCell.xib */,
+				C7CA87E71B39075E002C167F /* KDLeftSwitchTableViewCell.h */,
+				C7CA87E81B39075E002C167F /* KDLeftSwitchTableViewCell.m */,
+				C7CA87E91B39075E002C167F /* KDLeftSwitchTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -535,6 +556,7 @@
 				TargetAttributes = {
 					C7249D501B33C46E009C448C = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = NJNULN45M9;
 					};
 					C7249D691B33C46E009C448C = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -567,10 +589,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7249DD01B33ED8A009C448C /* KDFirstTableViewCell.xib in Resources */,
+				C7CA87E61B390426002C167F /* KDLeftHeadTableViewCell.xib in Resources */,
 				C7249DDF1B33EF0B009C448C /* QMapKit.bundle in Resources */,
 				A02A674B1B3412F10057FC28 /* KDExpertCommentCell.xib in Resources */,
 				C7249D601B33C46E009C448C /* Main.storyboard in Resources */,
-				C7249D651B33C46E009C448C /* LaunchScreen.xib in Resources */,
+				C7CA87EB1B39075E002C167F /* KDLeftSwitchTableViewCell.xib in Resources */,
 				A02A67531B341B540057FC28 /* KDExpertIntroCell.xib in Resources */,
 				A02A67431B3408AA0057FC28 /* KDExpertTopicCell.xib in Resources */,
 				A02A673B1B33FA170057FC28 /* KDExpertListCell.xib in Resources */,
@@ -628,8 +651,10 @@
 				C7249DC21B33ED77009C448C /* KDListingViewController.m in Sources */,
 				C7249DCE1B33ED8A009C448C /* KDExpertPicAndName.m in Sources */,
 				C7249D9D1B33C552009C448C /* KDConst.m in Sources */,
+				C7CA87EA1B39075E002C167F /* KDLeftSwitchTableViewCell.m in Sources */,
 				C7249D9C1B33C552009C448C /* KDBaseNavigationController.m in Sources */,
 				A02A67421B3408AA0057FC28 /* KDExpertTopicCell.m in Sources */,
+				C7CA87E51B390426002C167F /* KDLeftHeadTableViewCell.m in Sources */,
 				A02A673A1B33FA170057FC28 /* KDExpertListCell.m in Sources */,
 				C7249DCF1B33ED8A009C448C /* KDFirstTableViewCell.m in Sources */,
 				C7249DB51B33E68F009C448C /* RootViewController.m in Sources */,
@@ -646,6 +671,7 @@
 				A02A67461B3410EA0057FC28 /* KDExpertTopic.m in Sources */,
 				C7249DB21B33C8B1009C448C /* PPRevealSideViewController.m in Sources */,
 				A02A674A1B3412F10057FC28 /* KDExpertCommentCell.m in Sources */,
+				C7CA87F01B393468002C167F /* KDExpertListTableViewController.m in Sources */,
 				C7249DD31B33ED8A009C448C /* KDProfessorView.m in Sources */,
 				C7249DD71B33ED9C009C448C /* KDExpertViewController.m in Sources */,
 				C7249DD21B33ED8A009C448C /* KDListingHeadView.m in Sources */,
@@ -777,6 +803,8 @@
 			baseConfigurationReference = C8E33FE7688BD8C629BEE673 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/fullteck/Downloads/iOS_2D_Map_v1_1_1_15361-4/Demos/QMapKitSample/frameworks",
@@ -785,6 +813,7 @@
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
@@ -795,6 +824,8 @@
 			baseConfigurationReference = C91EDF832B0BDB2B511AF0A6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/fullteck/Downloads/iOS_2D_Map_v1_1_1_15361-4/Demos/QMapKitSample/frameworks",
@@ -803,6 +834,7 @@
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};

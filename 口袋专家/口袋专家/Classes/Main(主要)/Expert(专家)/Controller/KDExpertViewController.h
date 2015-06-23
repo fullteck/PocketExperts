@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
+@protocol KDExpertViewControllerDelegate <NSObject>
+
+- (void)KDExpertViewControllerNavigationBar:(ExpertStatus)status;
+@end
 @interface KDExpertViewController : UIViewController
-
+@property (nonatomic, assign)id<KDExpertViewControllerDelegate> delegate;
 @end
