@@ -17,6 +17,8 @@
 @property(nonatomic,assign)NSInteger meet_c;
 @property(nonatomic,strong)NSString * name;
 @property(nonatomic,strong)NSString * sex;
+@property(nonatomic,strong)NSString * intro;
+@property(nonatomic,strong)NSString * fileurl;
 
 
 @end
