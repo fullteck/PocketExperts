@@ -44,7 +44,7 @@
     _rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-ditu"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeMapPage:)];
     _ListItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-liebiao"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeListPage:)];
 }
-
+#pragma mark - 推出抽屉
 - (void)pushUserPage:(UIBarButtonItem *)item
 {
     LeftViewController *configureVieController = [[LeftViewController alloc] init];
@@ -88,12 +88,7 @@
     _expertVC.delegate = (id <KDExpertViewControllerDelegate>)self;
     
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+#pragma mark - KDExpertViewController 的 delegate 方法
 - (void)KDExpertViewControllerNavigationBar:(ExpertStatus)status
 {
     switch (status) {
@@ -158,6 +153,7 @@
     }
 }
 
+#pragma mark - 自己的代理方法
 - (void)ChangeListPage:(UIBarButtonItem *)btn
 {
     [self.delegate KDRootViewControllerChangeStatus:ExpertStatusList];

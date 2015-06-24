@@ -33,7 +33,7 @@
 
     self.window.rootViewController = [[PPRevealSideViewController alloc] initWithRootViewController:navigationController];
     
-    self.window.backgroundColor = [UIColor whiteColor];
+//    self.window.backgroundColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];
     
