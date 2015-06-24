@@ -110,7 +110,6 @@
     
     
 }
-
 #pragma mark---tableView协议中的方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

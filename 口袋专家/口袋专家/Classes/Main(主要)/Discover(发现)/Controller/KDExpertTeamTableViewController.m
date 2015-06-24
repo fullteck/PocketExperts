@@ -1,54 +1,33 @@
 //
-//  KDExpertCommentTableViewController.m
+//  KDExpertTeamTableViewController.m
 //  口袋专家
 //
-//  Created by 扶摇直上 on 15/6/23.
+//  Created by 扶摇直上 on 15/6/24.
 //  Copyright (c) 2015年 扶摇直上. All rights reserved.
 //
 
-#import "KDExpertCommentTableViewController.h"
-#import "KDExpertCommentCell.h"
-#import "AFNetworking.h"
-#define kNetUrl @"http://192.168.2.36:5000/api/v1.0/comment/list/26/1"
-@interface KDExpertCommentTableViewController ()
-@property(nonatomic,strong)NSMutableArray * resultArray;
+#import "KDExpertTeamTableViewController.h"
+
+@interface KDExpertTeamTableViewController ()
+
 @end
 
-@implementation KDExpertCommentTableViewController
-
-- (NSMutableArray *)resultArray
-{
-    if (_resultArray == nil) {
-        _resultArray = [NSMutableArray array];
-    }
-    return _resultArray;
-}
+@implementation KDExpertTeamTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    [self getNetworkRequest];
+    [self settingHeadView];
 }
 
-- (void)getNetworkRequest
-{
-    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:kNetUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray * arr = responseObject[@"list"];
-        for (NSDictionary * dic in arr) {
-            KDExpertComment * comment = [[KDExpertComment alloc] init];
-            [comment setValuesForKeysWithDictionary:dic];
-            [self.resultArray addObject:comment];
-        }
-        [self.tableView reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"===%@",error);
-    }];
+- (void)settingHeadView {
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,32 +36,28 @@
 }
 
 #pragma mark - Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.resultArray.count;
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 0;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return 0;
+}
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * identifier = @"expertComment";
-    BOOL nibResgistered = NO;
-    if (!nibResgistered) {
-        UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertCommentCell class]) bundle:nil];
-        [tableView registerNib:nib forCellReuseIdentifier:identifier];
-        nibResgistered = YES;
-    }
-    KDExpertCommentCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    KDExpertComment * comment = [self.resultArray objectAtIndex:indexPath.row];
-    cell.comment = comment;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
     
     return cell;
-
-
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 150;
-}
+*/
 
 /*
 // Override to support conditional editing of the table view.

@@ -34,6 +34,8 @@
     [self settingTitleView];
     
     _tempItem = nil;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 #pragma mark - 设置 item
 - (void)settingTopItem
@@ -70,11 +72,10 @@
     
     //将专家和发现两个视图添加到视图容器控制器
     _expertVC = [[KDExpertViewController alloc] init];
-    
-    _expertVC.view.frame = CGRectMake(0, 0, ScreenW, ScreenH);
+    _expertVC.view.frame = CGRectMake(0, 64, ScreenW, ScreenH);
 
     _discoverTVC = [[KDDiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    _discoverTVC.tableView.frame = CGRectMake(0, 0, ScreenW, ScreenH);
+    _discoverTVC.tableView.frame = CGRectMake(0, 64, ScreenW, ScreenH);
     
     [self addChildViewController:_expertVC];
     [self addChildViewController:_discoverTVC];

@@ -24,17 +24,18 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"专家";
     
-    
     //将专家列表和专家地图两个视图添加到视图容器控制器
     self.listTVC = [[KDExpertListTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    
+    self.listTVC.view.frame = CGRectMake(0, 0, 375, 667);
     self.mapVC = [[KDExpertMapViewController alloc] init];
     
     [self addChildViewController:self.listTVC];
     [self addChildViewController:self.mapVC];
     
     [self.view addSubview:self.listTVC.tableView];
+
 }
+
 
 - (void)KDRootViewControllerChangeStatus:(ExpertStatus)status
 {

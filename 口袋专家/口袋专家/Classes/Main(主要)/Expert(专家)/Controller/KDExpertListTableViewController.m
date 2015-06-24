@@ -32,12 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getDataFromNetwork];
-
-    // self.clearsSelectionOnViewWillAppear = NO;
-
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
 //获取专家
 - (void)getDataFromNetwork
 {
@@ -56,7 +51,6 @@
         NSLog(@"%@",error);
     }];
 }
-
 #pragma mark---tableView协议中的方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

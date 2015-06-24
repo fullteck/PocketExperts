@@ -10,6 +10,7 @@
 #import "KDListingViewController.h"
 #import "KDFirstTableViewCell.h"
 #import "KDConst.h"
+#import "KDExpertTeamTableViewController.h"
 
 
 #define Width [[UIScreen mainScreen] bounds].size.width
@@ -186,6 +187,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 155;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    KDExpertTeamTableViewController *etTVC = [[KDExpertTeamTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    [self.navigationController pushViewController:etTVC animated:YES];
 }
 
 /*

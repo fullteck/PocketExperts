@@ -23,6 +23,8 @@
     self.mapView = [[QMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
+    
+    [self.mapView setZoomLevel:100.0 animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
