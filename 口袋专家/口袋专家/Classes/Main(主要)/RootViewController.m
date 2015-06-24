@@ -19,6 +19,7 @@
     UISegmentedControl * _segmentedC;
     UIBarButtonItem *_rightItem;
     UIBarButtonItem *_ListItem;
+    UIBarButtonItem *_tempItem;
 }
 
 @end
@@ -31,6 +32,8 @@
     [self settingTopItem];
     
     [self settingTitleView];
+    
+    _tempItem = nil;
 }
 #pragma mark - 设置 item
 - (void)settingTopItem
@@ -137,6 +140,7 @@
     if (_discoverTVC.view.superview == nil) {
         [self.view addSubview:_discoverTVC.view];
         [_expertVC.view removeFromSuperview];
+        _tempItem = self.navigationItem.rightBarButtonItem;
         self.navigationItem.rightBarButtonItem = nil;
     }
 }
@@ -146,7 +150,11 @@
     if (_expertVC.view.superview == nil) {
         [self.view addSubview:_expertVC.view];
         [_discoverTVC.view removeFromSuperview];
-        self.navigationItem.rightBarButtonItem = _rightItem;
+        if (_tempItem == nil) {
+            self.navigationItem.rightBarButtonItem = _rightItem;
+        } else {
+            self.navigationItem.rightBarButtonItem = _tempItem;
+        }
     }
 }
 
