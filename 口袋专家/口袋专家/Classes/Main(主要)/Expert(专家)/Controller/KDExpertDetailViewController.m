@@ -18,6 +18,8 @@
 #import "KDHeader.h"
 #import "KDTopicDetailViewController.h"
 #import "KDExpertCommentTableViewController.h"
+#import "KDExpertIntroViewController.h"
+#import "KDReserveController.h"
 #define Width [[UIScreen mainScreen] bounds].size.width
 #define Height [[UIScreen mainScreen] bounds].size.height
 
@@ -31,7 +33,7 @@
 
 
 @implementation KDExpertDetailViewController
-
+//懒加载
 - (NSMutableArray *)resultArray
 {
     if (_resultArray == nil) {
@@ -50,10 +52,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self getNetworkWithUrl];
 }
-
+//点击预约按钮
 - (void)didClickReserve:(UIBarButtonItem *)BI
 {
     NSLog(@"点击了预约");
+    KDReserveController * reserveVC = [[KDReserveController alloc] init];
+    [self.navigationController pushViewController:reserveVC animated:YES];
 }
 
 #pragma mark---initTableView
@@ -179,18 +183,18 @@
         return 150;
     }
 }
-//
+//区头的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 30;
 }
 
-
+//区尾的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.001;
 }
-
+//点击cell时的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -223,11 +227,14 @@
     }
     
 }
-
+//区头上箭头的点击事件
 - (void)didClickButton:(UIButton *)button
 {
     if (button.tag == 101) {
         NSLog(@"点击了专家介绍");
+        KDExpertIntroViewController * introVC = [[KDExpertIntroViewController alloc] init];
+        [self.navigationController pushViewController:introVC animated:YES];
+        
     }else if (button.tag == 102){
         KDExpertCommentTableViewController * commentTVC = [[KDExpertCommentTableViewController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:commentTVC animated:YES];

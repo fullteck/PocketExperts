@@ -17,5 +17,8 @@
     // Drawing code
 }
 */
-
++ (instancetype)instance
+{
+    return [[[NSBundle mainBundle] loadNibNamed:@"KDExpertIntroHeader" owner:nil options:nil] firstObject];
+}
 @end

@@ -23,7 +23,7 @@
 - (void)setTopic:(KDExpertTopic *)topic
 {
     self.titleLabel.text = topic.title;
-    NSLog(@"11%@",topic.title);
+//    NSLog(@"11%@",topic.title);
     self.introLabel.text = topic.intro;
     self.priLabel.text = [NSString stringWithFormat:@"%ld",topic.pri];
 }
