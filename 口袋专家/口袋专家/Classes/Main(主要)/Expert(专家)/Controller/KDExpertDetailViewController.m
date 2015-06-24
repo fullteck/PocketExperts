@@ -14,6 +14,10 @@
 #import "KDExpertList.h"
 #import "KDExpertComment.h"
 #import "KDExpertTopic.h"
+#import "UIImageView+WebCache.h"
+#import "KDHeader.h"
+#import "KDTopicDetailViewController.h"
+#import "KDExpertCommentTableViewController.h"
 #define Width [[UIScreen mainScreen] bounds].size.width
 #define Height [[UIScreen mainScreen] bounds].size.height
 
@@ -39,22 +43,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"专家详情";
+    UIBarButtonItem * BI = [[UIBarButtonItem alloc] initWithTitle:@"预约" style:UIBarButtonItemStyleDone target:self action:@selector(didClickReserve:)];
+    self.navigationItem.rightBarButtonItem = BI;
     [self initWithTableView];
     self.view.backgroundColor = [UIColor whiteColor];
     [self getNetworkWithUrl];
 }
-//
+
+- (void)didClickReserve:(UIBarButtonItem *)BI
+{
+    NSLog(@"点击了预约");
+}
+
+#pragma mark---initTableView
 - (void)initWithTableView
 {
     self.detailTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Width, Height) style:UITableViewStyleGrouped];
     _detailTableView.delegate = self;
     _detailTableView.dataSource = self;
     [self.view addSubview:_detailTableView];
+    self.detailTableView.tableHeaderView = [KDHeader instance];
 }
+#pragma mark-----NetWork
 - (void)getNetworkWithUrl
 {
     NSString * headStr = @"http://192.168.2.36:5000";
-    NSString * footStr = [NSString stringWithFormat:@"/api/v1.0/expert/info/%ld",_urlId];
+    NSString * footStr = [NSString stringWithFormat:@"/api/v1.0/expert/info/%d",40];
     NSString * str = [headStr stringByAppendingString:footStr];
     NSLog(@"%@",str);
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
@@ -86,6 +101,8 @@
         [self.resultArray addObject:commentArr];
         NSLog(@"%@",self.resultArray);
         [self.detailTableView reloadData];
+        KDHeader * header = (KDHeader *)self.detailTableView.tableHeaderView;
+        header.expert = [[self.resultArray objectAtIndex:1] objectAtIndex:0];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -129,6 +146,10 @@
             nibResgistered = YES;
         }
         KDExpertIntroCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    KDExpertList * expert = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]
+        ;
+        [cell.introducepic sd_setImageWithURL:[NSURL URLWithString:expert.fileurl]];
+        cell.introLabel.text = expert.intro;
         return cell;
 
     }else{
@@ -147,24 +168,71 @@
     }
 
 }
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//cell的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (section) {
-        case 0:
-            return @"话题";
-            break;
-        case 1:
-            return @"专家介绍";
-            break;
-        case 2:
-            return @"评论";
-            break;
-            
-        default:
-            break;
+    if (indexPath.section == 0) {
+        return 100;
+    }else if (indexPath.section == 1){
+        return 200;;
+    }else{
+        return 150;
     }
-    return nil;
+}
+//
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.001;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        KDTopicDetailViewController * topicVC = [[KDTopicDetailViewController alloc] init];
+        KDExpertTopic * topic = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        topicVC.topicTitle = topic.title;
+        topicVC.grade = topicVC.grade;
+        [self.navigationController pushViewController:topicVC animated:YES];
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSArray * array = @[@"话题",@"专家介绍",@"评论"];
+    UIView * commentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width, 30)];
+    UIButton * moreButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    moreButton.frame = CGRectMake(Width-20, 5, 20, 20);
+    moreButton.tag = 100+section;
+    [moreButton addTarget:self action:@selector(didClickButton:) forControlEvents:UIControlEventTouchUpInside];
+    [moreButton setBackgroundImage:[UIImage imageNamed:@"iconfont-iconfontleft.png"] forState:UIControlStateNormal];
+    [commentView addSubview:moreButton];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 30)];
+    label.text = array[section];
+    [commentView addSubview:label];
+    if (section == 0) {
+        [moreButton setBackgroundImage:nil forState:UIControlStateNormal];
+        return commentView;
+    }else{
+        return commentView;
+    }
+    
+}
+
+- (void)didClickButton:(UIButton *)button
+{
+    if (button.tag == 101) {
+        NSLog(@"点击了专家介绍");
+    }else if (button.tag == 102){
+        KDExpertCommentTableViewController * commentTVC = [[KDExpertCommentTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:commentTVC animated:YES];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

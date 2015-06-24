@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A02A67331B33F29D0057FC28 /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02A67321B33F29D0057FC28 /* QMapKit.framework */; };
-		A02A673E1B3402E40057FC28 /* KDExpertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A02A673D1B3402E40057FC28 /* KDExpertDetailViewController.m */; };
+		A0596DBC1B3A6447008AD558 /* KDExpertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DBB1B3A6447008AD558 /* KDExpertDetailViewController.m */; };
 		C7249D601B33C46E009C448C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7249D5E1B33C46E009C448C /* Main.storyboard */; };
 		C7249D621B33C46E009C448C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7249D611B33C46E009C448C /* Images.xcassets */; };
 		C7249D711B33C46E009C448C /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249D701B33C46E009C448C /* ____Tests.m */; };
@@ -65,8 +65,8 @@
 /* Begin PBXFileReference section */
 		532417BE14BA7656F678F002 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02A67321B33F29D0057FC28 /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QMapKit.framework; path = ../../Downloads/iOS_2D_Map_v_1_1_0_15053/Demos/QMapKitSample/frameworks/QMapKit.framework; sourceTree = "<group>"; };
-		A02A673C1B3402E40057FC28 /* KDExpertDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertDetailViewController.h; sourceTree = "<group>"; };
-		A02A673D1B3402E40057FC28 /* KDExpertDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertDetailViewController.m; sourceTree = "<group>"; };
+		A0596DBA1B3A6447008AD558 /* KDExpertDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertDetailViewController.h; sourceTree = "<group>"; };
+		A0596DBB1B3A6447008AD558 /* KDExpertDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertDetailViewController.m; sourceTree = "<group>"; };
 		C7249D511B33C46E009C448C /* 口袋专家.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "口袋专家.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7249D551B33C46E009C448C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7249D5F1B33C46E009C448C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -341,14 +341,14 @@
 		C7249D821B33C552009C448C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A0596DBA1B3A6447008AD558 /* KDExpertDetailViewController.h */,
+				A0596DBB1B3A6447008AD558 /* KDExpertDetailViewController.m */,
 				C7249DD41B33ED9C009C448C /* KDExpertViewController.h */,
 				C7249DD51B33ED9C009C448C /* KDExpertViewController.m */,
 				C7CA87EE1B393468002C167F /* KDExpertListTableViewController.h */,
 				C7CA87EF1B393468002C167F /* KDExpertListTableViewController.m */,
 				C7249DD91B33EE19009C448C /* KDExpertMapViewController.h */,
 				C7249DDA1B33EE19009C448C /* KDExpertMapViewController.m */,
-				A02A673C1B3402E40057FC28 /* KDExpertDetailViewController.h */,
-				A02A673D1B3402E40057FC28 /* KDExpertDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -662,7 +662,6 @@
 				C7249DB51B33E68F009C448C /* RootViewController.m in Sources */,
 				C7249DA61B33C7B9009C448C /* main.m in Sources */,
 				C7A03E181B3A58CB00FC8F6A /* KDExpertComment.m in Sources */,
-				A02A673E1B3402E40057FC28 /* KDExpertDetailViewController.m in Sources */,
 				C7249DB81B33E70C009C448C /* LeftViewController.m in Sources */,
 				C7249DA51B33C7B9009C448C /* AppDelegate.m in Sources */,
 				C7249DDB1B33EE19009C448C /* KDExpertMapViewController.m in Sources */,
@@ -673,6 +672,7 @@
 				C7A03E201B3A613200FC8F6A /* KDExpertListCell.m in Sources */,
 				C7249DD31B33ED8A009C448C /* KDProfessorView.m in Sources */,
 				C7249DD71B33ED9C009C448C /* KDExpertViewController.m in Sources */,
+				A0596DBC1B3A6447008AD558 /* KDExpertDetailViewController.m in Sources */,
 				C7249DD21B33ED8A009C448C /* KDListingHeadView.m in Sources */,
 				C7A03E121B3A58C200FC8F6A /* KDExpertTopicCell.m in Sources */,
 			);
