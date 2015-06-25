@@ -24,7 +24,7 @@
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     
-    [self.mapView setZoomLevel:100.0 animated:YES];
+//    [self.mapView setZoomLevel:15 animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

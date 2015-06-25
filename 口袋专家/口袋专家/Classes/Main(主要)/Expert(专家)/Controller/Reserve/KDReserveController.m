@@ -7,14 +7,27 @@
 //
 
 #import "KDReserveController.h"
+#import "KDReserveTimeViewController.h"
 #define Width [[UIScreen mainScreen] bounds].size.width
 #define Height [[UIScreen mainScreen] bounds].size.height
 @interface KDReserveController ()
 @property(nonatomic,strong)UISegmentedControl * reserveSegment;
 @property(nonatomic,strong)UILabel * priceLabel;
+@property(nonatomic,strong)NSMutableDictionary * inforDic;
+@property(nonatomic,assign)BOOL kindIsSet;
+@property(nonatomic,assign)BOOL topicIsSet;
 @end
 
 @implementation KDReserveController
+//传入下个界面的字典
+- (NSMutableDictionary *)inforDic
+{
+    if (_inforDic == nil) {
+        _inforDic = [NSMutableDictionary dictionary];
+    }
+    return _inforDic;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,12 +36,28 @@
     UIBarButtonItem * BI = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStyleDone target:self action:@selector(dicClickNext:)];
     self.navigationItem.rightBarButtonItem = BI;
     [self createSubviews];
+    self.kindIsSet = YES;
+    [self.inforDic setObject:@"0" forKey:@"kind"];
+    [self.inforDic setObject:@"free" forKey:@"price"];
     
 }
 
 - (void)dicClickNext:(UIBarButtonItem *)BI
 {
     NSLog(@"===");
+    if (self.topicIsSet == NO) {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择您要预约的话题" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        
+    }else{
+        KDReserveTimeViewController * timeVC = [[KDReserveTimeViewController alloc] init];
+        timeVC.infroDic = self.inforDic;
+        timeVC.block = ^(void){
+            [self.navigationController popViewControllerAnimated:NO];
+        };
+        [self.navigationController pushViewController:timeVC animated:YES];
+    }
+    
 }
 
 #pragma mark---创建segment
@@ -63,6 +92,8 @@
 - (void)didClickTopicButton:(UIButton *)button
 {
     NSLog(@"%@",button.titleLabel.text);
+    self.topicIsSet = YES;
+    [self.inforDic setObject:button.titleLabel.text forKey:@"topic"];
 }
 //segment的点击事件
 - (void)didClickChangeCommunication:(UISegmentedControl *)segment
@@ -76,16 +107,28 @@
         case 1:
             NSLog(@"1");
             _priceLabel.text = @"100元/1小时左右";
+            [self.inforDic setObject:@"1" forKey:@"kind"];
+            [self.inforDic setObject:@"100元/1小时左右" forKey:@"price"];
             break;
         case 2:
             NSLog(@"2");
             _priceLabel.text = @"500元/次(1小时左右)";
+            [self.inforDic setObject:@"2" forKey:@"kind"];
+            [self.inforDic setObject:@"500元/次（1小时左右）" forKey:@"price"];
+
             break;
             
         default:
             break;
     }
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.topicIsSet = NO;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface KDExpertIntroViewController : UIViewController
-
+@property(nonatomic,strong)NSMutableDictionary * infoDic;
 @end
