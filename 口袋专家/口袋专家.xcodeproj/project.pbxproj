@@ -47,6 +47,15 @@
 		C7249DE31B33EF28009C448C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE21B33EF28009C448C /* CoreLocation.framework */; };
 		C7249DE51B33EF35009C448C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE41B33EF35009C448C /* SystemConfiguration.framework */; };
 		C78811171B3ABD1D00813D65 /* KDExpertTeamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78811161B3ABD1D00813D65 /* KDExpertTeamTableViewController.m */; };
+		C78811191B3B9EEA00813D65 /* KDExpertHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78811181B3B9EEA00813D65 /* KDExpertHeaderView.xib */; };
+		C788111D1B3BA2E700813D65 /* KDExpertTeamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C788111B1B3BA2E700813D65 /* KDExpertTeamTableViewCell.m */; };
+		C78811221B3BA32F00813D65 /* KDExpertTDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C78811201B3BA32F00813D65 /* KDExpertTDetailTableViewCell.m */; };
+		C78811251B3BABBD00813D65 /* KDExpertTDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78811241B3BABBD00813D65 /* KDExpertTDetailTableViewCell.xib */; };
+		C78811271B3BABCC00813D65 /* KDExpertTeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78811261B3BABCC00813D65 /* KDExpertTeamTableViewCell.xib */; };
+		C788112A1B3BF89300813D65 /* KDExpertHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C78811291B3BF89300813D65 /* KDExpertHeaderView.m */; };
+		C788112C1B3C05E000813D65 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C788112B1B3C05E000813D65 /* SectionHeaderView.xib */; };
+		C788112F1B3C05F300813D65 /* KDSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C788112E1B3C05F300813D65 /* KDSectionHeaderView.m */; };
+		C78811321B3C133E00813D65 /* KDExpertsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78811311B3C133E00813D65 /* KDExpertsTableViewController.m */; };
 		C7A03E0E1B3A58C200FC8F6A /* KDExpertCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A03E061B3A58C200FC8F6A /* KDExpertCommentCell.m */; };
 		C7A03E0F1B3A58C200FC8F6A /* KDExpertCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A03E071B3A58C200FC8F6A /* KDExpertCommentCell.xib */; };
 		C7A03E101B3A58C200FC8F6A /* KDExpertIntroCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A03E091B3A58C200FC8F6A /* KDExpertIntroCell.m */; };
@@ -149,6 +158,20 @@
 		C7249DE41B33EF35009C448C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C78811151B3ABD1D00813D65 /* KDExpertTeamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertTeamTableViewController.h; sourceTree = "<group>"; };
 		C78811161B3ABD1D00813D65 /* KDExpertTeamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertTeamTableViewController.m; sourceTree = "<group>"; };
+		C78811181B3B9EEA00813D65 /* KDExpertHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KDExpertHeaderView.xib; path = ../Controller/KDExpertHeaderView.xib; sourceTree = "<group>"; };
+		C788111A1B3BA2E700813D65 /* KDExpertTeamTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertTeamTableViewCell.h; sourceTree = "<group>"; };
+		C788111B1B3BA2E700813D65 /* KDExpertTeamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertTeamTableViewCell.m; sourceTree = "<group>"; };
+		C788111F1B3BA32F00813D65 /* KDExpertTDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertTDetailTableViewCell.h; sourceTree = "<group>"; };
+		C78811201B3BA32F00813D65 /* KDExpertTDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertTDetailTableViewCell.m; sourceTree = "<group>"; };
+		C78811241B3BABBD00813D65 /* KDExpertTDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDExpertTDetailTableViewCell.xib; sourceTree = "<group>"; };
+		C78811261B3BABCC00813D65 /* KDExpertTeamTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDExpertTeamTableViewCell.xib; sourceTree = "<group>"; };
+		C78811281B3BF89300813D65 /* KDExpertHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertHeaderView.h; sourceTree = "<group>"; };
+		C78811291B3BF89300813D65 /* KDExpertHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertHeaderView.m; sourceTree = "<group>"; };
+		C788112B1B3C05E000813D65 /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		C788112D1B3C05F300813D65 /* KDSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDSectionHeaderView.h; sourceTree = "<group>"; };
+		C788112E1B3C05F300813D65 /* KDSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDSectionHeaderView.m; sourceTree = "<group>"; };
+		C78811301B3C133E00813D65 /* KDExpertsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertsTableViewController.h; sourceTree = "<group>"; };
+		C78811311B3C133E00813D65 /* KDExpertsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertsTableViewController.m; sourceTree = "<group>"; };
 		C7A03E051B3A58C200FC8F6A /* KDExpertCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertCommentCell.h; sourceTree = "<group>"; };
 		C7A03E061B3A58C200FC8F6A /* KDExpertCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertCommentCell.m; sourceTree = "<group>"; };
 		C7A03E071B3A58C200FC8F6A /* KDExpertCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDExpertCommentCell.xib; sourceTree = "<group>"; };
@@ -345,6 +368,8 @@
 				C7249DBF1B33ED77009C448C /* KDListingViewController.m */,
 				C78811151B3ABD1D00813D65 /* KDExpertTeamTableViewController.h */,
 				C78811161B3ABD1D00813D65 /* KDExpertTeamTableViewController.m */,
+				C78811301B3C133E00813D65 /* KDExpertsTableViewController.h */,
+				C78811311B3C133E00813D65 /* KDExpertsTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -359,6 +384,18 @@
 		C7249D801B33C552009C448C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C788112B1B3C05E000813D65 /* SectionHeaderView.xib */,
+				C788112D1B3C05F300813D65 /* KDSectionHeaderView.h */,
+				C788112E1B3C05F300813D65 /* KDSectionHeaderView.m */,
+				C78811181B3B9EEA00813D65 /* KDExpertHeaderView.xib */,
+				C78811281B3BF89300813D65 /* KDExpertHeaderView.h */,
+				C78811291B3BF89300813D65 /* KDExpertHeaderView.m */,
+				C788111A1B3BA2E700813D65 /* KDExpertTeamTableViewCell.h */,
+				C788111B1B3BA2E700813D65 /* KDExpertTeamTableViewCell.m */,
+				C78811261B3BABCC00813D65 /* KDExpertTeamTableViewCell.xib */,
+				C788111F1B3BA32F00813D65 /* KDExpertTDetailTableViewCell.h */,
+				C78811201B3BA32F00813D65 /* KDExpertTDetailTableViewCell.m */,
+				C78811241B3BABBD00813D65 /* KDExpertTDetailTableViewCell.xib */,
 				C7249DC31B33ED8A009C448C /* KDExpertPicAndName.h */,
 				C7249DC41B33ED8A009C448C /* KDExpertPicAndName.m */,
 				C7249DC51B33ED8A009C448C /* KDFirstTableViewCell.h */,
@@ -657,6 +694,8 @@
 				C7249DD01B33ED8A009C448C /* KDFirstTableViewCell.xib in Resources */,
 				C7CA87E61B390426002C167F /* KDLeftHeadTableViewCell.xib in Resources */,
 				C7A03E211B3A613200FC8F6A /* KDExpertListCell.xib in Resources */,
+				C78811251B3BABBD00813D65 /* KDExpertTDetailTableViewCell.xib in Resources */,
+				C78811271B3BABCC00813D65 /* KDExpertTeamTableViewCell.xib in Resources */,
 				A0596DC11B3A64F9008AD558 /* KDHeader.xib in Resources */,
 				A0596DDC1B3A8D3B008AD558 /* KDExpertEduCell.xib in Resources */,
 				C7A03E0F1B3A58C200FC8F6A /* KDExpertCommentCell.xib in Resources */,
@@ -664,6 +703,8 @@
 				C7249D601B33C46E009C448C /* Main.storyboard in Resources */,
 				C7A03E111B3A58C200FC8F6A /* KDExpertIntroCell.xib in Resources */,
 				A0596DD71B3A8B56008AD558 /* KDExpertJobCell.xib in Resources */,
+				C788112C1B3C05E000813D65 /* SectionHeaderView.xib in Resources */,
+				C78811191B3B9EEA00813D65 /* KDExpertHeaderView.xib in Resources */,
 				C7CA87EB1B39075E002C167F /* KDLeftSwitchTableViewCell.xib in Resources */,
 				C7A03E131B3A58C200FC8F6A /* KDExpertTopicCell.xib in Resources */,
 				C7249D621B33C46E009C448C /* Images.xcassets in Resources */,
@@ -720,14 +761,18 @@
 				C7249DC21B33ED77009C448C /* KDListingViewController.m in Sources */,
 				A0596DC01B3A64F9008AD558 /* KDHeader.m in Sources */,
 				A0596DC41B3A651C008AD558 /* KDTopicDetailViewController.m in Sources */,
+				C788112A1B3BF89300813D65 /* KDExpertHeaderView.m in Sources */,
 				A0596DCD1B3A7C5B008AD558 /* KDExpertIntroViewController.m in Sources */,
 				C7249DCE1B33ED8A009C448C /* KDExpertPicAndName.m in Sources */,
 				C7249D9D1B33C552009C448C /* KDConst.m in Sources */,
 				C7CA87EA1B39075E002C167F /* KDLeftSwitchTableViewCell.m in Sources */,
+				C788112F1B3C05F300813D65 /* KDSectionHeaderView.m in Sources */,
 				A0596DCA1B3A6560008AD558 /* KDExpertList.m in Sources */,
+				C78811221B3BA32F00813D65 /* KDExpertTDetailTableViewCell.m in Sources */,
 				C7249D9C1B33C552009C448C /* KDBaseNavigationController.m in Sources */,
 				C7CA87E51B390426002C167F /* KDLeftHeadTableViewCell.m in Sources */,
 				C7A03E191B3A58CB00FC8F6A /* KDExpertTopic.m in Sources */,
+				C788111D1B3BA2E700813D65 /* KDExpertTeamTableViewCell.m in Sources */,
 				C7A03E0E1B3A58C200FC8F6A /* KDExpertCommentCell.m in Sources */,
 				A0596DD21B3A8344008AD558 /* KDExpertIntroHeader.m in Sources */,
 				C7249DCF1B33ED8A009C448C /* KDFirstTableViewCell.m in Sources */,
@@ -741,6 +786,7 @@
 				C7249DA51B33C7B9009C448C /* AppDelegate.m in Sources */,
 				C7249DDB1B33EE19009C448C /* KDExpertMapViewController.m in Sources */,
 				C7249DC01B33ED77009C448C /* KDDiscoverTableViewController.m in Sources */,
+				C78811321B3C133E00813D65 /* KDExpertsTableViewController.m in Sources */,
 				C7249DD11B33ED8A009C448C /* KDListingCell.m in Sources */,
 				C7249DB21B33C8B1009C448C /* PPRevealSideViewController.m in Sources */,
 				C7CA87F01B393468002C167F /* KDExpertListTableViewController.m in Sources */,

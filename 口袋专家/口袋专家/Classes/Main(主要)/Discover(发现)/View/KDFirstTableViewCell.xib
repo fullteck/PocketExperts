@@ -49,7 +49,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconfont-pinglun.png" translatesAutoresizingMaskIntoConstraints="NO" id="rbd-cH-oyx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconfont-ditu" translatesAutoresizingMaskIntoConstraints="NO" id="rbd-cH-oyx">
                         <rect key="frame" x="230" y="0.0" width="25" height="27"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8A-Sy-Z9H">
@@ -70,6 +70,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="iconfont-pinglun.png" width="32" height="32"/>
+        <image name="iconfont-ditu" width="24" height="24"/>
     </resources>
 </document>

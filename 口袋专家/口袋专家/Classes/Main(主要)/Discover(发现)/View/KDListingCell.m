@@ -7,7 +7,7 @@
 //
 
 #import "KDListingCell.h"
-#define Width [[UIScreen mainScreen] bounds].size.width
+#import "KDConst.h"
 
 @implementation KDListingCell
 

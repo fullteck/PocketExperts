@@ -1,33 +1,34 @@
 //
-//  KDExpertTeamTableViewController.m
+//  KDExpertsTableViewController.m
 //  口袋专家
 //
-//  Created by 扶摇直上 on 15/6/24.
+//  Created by 扶摇直上 on 15/6/25.
 //  Copyright (c) 2015年 扶摇直上. All rights reserved.
 //
 
-#import "KDExpertTeamTableViewController.h"
-#import "KDExpertTeamTableViewCell.h"
-#import "KDExpertTDetailTableViewCell.h"
-#import "KDExpertHeaderView.h"
-#import "KDSectionHeaderView.h"
 #import "KDExpertsTableViewController.h"
+#import "KDExpertListCell.h"
 
-@interface KDExpertTeamTableViewController ()
+@interface KDExpertsTableViewController ()
 
 @end
 
-@implementation KDExpertTeamTableViewController
+@implementation KDExpertsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self settingHeadView];
+    self.tableView.rowHeight = 80;
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)settingHeadView {
-    KDExpertHeaderView *headerView = [KDExpertHeaderView expertHeader];
-    self.tableView.tableHeaderView = headerView;
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -41,45 +42,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return 5;
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     
-    if (indexPath.row == 0) {
-        KDExpertTeamTableViewCell *cell = [KDExpertTeamTableViewCell cellWithTableView:tableView];
-        return cell;
-    } else {
-        KDExpertTDetailTableViewCell *cell = [KDExpertTDetailTableViewCell cellWithTableView:tableView];
-        return cell;
+    static NSString *CellIdentifier = @"expertsCell";
+    BOOL nibsRegistered = NO;
+    if (!nibsRegistered) {
+        UINib *nib = [UINib nibWithNibName:NSStringFromClass([KDExpertListCell class]) bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
+        nibsRegistered = YES;
     }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return 100;
-    } else {
-        return 300;
-    }
-
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-        KDSectionHeaderView *sectionView = [KDSectionHeaderView sectionHeader];
-        [sectionView addTarget:self action:@selector(pushExpertTeam)];
-        return sectionView;
-}
-
-- (void)pushExpertTeam {
-    KDExpertsTableViewController *expertsTVC = [[KDExpertsTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [self.navigationController pushViewController:expertsTVC animated:YES];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 44;
+    KDExpertListCell *cell = (KDExpertListCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    return cell;
 }
 
 
