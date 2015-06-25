@@ -10,6 +10,8 @@
 #import "KDExpertIntroHeader.h"
 #import "KDExpertJobCell.h"
 #import "KDExpertEduCell.h"
+#import "KDExpertJob.h"
+#import "KDExpertEdu.h"
 @interface KDExpertIntroViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView * introTableView;
 @property(nonatomic,strong)NSMutableArray * resultArray;
@@ -28,9 +30,58 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    [self initWithData];
+
     [self buildTableView];
 }
+
+#pragma mark--解析数据
+- (void)initWithData
+{
+    NSArray * jobArr = [_infoDic objectForKey:@"work"];
+    NSMutableArray * jobArray = [NSMutableArray array];
+    for (NSDictionary * jobDic in jobArr) {
+        KDExpertJob * job = [[KDExpertJob alloc] init];
+        [job setValuesForKeysWithDictionary:jobDic];
+        [jobArray addObject:job];
+    }
+    //对工作经历根据时间进行排序
+    [jobArray sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        KDExpertJob * job1 = (KDExpertJob *)obj1;
+        KDExpertJob * job2 = (KDExpertJob *)obj2;
+        if (job1.start>job2.start) {
+            return NSOrderedAscending;
+        }else if (job1.start == job2.start){
+            return NSOrderedSame;
+        }else{
+            return NSOrderedDescending;
+        }
+        
+    }];
+    [self.resultArray addObject:jobArray];
+    NSArray * eduArr = [_infoDic objectForKey:@"edu"];
+    NSMutableArray * eduArray = [NSMutableArray array];
+    for (NSDictionary * eduDic in eduArr) {
+        KDExpertEdu * edu = [[KDExpertEdu alloc] init];
+        [edu setValuesForKeysWithDictionary:eduDic];
+        [eduArray addObject:edu];
+    }
+    //对教育经历根据时间进行排序
+    [eduArray sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        KDExpertEdu * edu1 = (KDExpertEdu *)obj1;
+        KDExpertEdu * edu2 = (KDExpertEdu *)obj2;
+        if (edu1.start > edu2.start) {
+            return NSOrderedAscending;
+        }else if (edu1.start == edu2.start){
+            return NSOrderedSame;
+        }else{
+            return NSOrderedDescending;
+        }
+    }];
+    [self.resultArray addObject:eduArray];
+}
+
 #pragma mark---创建tableView
 - (void)buildTableView
 {
@@ -40,22 +91,22 @@
     [self.view addSubview:_introTableView];
     _introTableView.tableHeaderView = [KDExpertIntroHeader instance];
 }
-#pragma mark---tableView协议中的方法
+#pragma mark---tableView协议中必须实现的方法
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return self.resultArray.count;//区
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return [[self.resultArray objectAtIndex:section] count];//行
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        static NSString * identifier = @"job";
+        static NSString * identifier = @"work";
         BOOL nibResgistered = NO;
         if (!nibResgistered) {
             UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertJobCell class]) bundle:nil];
@@ -63,11 +114,12 @@
             nibResgistered = YES;
         }
         KDExpertJobCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//        KDExpertTopic * topic = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-//        cell.topic = topic;
+        KDExpertJob * job = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        cell.expertJob = job;
+        
         return cell;
     }else{
-            static NSString * identifier = @"edu";
+            static NSString * identifier = @"education";
             BOOL nibResgistered = NO;
             if (!nibResgistered) {
                 UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertEduCell class]) bundle:nil];
@@ -75,14 +127,16 @@
                 nibResgistered = YES;
             }
             KDExpertEduCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//            KDExpertTopic * topic = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-//            cell.topic = topic;
-            return cell;
+        KDExpertEdu * edu = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        cell.edu = edu;
+        return cell;
 
     }
 
     
 }
+
+#pragma mark----对区头区尾的一些设置
 //cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -92,6 +146,7 @@
         return 100;
     }
 }
+
 //区头的名字
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {

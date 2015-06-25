@@ -26,7 +26,7 @@
 @interface KDExpertDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView * detailTableView;
 @property(nonatomic,strong)NSMutableArray * resultArray;
-
+@property(nonatomic,strong)NSMutableDictionary * dic;
 
 @end
 
@@ -42,6 +42,13 @@
     return _resultArray;
 }
 
+- (NSMutableDictionary *)dic
+{
+    if (_dic == nil) {
+        _dic = [NSMutableDictionary dictionary];
+    }
+    return _dic;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -80,6 +87,7 @@
     [manager GET:str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         NSDictionary * dic = responseObject[@"expert"];
+        self.dic = dic[@"info"];
         NSArray * topicArray = dic[@"topic"];
         NSMutableArray * topicArr = [NSMutableArray array];
         for (NSDictionary * dic1 in topicArray) {
@@ -232,6 +240,7 @@
     if (button.tag == 101) {
         NSLog(@"点击了专家介绍");
         KDExpertIntroViewController * introVC = [[KDExpertIntroViewController alloc] init];
+        introVC.infoDic = self.dic;
         [self.navigationController pushViewController:introVC animated:YES];
         
     }else if (button.tag == 102){
