@@ -59,6 +59,8 @@
 		C788112C1B3C05E000813D65 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C788112B1B3C05E000813D65 /* SectionHeaderView.xib */; };
 		C788112F1B3C05F300813D65 /* KDSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C788112E1B3C05F300813D65 /* KDSectionHeaderView.m */; };
 		C78811321B3C133E00813D65 /* KDExpertsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78811311B3C133E00813D65 /* KDExpertsTableViewController.m */; };
+		C78811351B3D3F5C00813D65 /* KDExpertTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = C78811341B3D3F5C00813D65 /* KDExpertTeam.m */; };
+		C78811381B3D41D800813D65 /* KDTopicScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = C78811371B3D41D800813D65 /* KDTopicScroll.m */; };
 		C7A03E0E1B3A58C200FC8F6A /* KDExpertCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A03E061B3A58C200FC8F6A /* KDExpertCommentCell.m */; };
 		C7A03E0F1B3A58C200FC8F6A /* KDExpertCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A03E071B3A58C200FC8F6A /* KDExpertCommentCell.xib */; };
 		C7A03E101B3A58C200FC8F6A /* KDExpertIntroCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A03E091B3A58C200FC8F6A /* KDExpertIntroCell.m */; };
@@ -180,6 +182,10 @@
 		C788112E1B3C05F300813D65 /* KDSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDSectionHeaderView.m; sourceTree = "<group>"; };
 		C78811301B3C133E00813D65 /* KDExpertsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertsTableViewController.h; sourceTree = "<group>"; };
 		C78811311B3C133E00813D65 /* KDExpertsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertsTableViewController.m; sourceTree = "<group>"; };
+		C78811331B3D3F5C00813D65 /* KDExpertTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertTeam.h; sourceTree = "<group>"; };
+		C78811341B3D3F5C00813D65 /* KDExpertTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertTeam.m; sourceTree = "<group>"; };
+		C78811361B3D41D800813D65 /* KDTopicScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDTopicScroll.h; sourceTree = "<group>"; };
+		C78811371B3D41D800813D65 /* KDTopicScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDTopicScroll.m; sourceTree = "<group>"; };
 		C7A03E051B3A58C200FC8F6A /* KDExpertCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertCommentCell.h; sourceTree = "<group>"; };
 		C7A03E061B3A58C200FC8F6A /* KDExpertCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertCommentCell.m; sourceTree = "<group>"; };
 		C7A03E071B3A58C200FC8F6A /* KDExpertCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDExpertCommentCell.xib; sourceTree = "<group>"; };
@@ -386,6 +392,10 @@
 		C7249D7F1B33C552009C448C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C78811331B3D3F5C00813D65 /* KDExpertTeam.h */,
+				C78811341B3D3F5C00813D65 /* KDExpertTeam.m */,
+				C78811361B3D41D800813D65 /* KDTopicScroll.h */,
+				C78811371B3D41D800813D65 /* KDTopicScroll.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -787,6 +797,7 @@
 				C7A03E191B3A58CB00FC8F6A /* KDExpertTopic.m in Sources */,
 				C788111D1B3BA2E700813D65 /* KDExpertTeamTableViewCell.m in Sources */,
 				C7A03E0E1B3A58C200FC8F6A /* KDExpertCommentCell.m in Sources */,
+				C78811351B3D3F5C00813D65 /* KDExpertTeam.m in Sources */,
 				A0596DD21B3A8344008AD558 /* KDExpertIntroHeader.m in Sources */,
 				C7249DCF1B33ED8A009C448C /* KDFirstTableViewCell.m in Sources */,
 				C7A03E101B3A58C200FC8F6A /* KDExpertIntroCell.m in Sources */,
@@ -805,6 +816,7 @@
 				A0EFAF2A1B3BE147000F612C /* KDExpertEdu.m in Sources */,
 				C7249DB21B33C8B1009C448C /* PPRevealSideViewController.m in Sources */,
 				C7CA87F01B393468002C167F /* KDExpertListTableViewController.m in Sources */,
+				C78811381B3D41D800813D65 /* KDTopicScroll.m in Sources */,
 				A0EFAF241B3BB2DE000F612C /* KDReserveTimeViewController.m in Sources */,
 				C7A03E201B3A613200FC8F6A /* KDExpertListCell.m in Sources */,
 				C7249DD31B33ED8A009C448C /* KDProfessorView.m in Sources */,

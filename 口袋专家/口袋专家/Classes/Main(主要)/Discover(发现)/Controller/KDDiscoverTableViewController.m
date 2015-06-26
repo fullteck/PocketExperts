@@ -11,15 +11,20 @@
 #import "KDFirstTableViewCell.h"
 #import "KDConst.h"
 #import "KDExpertTeamTableViewController.h"
-
-
-#define Width [[UIScreen mainScreen] bounds].size.width
+#import "AFNetworking.h"
+#import "MJExtension.h"
+#import "KDTopicScroll.h"
+#import "KDExpertTeam.h"
+#import "UIImageView+WebCache.h"
 
 @interface KDDiscoverTableViewController ()<UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIPageControl *pageControl;
-@property (nonatomic,strong) NSTimer * timer;
+@property (nonatomic, strong) NSTimer * timer;
+@property (nonatomic, strong) NSMutableArray *scrollArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 @end
 
 @implementation KDDiscoverTableViewController
@@ -28,7 +33,6 @@
 {
     if (self = [super initWithStyle:style]) {
         
-//    self.tableView.frame = CGRectMake(0, 65, ScreenW, ScreenH - 65);
     self.automaticallyAdjustsScrollViewInsets = NO;
 
     }
@@ -41,13 +45,48 @@
     self.title = @"发现";
     
     // self.clearsSelectionOnViewWillAppear = NO;
-
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.tableView.showsVerticalScrollIndicator = NO;
-    
-    [self initWithImageAndPageControl];
 
+}
+
+- (NSMutableArray *)scrollArray
+{
+    if (_scrollArray == nil) {
+        _scrollArray = [NSMutableArray array];
+     }
+    return _scrollArray;
+}
+
+- (void)loadImageAndPageControl {
+    
+}
+
+- (NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            [manager GET:URL_Str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSDictionary *dic = responseObject[@"discovery"];
+                NSArray *tempArray = dic[@"topic"];
+                NSArray *scrollArray = dic[@"ad"];
+                
+                _scrollArray = [KDTopicScroll objectArrayWithKeyValuesArray:scrollArray];
+                _dataArray = [KDExpertTeam objectArrayWithKeyValuesArray:tempArray];
+                
+                [self initWithImageAndPageControl];
+
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"error = %@",error);
+            }];
+
+        });
+                    }
+    return _dataArray;
 }
 
 - (void)initWithImageAndPageControl
@@ -56,19 +95,23 @@
     
     self.scrollView.frame = CGRectMake(0, 0, 0, 180);
     
-    self.scrollView.contentSize = CGSizeMake(Width*10, 0);
+    self.scrollView.contentSize = CGSizeMake(Width*self.scrollArray.count, 0);
     
     self.scrollView.showsHorizontalScrollIndicator = NO;
     
-    for (int i = 0; i < 10; i++) {
-        UIImageView * picImage = [[UIImageView alloc] initWithFrame:CGRectMake(Width*i, 0, Width, 200)];
-        picImage.tag = 100+i;
-        picImage.backgroundColor = [UIColor redColor];
-        [self.scrollView addSubview:picImage];
+    for (int i = 0; i < self.scrollArray.count; i++) {
+        @autoreleasepool {
+            KDTopicScroll *topicImage = self.scrollArray[i];
+            UIImageView * picImage = [[UIImageView alloc] initWithFrame:CGRectMake(Width*i, 0, Width, 200)];
+            NSURL *url = [NSURL URLWithString:topicImage.fileurl];
+            [picImage sd_setImageWithURL:url];
+            picImage.tag = 100+i;
+            [self.scrollView addSubview:picImage];
+        }
     }
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(Width/3, 130, 150, 50)];
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(Width/2.5, 130, 15*self.scrollArray.count, 50)];
     _pageControl.pageIndicatorTintColor = [UIColor blackColor];
-    self.pageControl.numberOfPages = 10;
+    self.pageControl.numberOfPages = self.scrollArray.count;
     
     [self.tableView addSubview:self.pageControl];
     
@@ -88,7 +131,6 @@
 - (void)didClickPageChange:(UIPageControl *)pageControl
 {
     NSLog(@"====");
-    
 }
 #pragma mark-----------定时器
 //添加定时器
@@ -101,8 +143,8 @@
 //换到图片的下一张
 - (void)nextImage
 {
-    int page=(int)self.pageControl.currentPage;
-    if (page==9) {
+    int page = (int)self.pageControl.currentPage;
+    if (page == self.scrollArray.count - 1) {
         page=0;
     }else
     {
@@ -149,24 +191,9 @@
     
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 10;
+    return self.dataArray.count;
 }
 
 
@@ -180,7 +207,14 @@
     }
     KDFirstTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    
+    KDExpertTeam *expertTeam = self.dataArray[indexPath.row];
+    cell.topicName.text = expertTeam.title;
+    cell.topicIntroduce.text = expertTeam.intro;
+    cell.comment.text = [NSString stringWithFormat:@"%lu",expertTeam.pri];
+    cell.expertNumber.text = [NSString stringWithFormat:@"%lu",expertTeam.grade];
+    KDLog(@"expertTeam.expert = %@",expertTeam.expert);
+//    cell.expert1.nameLabel.text = expertTeam.expert
+//    cell.expert1.picImage.image = [UIImage imageNamed:<#(NSString *)#>];
     return cell;
 }
 
@@ -195,49 +229,4 @@
     
     [self.navigationController pushViewController:etTVC animated:YES];
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
