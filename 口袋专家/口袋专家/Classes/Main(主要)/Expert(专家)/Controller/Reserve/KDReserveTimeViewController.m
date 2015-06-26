@@ -8,6 +8,9 @@
 
 #import "KDReserveTimeViewController.h"
 #import "KDExpertDetailViewController.h"
+#import "RBCustomDatePickerView.h"
+#import "KDReserveInfroView.h"
+#import "KDPayView.h"
 #define Width [[UIScreen mainScreen] bounds].size.width
 #define Height [[UIScreen mainScreen] bounds].size.height
 
@@ -15,7 +18,11 @@
 {
     NSString * type;
     NSString * title;
+    BOOL pickViewIsShow;
 }
+@property(nonatomic,strong)RBCustomDatePickerView * timePickView;
+@property(nonatomic,strong)KDReserveInfroView * reserveInfoView;
+
 @end
 
 @implementation KDReserveTimeViewController
@@ -61,7 +68,28 @@
 
 - (void)didClickCommit:(UIBarButtonItem *)BI
 {
-    NSLog(@"点击了提交");
+    BOOL result = _timePickView.timeIsOk;
+    NSLog(@"%d",result);
+    if (_timePickView.timeIsOk == YES) {
+        NSLog(@"点击了提交");
+        self.reserveInfoView = [[KDReserveInfroView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+        [self.view.window addSubview:_reserveInfoView];
+        [_reserveInfoView.PayButton addTarget:self action:@selector(didClickPay:) forControlEvents:UIControlEventTouchUpInside];
+        
+
+    }else{
+        NSLog(@"时间有误");
+    }
+}
+
+- (void)didClickPay:(UIButton *)button
+{
+    [_reserveInfoView removeFromSuperview];
+    KDPayView * payView = [KDPayView pay];
+    [self.view addSubview:payView];
+    NSLog(@"payView.outPayView = %@",payView.outPayView);
+    
 }
 
 #pragma mark---创建subViews
@@ -92,13 +120,13 @@
         }
         [immediateButton addTarget:self action:@selector(didClickImmediateMeet:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:immediateButton];
+        UIButton * timePickButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        timePickButton.frame = CGRectMake(20, 180+64, Width-40, 60);
+        timePickButton.backgroundColor = [UIColor cyanColor];
+        [timePickButton setTitle:@"选择时间" forState:UIControlStateNormal];
+        [timePickButton addTarget:self action:@selector(didClickPickTime:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:timePickButton];
     }
-    UIButton * timePickButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    timePickButton.frame = CGRectMake(20, 180+64, Width-40, 60);
-    timePickButton.backgroundColor = [UIColor cyanColor];
-    [timePickButton setTitle:@"选择时间" forState:UIControlStateNormal];
-    [timePickButton addTarget:self action:@selector(didClickPickTime:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:timePickButton];
 }
 
 
@@ -115,8 +143,32 @@
 //选择时间按钮
 - (void)didClickPickTime:(UIButton *)button
 {
-    
+    if (pickViewIsShow == NO) {
+        
+    [UIView animateWithDuration:1.5 animations:^{
+        self.timePickView = [[RBCustomDatePickerView alloc] initWithFrame:CGRectMake(0, 100, Width, Height)];
+        [self.view addSubview:_timePickView];
+        pickViewIsShow = YES;
+    }];
+        
+    }
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (pickViewIsShow == YES) {
+        [_timePickView removeFromSuperview];
+        pickViewIsShow = NO;
+        _timePickView.timeIsOk = YES;
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

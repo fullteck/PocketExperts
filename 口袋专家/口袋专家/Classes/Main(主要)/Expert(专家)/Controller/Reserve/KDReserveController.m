@@ -103,6 +103,9 @@
         case 0:
             NSLog(@"0");
             _priceLabel.text = @"免费";
+            [self.inforDic setObject:@"0" forKey:@"kind"];
+            [self.inforDic setObject:@"免费" forKey:@"price"];
+
             break;
         case 1:
             NSLog(@"1");
