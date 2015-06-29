@@ -16,14 +16,20 @@
 #import "KDTopicScroll.h"
 #import "KDExpertTeam.h"
 #import "UIImageView+WebCache.h"
+#import "KDExpertList.h"
 
 @interface KDDiscoverTableViewController ()<UIScrollViewDelegate>
-
+/** 顶部的 scrollview */
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIPageControl *pageControl;
+/** 定时器 */
 @property (nonatomic, strong) NSTimer * timer;
+/** 存储顶部 scrollview 数据的数组 */
 @property (nonatomic, strong) NSMutableArray *scrollArray;
+/** 存储话题数据的数组 */
 @property (nonatomic, strong) NSMutableArray *dataArray;
+/** 存储专家团的数组 */
+@property (nonatomic, strong) NSMutableArray *expertsArray;
 
 @end
 
@@ -50,16 +56,18 @@
 
 }
 
-- (NSMutableArray *)scrollArray
-{
+- (NSMutableArray *)scrollArray {
     if (_scrollArray == nil) {
-        _scrollArray = [NSMutableArray array];
+        _scrollArray = [NSMutableArray arrayWithCapacity:10];
      }
     return _scrollArray;
 }
 
-- (void)loadImageAndPageControl {
-    
+- (NSMutableArray *)expertsArray {
+    if (_expertsArray == nil) {
+        _expertsArray = [NSMutableArray arrayWithCapacity:10];
+    }
+    return _expertsArray;
 }
 
 - (NSMutableArray *)dataArray {
@@ -69,15 +77,14 @@
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
             [manager GET:URL_Str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSDictionary *dic = responseObject[@"discovery"];
-                NSArray *tempArray = dic[@"topic"];
+                NSArray *tempArray = dic[@"topic_team"];
                 NSArray *scrollArray = dic[@"ad"];
                 
                 _scrollArray = [KDTopicScroll objectArrayWithKeyValuesArray:scrollArray];
                 _dataArray = [KDExpertTeam objectArrayWithKeyValuesArray:tempArray];
-                
-                [self initWithImageAndPageControl];
 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self initWithImageAndPageControl];
                     [self.tableView reloadData];
                 });
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -210,11 +217,9 @@
     KDExpertTeam *expertTeam = self.dataArray[indexPath.row];
     cell.topicName.text = expertTeam.title;
     cell.topicIntroduce.text = expertTeam.intro;
-    cell.comment.text = [NSString stringWithFormat:@"%lu",expertTeam.pri];
-    cell.expertNumber.text = [NSString stringWithFormat:@"%lu",expertTeam.grade];
-    KDLog(@"expertTeam.expert = %@",expertTeam.expert);
-//    cell.expert1.nameLabel.text = expertTeam.expert
-//    cell.expert1.picImage.image = [UIImage imageNamed:<#(NSString *)#>];
+//    cell.comment.text = [NSString stringWithFormat:@"%lu",expertTeam.pri];
+    cell.expertNumber.text = [NSString stringWithFormat:@"%lu",expertTeam.exp_count];
+    cell.expertsArray = expertTeam.expert;
     return cell;
 }
 

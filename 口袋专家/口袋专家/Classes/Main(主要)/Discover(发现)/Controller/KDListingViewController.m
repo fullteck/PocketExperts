@@ -50,8 +50,7 @@
     }
     cell.numberLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+1];
     [cell.changeButton addTarget:self action:@selector(didClickChangeProfessor:) forControlEvents:UIControlEventTouchUpInside];
-//    NSArray * arr = cell.contentView.subviews;
-//    NSLog(@"%@",arr);
+
     return cell;
 }
 

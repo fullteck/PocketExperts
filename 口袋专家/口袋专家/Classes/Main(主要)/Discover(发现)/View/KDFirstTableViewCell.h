@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KDExpertPicAndName.h"
 @interface KDFirstTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *topicName;
 @property (weak, nonatomic) IBOutlet UILabel *topicIntroduce;
 @property (weak, nonatomic) IBOutlet UILabel *comment;
 @property (weak, nonatomic) IBOutlet UILabel *expertNumber;
-@property(nonatomic,strong)KDExpertPicAndName * expert1;
-@property(nonatomic,strong)KDExpertPicAndName * expert2;
-@property(nonatomic,strong)KDExpertPicAndName * expert3;
-@property(nonatomic,strong)KDExpertPicAndName * expert4;
+@property (nonatomic ,strong) NSArray *expertsArray;
+
+//@property(nonatomic,strong)KDExpertPicAndName * expert1;
+//@property(nonatomic,strong)KDExpertPicAndName * expert2;
+//@property(nonatomic,strong)KDExpertPicAndName * expert3;
+//@property(nonatomic,strong)KDExpertPicAndName * expert4;
 
 @end

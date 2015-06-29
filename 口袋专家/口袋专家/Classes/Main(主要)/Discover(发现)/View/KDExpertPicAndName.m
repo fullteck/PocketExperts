@@ -7,6 +7,7 @@
 //
 
 #import "KDExpertPicAndName.h"
+#import "UIImageView+WebCache.h"
 
 @implementation KDExpertPicAndName
 
@@ -30,13 +31,21 @@
 - (void)createSubviews
 {
     self.picImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
-    _picImage.backgroundColor = [UIColor cyanColor];
     [self addSubview:_picImage];
+    
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 60, 50, 20)];
-    _nameLabel.text = @"专家姓名";
-    _nameLabel.font = [UIFont systemFontOfSize:12];
     [self addSubview:_nameLabel];
     
+}
+
+- (void)setExpert:(KDTexpertList *)expert
+{
+    self.nameLabel.text = expert.name;
+    self.nameLabel.font = [UIFont systemFontOfSize:12];
+
+    NSURL *url = [NSURL URLWithString:expert.avaurl];
+    [self.picImage sd_setImageWithURL:url];
+
 }
 
 

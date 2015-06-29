@@ -7,7 +7,13 @@
 //
 
 #import "KDExpertTeam.h"
+#import "MJExtension.h"
+#import "KDTexpertList.h"
 
 @implementation KDExpertTeam
-
+- (NSArray *)expert
+{
+    NSArray *array = [KDTexpertList objectArrayWithKeyValuesArray:_expert];
+    return array;
+}
 @end

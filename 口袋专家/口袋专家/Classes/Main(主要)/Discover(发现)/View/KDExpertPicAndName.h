@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KDTExpertList.h"
 
 @interface KDExpertPicAndName : UIView
 @property(nonatomic,strong)UIImageView * picImage;
 @property(nonatomic,strong)UILabel * nameLabel;
+@property (nonatomic ,strong) KDTexpertList *expert;
+
 @end

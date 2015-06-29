@@ -11,11 +11,10 @@
 @interface KDExpertTeam : NSObject
 @property (nonatomic ,assign) NSInteger _id;
 @property (nonatomic ,strong) NSArray *expert;
-@property (nonatomic ,assign) NSInteger grade;
+@property (nonatomic ,assign) NSInteger exp_count;
 @property (nonatomic ,copy) NSString *intro;
-@property (nonatomic ,assign) NSInteger pri;
 @property (nonatomic ,copy) NSString *title;
-@property (nonatomic ,assign) NSInteger user_id;
+
 
 
 
