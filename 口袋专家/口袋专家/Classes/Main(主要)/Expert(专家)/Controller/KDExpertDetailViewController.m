@@ -20,6 +20,7 @@
 #import "KDExpertCommentTableViewController.h"
 #import "KDExpertIntroViewController.h"
 #import "KDReserveController.h"
+
 #define Width [[UIScreen mainScreen] bounds].size.width
 #define Height [[UIScreen mainScreen] bounds].size.height
 
@@ -65,6 +66,9 @@
     NSLog(@"点击了预约");
     KDReserveController * reserveVC = [[KDReserveController alloc] init];
     [self.navigationController pushViewController:reserveVC animated:YES];
+    
+    
+
 }
 
 #pragma mark---initTableView

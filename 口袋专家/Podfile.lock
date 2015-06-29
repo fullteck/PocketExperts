@@ -20,8 +20,10 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - MJExtension (2.3.5)
-  - MJRefresh (2.0.1)
+  - Fingertips (0.4.0)
+  - MJExtension (2.3.6)
+  - MJRefresh (2.0.4)
+  - pop (1.0.7)
   - Reachability (3.2)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
@@ -29,15 +31,19 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - Fingertips
   - MJExtension (~> 2.3.5)
   - MJRefresh (~> 2.0.1)
+  - pop (~> 1.0.6)
   - Reachability (~> 3.2)
   - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  MJExtension: ba54786a4e481b9834f56dd1494bfd7651cf72e4
-  MJRefresh: ba114191a0ce34bcc9c1853aa1d3781532c9bc3f
+  Fingertips: 09678a650eecad2c1733dfdd5cb4004600ce2899
+  MJExtension: eb9d381740563b520fbabdfa6caf92d666314467
+  MJRefresh: ea153717001d3c02444bd22b75c111d2937d2104
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
