@@ -21,6 +21,10 @@
 		A0596DDB1B3A8D3B008AD558 /* KDExpertEduCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DD91B3A8D3B008AD558 /* KDExpertEduCell.m */; };
 		A0596DDC1B3A8D3B008AD558 /* KDExpertEduCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0596DDA1B3A8D3B008AD558 /* KDExpertEduCell.xib */; };
 		A0596DE01B3AA4F3008AD558 /* KDReserveController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DDF1B3AA4F3008AD558 /* KDReserveController.m */; };
+		A08C32431B4135980049D6A0 /* KDReserveInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A08C32421B4135980049D6A0 /* KDReserveInfoViewController.m */; };
+		A08C32461B4138650049D6A0 /* KDReservePayController.m in Sources */ = {isa = PBXBuildFile; fileRef = A08C32451B4138650049D6A0 /* KDReservePayController.m */; };
+		A08C32491B4143DB0049D6A0 /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A08C32481B4143DB0049D6A0 /* UIPopoverListView.m */; };
+		A0EFAF211B3BA61C000F612C /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EFAF201B3BA61C000F612C /* QMapKit.framework */; };
 		A0EFAF241B3BB2DE000F612C /* KDReserveTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EFAF231B3BB2DE000F612C /* KDReserveTimeViewController.m */; };
 		A0EFAF271B3BE0A0000F612C /* KDExpertJob.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EFAF261B3BE0A0000F612C /* KDExpertJob.m */; };
 		A0EFAF2A1B3BE147000F612C /* KDExpertEdu.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EFAF291B3BE147000F612C /* KDExpertEdu.m */; };
@@ -248,6 +252,7 @@
 			files = (
 				C7122CFA1B40ED82001F53A1 /* QMapKit.framework in Frameworks */,
 				A0FC56121B3CFECD00580677 /* CoreGraphics.framework in Frameworks */,
+				A0EFAF211B3BA61C000F612C /* QMapKit.framework in Frameworks */,
 				C7249DE51B33EF35009C448C /* SystemConfiguration.framework in Frameworks */,
 				C7249DE31B33EF28009C448C /* CoreLocation.framework in Frameworks */,
 				C7249DE11B33EF1F009C448C /* QuartzCore.framework in Frameworks */,
@@ -849,6 +854,7 @@
 				C7249D9D1B33C552009C448C /* KDConst.m in Sources */,
 				C7CA87EA1B39075E002C167F /* KDLeftSwitchTableViewCell.m in Sources */,
 				C788112F1B3C05F300813D65 /* KDSectionHeaderView.m in Sources */,
+				A08C32491B4143DB0049D6A0 /* UIPopoverListView.m in Sources */,
 				C7122D031B40EFC1001F53A1 /* KDTexpertList.m in Sources */,
 				A0FC56201B3D2A0800580677 /* RBCustomDatePickerView.m in Sources */,
 				A0FC561F1B3D2A0800580677 /* MXSCycleScrollView.m in Sources */,
