@@ -48,17 +48,23 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 4
 
+// Fingertips
+#define COCOAPODS_POD_AVAILABLE_Fingertips
+#define COCOAPODS_VERSION_MAJOR_Fingertips 0
+#define COCOAPODS_VERSION_MINOR_Fingertips 4
+#define COCOAPODS_VERSION_PATCH_Fingertips 0
+
 // MJExtension
 #define COCOAPODS_POD_AVAILABLE_MJExtension
 #define COCOAPODS_VERSION_MAJOR_MJExtension 2
 #define COCOAPODS_VERSION_MINOR_MJExtension 3
-#define COCOAPODS_VERSION_PATCH_MJExtension 5
+#define COCOAPODS_VERSION_PATCH_MJExtension 6
 
 // MJRefresh
 #define COCOAPODS_POD_AVAILABLE_MJRefresh
 #define COCOAPODS_VERSION_MAJOR_MJRefresh 2
 #define COCOAPODS_VERSION_MINOR_MJRefresh 0
-#define COCOAPODS_VERSION_PATCH_MJRefresh 1
+#define COCOAPODS_VERSION_PATCH_MJRefresh 4
 
 // Reachability
 #define COCOAPODS_POD_AVAILABLE_Reachability
@@ -77,4 +83,10 @@
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
 #define COCOAPODS_VERSION_PATCH_SDWebImage_Core 2
+
+// pop
+#define COCOAPODS_POD_AVAILABLE_pop
+#define COCOAPODS_VERSION_MAJOR_pop 1
+#define COCOAPODS_VERSION_MINOR_pop 0
+#define COCOAPODS_VERSION_PATCH_pop 7
 

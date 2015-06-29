@@ -123,6 +123,12 @@
 		A0596DDA1B3A8D3B008AD558 /* KDExpertEduCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDExpertEduCell.xib; sourceTree = "<group>"; };
 		A0596DDE1B3AA4F3008AD558 /* KDReserveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDReserveController.h; sourceTree = "<group>"; };
 		A0596DDF1B3AA4F3008AD558 /* KDReserveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDReserveController.m; sourceTree = "<group>"; };
+		A08C32411B4135980049D6A0 /* KDReserveInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDReserveInfoViewController.h; sourceTree = "<group>"; };
+		A08C32421B4135980049D6A0 /* KDReserveInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDReserveInfoViewController.m; sourceTree = "<group>"; };
+		A08C32441B4138650049D6A0 /* KDReservePayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDReservePayController.h; sourceTree = "<group>"; };
+		A08C32451B4138650049D6A0 /* KDReservePayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDReservePayController.m; sourceTree = "<group>"; };
+		A08C32471B4143DB0049D6A0 /* UIPopoverListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPopoverListView.h; sourceTree = "<group>"; };
+		A08C32481B4143DB0049D6A0 /* UIPopoverListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPopoverListView.m; sourceTree = "<group>"; };
 		A0EFAF201B3BA61C000F612C /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QMapKit.framework; path = ../../../Downloads/iOS_2D_Map_v_1_1_0_15053/Demos/QMapKitSample/frameworks/QMapKit.framework; sourceTree = "<group>"; };
 		A0EFAF221B3BB2DE000F612C /* KDReserveTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDReserveTimeViewController.h; sourceTree = "<group>"; };
 		A0EFAF231B3BB2DE000F612C /* KDReserveTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDReserveTimeViewController.m; sourceTree = "<group>"; };
@@ -275,6 +281,10 @@
 				A0596DDF1B3AA4F3008AD558 /* KDReserveController.m */,
 				A0EFAF221B3BB2DE000F612C /* KDReserveTimeViewController.h */,
 				A0EFAF231B3BB2DE000F612C /* KDReserveTimeViewController.m */,
+				A08C32411B4135980049D6A0 /* KDReserveInfoViewController.h */,
+				A08C32421B4135980049D6A0 /* KDReserveInfoViewController.m */,
+				A08C32441B4138650049D6A0 /* KDReservePayController.h */,
+				A08C32451B4138650049D6A0 /* KDReservePayController.m */,
 			);
 			path = Reserve;
 			sourceTree = "<group>";
@@ -293,11 +303,6 @@
 		A0FC56221B3D3F9D00580677 /* Reserve */ = {
 			isa = PBXGroup;
 			children = (
-				A0FC56231B3D3FBA00580677 /* KDReserveInfroView.h */,
-				A0FC56241B3D3FBA00580677 /* KDReserveInfroView.m */,
-				A0FC56261B3D5EE800580677 /* KDPayView.h */,
-				A0FC56271B3D5EE800580677 /* KDPayView.m */,
-				A0FC56291B3D633300580677 /* KDPayView.xib */,
 			);
 			path = Reserve;
 			sourceTree = "<group>";
@@ -673,6 +678,8 @@
 		C7249D991B33C552009C448C /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				A08C32471B4143DB0049D6A0 /* UIPopoverListView.h */,
+				A08C32481B4143DB0049D6A0 /* UIPopoverListView.m */,
 				A0FC561A1B3D2A0800580677 /* CycleScollview */,
 				C7249DB01B33C8B1009C448C /* PPRevealSideViewController.h */,
 				C7249DB11B33C8B1009C448C /* PPRevealSideViewController.m */,
@@ -774,7 +781,6 @@
 				C7122D051B4149C6001F53A1 /* KDListingCell.xib in Resources */,
 				A0596DDC1B3A8D3B008AD558 /* KDExpertEduCell.xib in Resources */,
 				C7A03E0F1B3A58C200FC8F6A /* KDExpertCommentCell.xib in Resources */,
-				A0FC562A1B3D633300580677 /* KDPayView.xib in Resources */,
 				C7249DDF1B33EF0B009C448C /* QMapKit.bundle in Resources */,
 				C7249D601B33C46E009C448C /* Main.storyboard in Resources */,
 				C7A03E111B3A58C200FC8F6A /* KDExpertIntroCell.xib in Resources */,
@@ -853,11 +859,13 @@
 				C7A03E191B3A58CB00FC8F6A /* KDExpertTopic.m in Sources */,
 				C788111D1B3BA2E700813D65 /* KDExpertTeamTableViewCell.m in Sources */,
 				C7A03E0E1B3A58C200FC8F6A /* KDExpertCommentCell.m in Sources */,
+				A08C32461B4138650049D6A0 /* KDReservePayController.m in Sources */,
 				C78811351B3D3F5C00813D65 /* KDExpertTeam.m in Sources */,
 				A0596DD21B3A8344008AD558 /* KDExpertIntroHeader.m in Sources */,
 				C7249DCF1B33ED8A009C448C /* KDFirstTableViewCell.m in Sources */,
 				C7A03E101B3A58C200FC8F6A /* KDExpertIntroCell.m in Sources */,
 				A0596DC71B3A6537008AD558 /* KDExpertCommentTableViewController.m in Sources */,
+				A08C32431B4135980049D6A0 /* KDReserveInfoViewController.m in Sources */,
 				C7249DB51B33E68F009C448C /* RootViewController.m in Sources */,
 				C7249DA61B33C7B9009C448C /* main.m in Sources */,
 				C7A03E181B3A58CB00FC8F6A /* KDExpertComment.m in Sources */,
@@ -877,9 +885,7 @@
 				C7A03E201B3A613200FC8F6A /* KDExpertListCell.m in Sources */,
 				C7249DD31B33ED8A009C448C /* KDProfessorView.m in Sources */,
 				C78811171B3ABD1D00813D65 /* KDExpertTeamTableViewController.m in Sources */,
-				A0FC56251B3D3FBA00580677 /* KDReserveInfroView.m in Sources */,
 				C7249DD71B33ED9C009C448C /* KDExpertViewController.m in Sources */,
-				A0FC56281B3D5EE800580677 /* KDPayView.m in Sources */,
 				A0596DD61B3A8B56008AD558 /* KDExpertJobCell.m in Sources */,
 				A0596DBC1B3A6447008AD558 /* KDExpertDetailViewController.m in Sources */,
 				A0596DDB1B3A8D3B008AD558 /* KDExpertEduCell.m in Sources */,

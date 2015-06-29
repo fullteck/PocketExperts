@@ -19,6 +19,6 @@
 @property(nonatomic,strong)NSString * sex;
 @property(nonatomic,strong)NSString * intro;
 @property(nonatomic,strong)NSString * fileurl;
-
+@property(nonatomic,strong)NSString * avaurl;
 
 @end

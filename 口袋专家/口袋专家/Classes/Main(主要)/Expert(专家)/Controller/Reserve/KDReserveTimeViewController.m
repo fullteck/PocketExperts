@@ -9,8 +9,7 @@
 #import "KDReserveTimeViewController.h"
 #import "KDExpertDetailViewController.h"
 #import "RBCustomDatePickerView.h"
-#import "KDReserveInfroView.h"
-#import "KDPayView.h"
+#import "KDReserveInfoViewController.h"
 #define Width [[UIScreen mainScreen] bounds].size.width
 #define Height [[UIScreen mainScreen] bounds].size.height
 
@@ -21,7 +20,6 @@
     BOOL pickViewIsShow;
 }
 @property(nonatomic,strong)RBCustomDatePickerView * timePickView;
-@property(nonatomic,strong)KDReserveInfroView * reserveInfoView;
 
 @end
 
@@ -72,10 +70,9 @@
     NSLog(@"%d",result);
     if (_timePickView.timeIsOk == YES) {
         NSLog(@"点击了提交");
-        self.reserveInfoView = [[KDReserveInfroView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-        [self.view.window addSubview:_reserveInfoView];
-        [_reserveInfoView.PayButton addTarget:self action:@selector(didClickPay:) forControlEvents:UIControlEventTouchUpInside];
+        KDReserveInfoViewController * infoVC = [[KDReserveInfoViewController alloc] init];
+        [self.navigationController pushViewController:infoVC animated:YES];
         
 
     }else{
@@ -83,14 +80,9 @@
     }
 }
 
-- (void)didClickPay:(UIButton *)button
-{
-    [_reserveInfoView removeFromSuperview];
-    KDPayView * payView = [KDPayView pay];
-    [self.view addSubview:payView];
-    NSLog(@"payView.outPayView = %@",payView.outPayView);
-    
-}
+
+
+
 
 #pragma mark---创建subViews
 
