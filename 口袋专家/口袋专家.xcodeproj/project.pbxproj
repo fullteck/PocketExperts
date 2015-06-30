@@ -27,8 +27,6 @@
 		A0B1C5FC1B4268D300D67465 /* iconfont-zhuanjiaku.png in Resources */ = {isa = PBXBuildFile; fileRef = A0B1C5FB1B4268D300D67465 /* iconfont-zhuanjiaku.png */; };
 		A0B1C6071B428CE900D67465 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B1C6061B428CE900D67465 /* OpenGLES.framework */; };
 		A0B1C6091B428D0B00D67465 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B1C6081B428D0B00D67465 /* Security.framework */; };
-		A0B1C60B1B428D7800D67465 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B1C60A1B428D7800D67465 /* mapapi.bundle */; };
-		A0B1C60C1B42930B00D67465 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B1C6041B428BEC00D67465 /* BaiduMapAPI.framework */; };
 		A0B1C6131B42AD0300D67465 /* KDMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B1C6121B42AD0300D67465 /* KDMapView.m */; };
 		A0EFAF241B3BB2DE000F612C /* KDReserveTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EFAF231B3BB2DE000F612C /* KDReserveTimeViewController.m */; };
 		A0EFAF271B3BE0A0000F612C /* KDExpertJob.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EFAF261B3BE0A0000F612C /* KDExpertJob.m */; };
@@ -36,10 +34,11 @@
 		A0FC56121B3CFECD00580677 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FC56111B3CFECD00580677 /* CoreGraphics.framework */; };
 		A0FC561F1B3D2A0800580677 /* MXSCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FC561C1B3D2A0800580677 /* MXSCycleScrollView.m */; };
 		A0FC56201B3D2A0800580677 /* RBCustomDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FC561E1B3D2A0800580677 /* RBCustomDatePickerView.m */; };
-		C7122CFA1B40ED82001F53A1 /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EFAF201B3BA61C000F612C /* QMapKit.framework */; };
 		C7122D031B40EFC1001F53A1 /* KDTexpertList.m in Sources */ = {isa = PBXBuildFile; fileRef = C7122D021B40EFC1001F53A1 /* KDTexpertList.m */; };
 		C7122D081B424BDA001F53A1 /* KDListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7122D071B424BDA001F53A1 /* KDListModel.m */; };
 		C7122D0E1B42B056001F53A1 /* UITableViewCell+textHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C7122D0D1B42B056001F53A1 /* UITableViewCell+textHeight.m */; };
+		C7122D101B42B761001F53A1 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7122D0F1B42B761001F53A1 /* mapapi.bundle */; };
+		C7122D111B42B990001F53A1 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B1C6041B428BEC00D67465 /* BaiduMapAPI.framework */; };
 		C7249D601B33C46E009C448C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7249D5E1B33C46E009C448C /* Main.storyboard */; };
 		C7249D621B33C46E009C448C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7249D611B33C46E009C448C /* Images.xcassets */; };
 		C7249D711B33C46E009C448C /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249D701B33C46E009C448C /* ____Tests.m */; };
@@ -139,7 +138,6 @@
 		A0B1C6041B428BEC00D67465 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = ../../../Downloads/BaiduMapAPI.framework; sourceTree = "<group>"; };
 		A0B1C6061B428CE900D67465 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A0B1C6081B428D0B00D67465 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		A0B1C60A1B428D7800D67465 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = ../../../Downloads/BaiduMapAPI.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
 		A0B1C6111B42AD0300D67465 /* KDMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDMapView.h; sourceTree = "<group>"; };
 		A0B1C6121B42AD0300D67465 /* KDMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDMapView.m; sourceTree = "<group>"; };
 		A0EFAF221B3BB2DE000F612C /* KDReserveTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDReserveTimeViewController.h; sourceTree = "<group>"; };
@@ -159,6 +157,7 @@
 		C7122D071B424BDA001F53A1 /* KDListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDListModel.m; sourceTree = "<group>"; };
 		C7122D0C1B42B056001F53A1 /* UITableViewCell+textHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+textHeight.h"; sourceTree = "<group>"; };
 		C7122D0D1B42B056001F53A1 /* UITableViewCell+textHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+textHeight.m"; sourceTree = "<group>"; };
+		C7122D0F1B42B761001F53A1 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		C7249D511B33C46E009C448C /* 口袋专家.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "口袋专家.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7249D551B33C46E009C448C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7249D5F1B33C46E009C448C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -255,7 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0B1C60C1B42930B00D67465 /* BaiduMapAPI.framework in Frameworks */,
+				C7122D111B42B990001F53A1 /* BaiduMapAPI.framework in Frameworks */,
 				A0B1C6091B428D0B00D67465 /* Security.framework in Frameworks */,
 				A0B1C6071B428CE900D67465 /* OpenGLES.framework in Frameworks */,
 				A0FC56121B3CFECD00580677 /* CoreGraphics.framework in Frameworks */,
@@ -345,7 +344,7 @@
 		C7249D481B33C46E009C448C = {
 			isa = PBXGroup;
 			children = (
-				A0B1C60A1B428D7800D67465 /* mapapi.bundle */,
+				C7122D0F1B42B761001F53A1 /* mapapi.bundle */,
 				C7249D531B33C46E009C448C /* 口袋专家 */,
 				C7249D6D1B33C46E009C448C /* 口袋专家Tests */,
 				C7249D521B33C46E009C448C /* Products */,
@@ -801,10 +800,10 @@
 				A0596DCF1B3A831F008AD558 /* KDExpertIntroHeader.xib in Resources */,
 				C7249DD01B33ED8A009C448C /* KDFirstTableViewCell.xib in Resources */,
 				C7CA87E61B390426002C167F /* KDLeftHeadTableViewCell.xib in Resources */,
+				C7122D101B42B761001F53A1 /* mapapi.bundle in Resources */,
 				C7A03E211B3A613200FC8F6A /* KDExpertListCell.xib in Resources */,
 				C78811251B3BABBD00813D65 /* KDExpertTDetailTableViewCell.xib in Resources */,
 				A0B1C5FC1B4268D300D67465 /* iconfont-zhuanjiaku.png in Resources */,
-				A0B1C60B1B428D7800D67465 /* mapapi.bundle in Resources */,
 				C78811271B3BABCC00813D65 /* KDExpertTeamTableViewCell.xib in Resources */,
 				A0596DC11B3A64F9008AD558 /* KDHeader.xib in Resources */,
 				A0596DDC1B3A8D3B008AD558 /* KDExpertEduCell.xib in Resources */,
@@ -1052,7 +1051,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = /Users/fuyaozhishang/Downloads;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Users/fuyaozhishang/Downloads,
+					/Users/fullteck/Downloads,
+				);
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1069,7 +1071,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = /Users/fuyaozhishang/Downloads;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Users/fuyaozhishang/Downloads,
+					/Users/fullteck/Downloads,
+				);
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
