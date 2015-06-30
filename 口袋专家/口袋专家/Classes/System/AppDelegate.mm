@@ -11,7 +11,7 @@
 #import "PPRevealSideViewController.h"
 #import "RootViewController.h"
 #import "LeftViewController.h"
-#import <QMapKit/QMapKit.h>
+
 @interface AppDelegate ()
 
 @end
@@ -24,7 +24,6 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [QMapServices sharedServices].apiKey = @"ORWBZ-6L43O-PG6W5-STY6F-QFF63-AEFD6";
 //    MainViewController *mainViewController = [[MainViewController alloc] init];
     
     RootViewController *rootVC = [[RootViewController alloc] init];
@@ -33,8 +32,13 @@
 
     self.window.rootViewController = [[PPRevealSideViewController alloc] initWithRootViewController:navigationController];
     
-//    self.window.backgroundColor = [UIColor whiteColor];
     
+    _mapManager = [[BMKMapManager alloc] init];
+    BOOL ret = [_mapManager start:@"080oHl2ZFGgxpVt7mKG7N2z8"  generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+
     [self.window makeKeyAndVisible];
     
     return YES;

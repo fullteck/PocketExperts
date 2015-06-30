@@ -10,7 +10,7 @@
 
 @interface KDExpertList : NSObject
 @property(nonatomic,strong)NSDictionary * auth;
-@property(nonatomic,strong)NSDictionary * geo;
+@property(nonatomic,strong)NSArray * geo;
 @property(nonatomic,assign)NSInteger grade;
 @property(nonatomic,assign)NSInteger _id;
 @property(nonatomic,strong)NSString * job;

@@ -25,7 +25,7 @@
     self.nameLabel.text = comment.name;
     self.dataLabel.text = [NSString stringWithFormat:@"%ld",comment.data];
     self.top_titleLabel.text = comment.top_title;
-    self.conLabel.text = comment.con;
+    self.conLabel.text = comment.content;
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "LeftViewController.h"
 #import "PPRevealSideViewController.h"
 
+
 @interface RootViewController ()<KDExpertViewControllerDelegate>{
     KDExpertViewController * _expertVC;
     KDDiscoverTableViewController * _discoverTVC;
@@ -21,17 +22,21 @@
     UIBarButtonItem *_ListItem;
     UIBarButtonItem *_tempItem;
 }
+@property(nonatomic,strong)NSMutableArray * expertArray;
 
 @end
 
 @implementation RootViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self settingTopItem];
     
+    
     [self settingTitleView];
+    
     
     _tempItem = nil;
     
@@ -164,6 +169,7 @@
 {
     [self.delegate KDRootViewControllerChangeStatus:ExpertStatusMap];
 }
+
 
 /*
 #pragma mark - Navigation
