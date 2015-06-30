@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface KDExpertComment : NSObject
-@property(nonatomic,strong)NSString * con;
+@property(nonatomic,strong)NSString * content;
 @property(nonatomic,assign)NSInteger top_id;
 @property(nonatomic,strong)NSString * top_title;
 @property(nonatomic,assign)NSInteger data;

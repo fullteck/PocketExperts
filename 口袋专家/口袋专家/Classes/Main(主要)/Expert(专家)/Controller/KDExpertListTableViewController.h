@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface KDExpertListTableViewController : UITableViewController
+@property(nonatomic,strong)NSMutableArray * expertArray;
 @end
