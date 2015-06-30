@@ -8,7 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KDListingViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
-@property(nonatomic,strong)UITableView * myTableView;
-
+@interface KDListingViewController : UIViewController
 @end

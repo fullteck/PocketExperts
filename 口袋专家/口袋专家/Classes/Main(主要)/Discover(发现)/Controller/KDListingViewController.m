@@ -9,68 +9,100 @@
 #import "KDListingViewController.h"
 #import "KDListingHeadView.h"
 #import "KDListingCell.h"
-#define Width [[UIScreen mainScreen] bounds].size.width
+#import "KDListModel.h"
+#import "KDConst.h"
 
-@interface KDListingViewController ()
+@interface KDListingViewController ()<UITableViewDataSource,UITableViewDelegate> {
+    UITableView *_myTableView;
+}
 @property(nonatomic,strong)KDListingHeadView * listingHeadView;
+/** 存储清单数据的字典 */
+@property(nonatomic,strong)NSDictionary *listDic;
+/** 存储清单详情列表数据的数组 */
+@property(nonatomic,strong)NSArray *dataArray;
+/** 存储推荐专家数据的数组 */
+@property(nonatomic,strong)NSArray *expertsArray;
 @end
 
 @implementation KDListingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.navigationItem.title = @"清单";
-    self.view.backgroundColor = [UIColor cyanColor];
     [self initWithTableView];
+    [self loadData];
 }
-
-- (void)initWithTableView
-{
-    self.myTableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
+#pragma mark - 初始化 tableView
+- (void)initWithTableView {
+    _myTableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
+    _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _myTableView.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1];
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
     [self.view addSubview:_myTableView];
     self.listingHeadView = [[KDListingHeadView alloc] initWithFrame:CGRectMake(0, 0, Width, 85)];
     _myTableView.tableHeaderView = _listingHeadView;
+    
 }
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 10;
+#pragma mark - 加载数据
+- (void)loadData {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:URL_List parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dic = responseObject[INV];
+        self.listDic = dic;
+        
+        NSArray *dataArray = [KDListModel objectArrayWithKeyValuesArray:dic[INVTOPIC]];
+        self.dataArray = dataArray;
+        [_myTableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (error) {
+            NSLog(@"%@",error);
+        }
+    }];
 }
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    KDListingCell * cell = [tableView dequeueReusableCellWithIdentifier:@"listing"];
-    if (!cell) {
-        cell = [[KDListingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listing"];
+#pragma mark - 懒加载
+- (NSDictionary *)listDic {
+    if (_listDic == nil) {
+        _listDic = [NSDictionary dictionary];
     }
-    cell.numberLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+1];
+    return _listDic;
+}
+
+- (NSArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSArray array];
+    }
+    return _dataArray;
+}
+
+- (NSArray *)expertsArray {
+    if (_expertsArray == nil) {
+        _expertsArray = [NSArray array];
+    }
+    return _expertsArray;
+}
+
+#pragma mark - 数据源方法
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    KDListingCell * cell = [KDListingCell cellWithTableView:tableView];
+    KDListModel *list = self.dataArray[indexPath.row];
+    
+    cell.content.text = list.content;
     [cell.changeButton addTarget:self action:@selector(didClickChangeProfessor:) forControlEvents:UIControlEventTouchUpInside];
 
     return cell;
 }
-
-- (void)didClickChangeProfessor:(UIButton *)button
-{
+- (void)didClickChangeProfessor:(UIButton *)button {
     NSLog(@"换专家");
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 360;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    KDListModel *listModel = self.dataArray[indexPath.row];
+    CGFloat height = [KDListingCell cellWithHeight:listModel.content];
+    return height;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

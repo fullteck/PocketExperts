@@ -18,12 +18,11 @@
 #import "UIImageView+WebCache.h"
 #import "KDExpertList.h"
 
-@interface KDDiscoverTableViewController ()<UIScrollViewDelegate>
-/** 顶部的 scrollview */
-@property (strong, nonatomic) UIScrollView *scrollView;
-@property (strong, nonatomic) UIPageControl *pageControl;
-/** 定时器 */
-@property (nonatomic, strong) NSTimer * timer;
+@interface KDDiscoverTableViewController ()<UIScrollViewDelegate> {
+    UIScrollView *_scrollView;      /** 顶部的 scrollView */
+    UIPageControl *_pageControl;    /** 顶部的 pageController */
+    NSTimer * _timer;               /** 定时器 */
+}
 /** 存储顶部 scrollview 数据的数组 */
 @property (nonatomic, strong) NSMutableArray *scrollArray;
 /** 存储话题数据的数组 */
@@ -75,7 +74,7 @@
         _dataArray = [NSMutableArray array];
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-            [manager GET:URL_Str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [manager GET:URL_Discover parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSDictionary *dic = responseObject[@"discovery"];
                 NSArray *tempArray = dic[@"topic_team"];
                 NSArray *scrollArray = dic[@"ad"];
@@ -98,13 +97,13 @@
 
 - (void)initWithImageAndPageControl
 {
-    self.scrollView = [[UIScrollView alloc] init];
+    _scrollView = [[UIScrollView alloc] init];
     
-    self.scrollView.frame = CGRectMake(0, 0, 0, 180);
+    _scrollView.frame = CGRectMake(0, 0, 0, 180);
     
-    self.scrollView.contentSize = CGSizeMake(Width*self.scrollArray.count, 0);
+    _scrollView.contentSize = CGSizeMake(Width*self.scrollArray.count, 0);
     
-    self.scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.showsHorizontalScrollIndicator = NO;
     
     for (int i = 0; i < self.scrollArray.count; i++) {
         @autoreleasepool {
@@ -113,26 +112,26 @@
             NSURL *url = [NSURL URLWithString:topicImage.fileurl];
             [picImage sd_setImageWithURL:url];
             picImage.tag = 100+i;
-            [self.scrollView addSubview:picImage];
+            [_scrollView addSubview:picImage];
         }
     }
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(Width/2.5, 130, 15*self.scrollArray.count, 50)];
+   _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(Width/2.5, 130, 15*self.scrollArray.count, 50)];
     _pageControl.pageIndicatorTintColor = [UIColor blackColor];
-    self.pageControl.numberOfPages = self.scrollArray.count;
+    _pageControl.numberOfPages = self.scrollArray.count;
     
-    [self.tableView addSubview:self.pageControl];
+    [self.tableView addSubview:_pageControl];
     
-    [self.tableView bringSubviewToFront:self.pageControl];
+    [self.tableView bringSubviewToFront:_pageControl];
     
-    [self.pageControl addTarget:self action:@selector(didClickPageChange:) forControlEvents:UIControlEventValueChanged];
+    [_pageControl addTarget:self action:@selector(didClickPageChange:) forControlEvents:UIControlEventValueChanged];
     [self addTimer];
-    [self.scrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didEnterListing:)]];
+    [_scrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didEnterListing:)]];
     
-    self.tableView.tableHeaderView = self.scrollView;
+    self.tableView.tableHeaderView = _scrollView;
     
-    [self.tableView addSubview:self.pageControl];
+    [self.tableView addSubview:_pageControl];
     
-    self.scrollView.delegate = self;
+    _scrollView.delegate = self;
 }
 //点击pageControl
 - (void)didClickPageChange:(UIPageControl *)pageControl
@@ -143,14 +142,14 @@
 //添加定时器
 - (void)addTimer
 {
-    self.timer=[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    _timer=[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     
 }
 //换到图片的下一张
 - (void)nextImage
 {
-    int page = (int)self.pageControl.currentPage;
+    int page = (int)_pageControl.currentPage;
     if (page == self.scrollArray.count - 1) {
         page=0;
     }else
@@ -158,14 +157,14 @@
         page++;
     }
     //滚动scrollview
-    CGFloat X=page *self.scrollView.frame.size.width;
-    self.scrollView.contentOffset=CGPointMake(X, 0);
+    CGFloat X=page *_scrollView.frame.size.width;
+    _scrollView.contentOffset=CGPointMake(X, 0);
     
 }
 //移除定时器
 - (void)removieTimer
 {
-    [self.timer invalidate];
+    [_timer invalidate];
 }
 #pragma mark----------UIScrollViewDelegate
 //结束滑动
@@ -173,7 +172,7 @@
 {
     if (scrollView == _scrollView) {
         int page = scrollView.contentOffset.x/Width;
-        self.pageControl.currentPage = page;
+        _pageControl.currentPage = page;
     }
 }
 //将要滑动

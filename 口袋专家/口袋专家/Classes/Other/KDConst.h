@@ -1,4 +1,8 @@
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
+#import "MJExtension.h"
+
+
 
 #ifdef DEBUG  // 调试状态
 // 打开LOG功能
@@ -17,7 +21,14 @@
 return [self keyValues].description; \
 }
 
+/** 字典里一些替换的字符串 */
+#define INV @"inv"
+#define INVTOPIC @"invtopic"
+
 #define ScreenW self.view.frame.size.width
 #define ScreenH self.view.frame.size.height
 #define Width [[UIScreen mainScreen] bounds].size.width
-#define URL_Str @"http://192.168.2.36:5000/api/v1.0/discovery/list"
+/** 发现首页 */
+#define URL_Discover @"http://192.168.2.36:5000/api/v1.0/discovery/list"
+/** 清单页面 */
+#define URL_List @"http://192.168.2.36:5000/api/v1.0/discovery/Inventory/9"

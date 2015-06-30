@@ -12,6 +12,5 @@
 @property (nonatomic ,assign) NSInteger _id;
 @property (nonatomic ,copy) NSString *avaurl;
 @property (nonatomic ,copy) NSString *name;
-
-
+@property (nonatomic ,copy) NSString *job;
 @end
