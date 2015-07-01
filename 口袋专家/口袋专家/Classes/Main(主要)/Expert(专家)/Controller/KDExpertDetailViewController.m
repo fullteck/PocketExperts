@@ -7,26 +7,40 @@
 //
 
 #import "KDExpertDetailViewController.h"
-#import "AFHTTPRequestOperationManager.h"
+
+#import "AFNetworking.h"
+
 #import "KDExpertTopicCell.h"
+
 #import "KDExpertIntroCell.h"
+
 #import "KDExpertCommentCell.h"
+
 #import "KDExpertList.h"
+
 #import "KDExpertComment.h"
+
 #import "KDExpertTopic.h"
+
 #import "UIImageView+WebCache.h"
+
 #import "KDHeader.h"
+
 #import "KDTopicDetailViewController.h"
+
 #import "KDExpertCommentTableViewController.h"
+
 #import "KDExpertIntroViewController.h"
+
 #import "KDReserveController.h"
 
-#define Width [[UIScreen mainScreen] bounds].size.width
-#define Height [[UIScreen mainScreen] bounds].size.height
+#import "KDConst.h"
+
 
 @interface KDExpertDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property(nonatomic,strong)UITableView * detailTableView;
-@property(nonatomic,strong)NSMutableArray * resultArray;
+
+@property(nonatomic,strong)UITableView * detailTableView;//tableView
+@property(nonatomic,strong)NSMutableArray * resultArray;//存放数据
 @property(nonatomic,strong)NSMutableDictionary * dic;
 
 @end
@@ -53,11 +67,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"专家详情";
     UIBarButtonItem * BI = [[UIBarButtonItem alloc] initWithTitle:@"预约" style:UIBarButtonItemStyleDone target:self action:@selector(didClickReserve:)];
     self.navigationItem.rightBarButtonItem = BI;
     [self initWithTableView];
-    self.view.backgroundColor = [UIColor whiteColor];
     [self getNetworkWithUrl];
 }
 //点击预约按钮
@@ -66,12 +80,9 @@
     NSLog(@"点击了预约");
     KDReserveController * reserveVC = [[KDReserveController alloc] init];
     [self.navigationController pushViewController:reserveVC animated:YES];
-    
-    
-
 }
 
-#pragma mark---initTableView
+#pragma mark - initTableView
 - (void)initWithTableView
 {
     self.detailTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Width, Height) style:UITableViewStyleGrouped];
@@ -80,16 +91,17 @@
     [self.view addSubview:_detailTableView];
     self.detailTableView.tableHeaderView = [KDHeader instance];
 }
-#pragma mark-----NetWork
+#pragma mark - NetWork
 - (void)getNetworkWithUrl
 {
-    NSString * headStr = @"http://192.168.2.36:5000";
-    NSString * footStr = [NSString stringWithFormat:@"/api/v1.0/expert/info/%d",40];
+    NSString * headStr = @"http://182.254.221.13:8080";
+    NSString * footStr = [NSString stringWithFormat:@"/api/v1.0/expert/info/%d",11];
     NSString * str = [headStr stringByAppendingString:footStr];
     NSLog(@"%@",str);
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
+        //把解析出得数据加到字典里
         NSDictionary * dic = responseObject[@"expert"];
         self.dic = dic[@"info"];
         NSArray * topicArray = dic[@"topic"];
@@ -126,7 +138,7 @@
     
     
 }
-#pragma mark---tableView协议中的方法
+#pragma mark - tableView协议中的方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.resultArray.count;

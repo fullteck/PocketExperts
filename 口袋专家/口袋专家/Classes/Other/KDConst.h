@@ -28,7 +28,13 @@ return [self keyValues].description; \
 #define ScreenW self.view.frame.size.width
 #define ScreenH self.view.frame.size.height
 #define Width [[UIScreen mainScreen] bounds].size.width
+#define Height [[UIScreen mainScreen] bounds].size.height
+
 /** 发现首页 */
-#define URL_Discover @"http://192.168.2.36:5000/api/v1.0/discovery/list"
+#define URL_Discover @"http://182.254.221.13:8080/api/v1.0/discovery/list"
 /** 清单页面 */
-#define URL_List @"http://192.168.2.36:5000/api/v1.0/discovery/Inventory/9"
+#define URL_List @"http://182.254.221.13:8080/api/v1.0/discovery/Inventory/9"
+/** 专家列表 */
+#define kNetRequestUrl @"http://182.254.221.13:8080/api/v1.0/expert/list/0.0/32.3213213" 
+/** 专家评论 */
+#define kNetUrl @"http://192.168.2.36:5000/api/v1.0/topic/info/50"

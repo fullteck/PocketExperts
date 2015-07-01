@@ -12,4 +12,5 @@
 @property(nonatomic,strong)UIImageView * headPic;
 @property(nonatomic,strong)UILabel * nameLabel;
 @property(nonatomic,strong)UILabel * jobLabel;
+@property(nonatomic,strong)UIButton * detailButton;
 @end

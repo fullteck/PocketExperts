@@ -7,53 +7,33 @@
 //
 
 #import "KDExpertListTableViewController.h"
+
 #import "AFNetworking.h"
+
 #import "KDExpertList.h"
+
 #import "KDExpertListCell.h"
+
 #import "KDExpertDetailViewController.h"
-#define Width [[UIScreen mainScreen] bounds].size.width
-#define Height [[UIScreen mainScreen] bounds].size.height
-#define kNetRequestUrl @"http://192.168.2.36:5000/api/v1.0/expert/list/23.4324324/32.3213213"
+
+#import "KDConst.h"
+
 
 @interface KDExpertListTableViewController ()
-//@property(nonatomic,strong)NSMutableArray * expertArray;
 
 @end
 
 @implementation KDExpertListTableViewController
-//- (NSMutableArray *)expertArray
-//{
-//    if (_expertArray == nil) {
-//        _expertArray = [NSMutableArray array];
-//    }
-//    return _expertArray;
-//}
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-//    [self getDataFromNetwork];
 }
-//获取专家
-- (void)getDataFromNetwork
-{
-    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:kNetRequestUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary * dic = (NSDictionary *)responseObject;
-        NSArray * expertListArray = [dic objectForKey:@"list"];
-        for (NSDictionary * expertDic in expertListArray) {
-            KDExpertList * expert = [[KDExpertList alloc] init];
-            [expert setValuesForKeysWithDictionary:expertDic];
-            [self.expertArray addObject:expert];
-        }
-        [self.tableView reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
-}
+
 #pragma mark---tableView协议中的方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"%ld",_expertArray.count);
     return _expertArray.count;
 }
 

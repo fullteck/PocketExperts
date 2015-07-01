@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>只有开启定位功能才能找到专家</string>
 	<key>CFBundleDisplayName</key>
 	<string>口袋专家</string>
 	<key>CFBundleDevelopmentRegion</key>

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface KDExpertDetailViewController : UIViewController
-@property(nonatomic,assign)NSInteger urlId;
+@property(nonatomic,assign)NSInteger urlId;//从上个界面传过来的专家id
 @end
