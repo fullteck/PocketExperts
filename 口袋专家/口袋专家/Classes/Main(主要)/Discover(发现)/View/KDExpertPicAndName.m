@@ -10,41 +10,30 @@
 #import "UIImageView+WebCache.h"
 
 @implementation KDExpertPicAndName
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self createSubviews];
+        self.picImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 5, frame.size.width - 5)];
+        [self addSubview:_picImage];
+        
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.picImage.frame), frame.size.width, 20)];
+        [self addSubview:_nameLabel];
     }
     return self;
 }
-
-- (void)createSubviews
-{
-    self.picImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
-    [self addSubview:_picImage];
-    
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 60, 50, 20)];
-    [self addSubview:_nameLabel];
-    
-}
-
-- (void)setExpert:(KDTexpertList *)expert
-{
+- (void)setExpert:(KDTexpertList *)expert {
     self.nameLabel.text = expert.name;
     self.nameLabel.font = [UIFont systemFontOfSize:12];
 
     NSURL *url = [NSURL URLWithString:expert.avaurl];
     [self.picImage sd_setImageWithURL:url];
+    if (expert.job) {
+        self.jobLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.nameLabel.frame), self.frame.size.width, 20)];
+        self.jobLabel.text = expert.job;
+        self.jobLabel.font = [UIFont systemFontOfSize:12];
+        [self addSubview:_jobLabel];
+    }
 
 }
 
