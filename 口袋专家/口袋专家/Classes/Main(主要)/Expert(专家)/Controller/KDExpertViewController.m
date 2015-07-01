@@ -92,7 +92,6 @@
     _mapVC.expertArray = self.expertArray;
     [self addChildViewController:self.listTVC];
     [self addChildViewController:self.mapVC];
-    
     [self.view addSubview:self.listTVC.tableView];
 
 }
