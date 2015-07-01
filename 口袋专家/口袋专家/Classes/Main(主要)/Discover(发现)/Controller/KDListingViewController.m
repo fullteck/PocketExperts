@@ -91,10 +91,13 @@
     KDListingCell * cell = [KDListingCell cellWithTableView:tableView];
     KDListModel *list = self.dataArray[indexPath.row];
     
-    cell.content.text = list.content;
-    [cell.changeButton addTarget:self action:@selector(didClickChangeProfessor:) forControlEvents:UIControlEventTouchUpInside];
-
+    cell.list = list;
+    [cell addTarget:self action:@selector(pushToExperts)];
     return cell;
+}
+
+- (void)pushToExperts {
+    NSLog(@"按钮被点击了!");
 }
 - (void)didClickChangeProfessor:(UIButton *)button {
     NSLog(@"换专家");
@@ -103,6 +106,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     KDListModel *listModel = self.dataArray[indexPath.row];
     CGFloat height = [KDListingCell cellWithHeight:listModel.content];
-    return height;
+    return height + 130.0f;
 }
 @end

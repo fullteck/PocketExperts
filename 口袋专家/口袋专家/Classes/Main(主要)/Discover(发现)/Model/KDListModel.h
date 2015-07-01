@@ -12,4 +12,6 @@
 @property (nonatomic ,copy) NSString *_id;
 @property (nonatomic ,copy) NSString *content;
 @property (nonatomic ,strong) NSArray *expert;
+@property (nonatomic ,assign) NSInteger sort;
+@property (nonatomic ,copy) NSString *title;
 @end
