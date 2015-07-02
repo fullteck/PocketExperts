@@ -29,7 +29,8 @@ return [self keyValues].description; \
 #define ScreenH self.view.frame.size.height
 #define Width [[UIScreen mainScreen] bounds].size.width
 #define Height [[UIScreen mainScreen] bounds].size.height
-
+#define ViewW self.frame.size.width
+#define ViewH self.frame.size.height
 /** 发现首页 */
 #define URL_Discover @"http://182.254.221.13:8080/api/v1.0/discovery/list"
 /** 清单页面 */
