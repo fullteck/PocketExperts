@@ -7,10 +7,12 @@
 //
 
 #import "KDTopicDetailViewController.h"
+
 #import "AFNetworking.h"
-#define kNetUrl @"http://192.168.2.36:5000/api/v1.0/topic/info/50"
-#define Width [[UIScreen mainScreen] bounds].size.width
-#define Height [[UIScreen mainScreen] bounds].size.height
+
+#import "KDConst.h"
+
+
 @interface KDTopicDetailViewController ()
 @property(nonatomic,strong)UILabel * titleLabel;
 @property(nonatomic,strong)UIImageView * gradeImage;

@@ -7,25 +7,54 @@
 //
 
 #import "KDExpertMapViewController.h"
+
 #import <BaiduMapAPI/BMapKit.h>//引入所有的头文件
+
 #import "KDExpertList.h"
+
 #import "KDMapView.h"
+
+#import "KDExpertDetailViewController.h"
+
+#import "AFNetworking.h"
+
+#import "KDConst.h"
+
+#import "KDSearchExpertViewController.h"
 
 @interface KDExpertMapViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate>
 {
     BMKMapView * _mapView;
     
 }
-
+@property(nonatomic,strong)NSMutableArray * resultArray;
+@property(nonatomic,strong)NSMutableArray * annotationArr;
 @end
 
 @implementation KDExpertMapViewController
 
+- (NSMutableArray *)resultArray
+{
+    if (_resultArray == nil) {
+        _resultArray = [NSMutableArray array];
+    }
+    return _resultArray;
+}
+
+- (NSMutableArray *)annotationArr
+{
+    if (_annotationArr == nil) {
+        _annotationArr = [NSMutableArray array];
+    }
+    return _annotationArr;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
     [self initWithMapView];
-    [self addAnnotation];
+    
+//    [self addAnnotation];
     
 }
 #pragma mark - 初始化地图
@@ -35,27 +64,113 @@
 //    [_mapView setZoomLevel:16];
     _mapView.delegate = self;
     [self.view addSubview:_mapView];
+    UIButton * buttomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttomBtn.frame = CGRectMake(0, Height-60-64, Width, 60);
+    buttomBtn.backgroundColor = [UIColor redColor];
+    [buttomBtn setTitle:@"找专家" forState:UIControlStateNormal];
+    [buttomBtn addTarget:self action:@selector(didClickSearchExpert:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buttomBtn];
+}
+
+- (void)didClickSearchExpert:(UIButton *)button
+{
+    NSLog(@"==");
+    KDSearchExpertViewController * searchVC = [[KDSearchExpertViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 #pragma mark - 在地图上显示专家
 - (void)addAnnotation
 {
-    NSMutableArray * arr = [NSMutableArray array];
-    for (KDExpertList * expert in _expertArray) {
+    [_mapView removeAnnotations:self.annotationArr];
+    [self.annotationArr removeAllObjects];
+
+    //解析数据
+    for (KDExpertList * expert in self.resultArray) {
         NSArray * ptArr = expert.geo;
         CLLocationDegrees latitude = [[ptArr objectAtIndex:0] doubleValue];
         CLLocationDegrees longitude = [[ptArr objectAtIndex:1] doubleValue];
         CLLocationCoordinate2D pt = CLLocationCoordinate2DMake(latitude,longitude);
         BMKPointAnnotation * annotion = [[BMKPointAnnotation alloc] init];
         annotion.coordinate = pt;
-        annotion.title = expert.name;
-        [arr addObject:annotion];
+        annotion.title = [NSString stringWithFormat:@"%ld",expert._id];
+        [self.annotationArr addObject:annotion];
     }
-    NSLog(@"%ld",arr.count);
-    [_mapView addAnnotations:arr];
+    NSLog(@"%ld",self.annotationArr.count);
+    [_mapView addAnnotations:self.annotationArr];
     
 }
 
+
+// 设置地图当前显示的区域
+- (void)setMapRegion:(NSArray * )arr
+{
+    if ([arr count]!=0) {
+        // determine the extents of the trip points that were passed in, and zoom in to that area.
+        CLLocationDegrees maxLat = -90;
+        CLLocationDegrees maxLng = -180;
+        CLLocationDegrees minLat = 90;
+        CLLocationDegrees minLng = 180;
+        
+        for(int i = 0; i < [arr count]; i++)
+        {
+            CLLocation *currentLocation = [arr objectAtIndex:i];
+            if(currentLocation.coordinate.latitude > maxLat)
+                maxLat = currentLocation.coordinate.latitude;
+            if(currentLocation.coordinate.latitude < minLat)
+                minLat = currentLocation.coordinate.latitude;
+            if(currentLocation.coordinate.longitude > maxLng)
+                maxLng = currentLocation.coordinate.longitude;
+            if(currentLocation.coordinate.longitude < minLng)
+                minLng = currentLocation.coordinate.longitude;
+        }
+        
+        BMKCoordinateRegion region;
+        region.center.latitude = (maxLat + minLat) / 2;
+        region.center.longitude = (maxLng + minLng) / 2;
+        region.span.latitudeDelta = maxLat - minLat;
+        region.span.longitudeDelta = maxLng - minLng;
+        BMKCoordinateRegion adjustedRegion = [_mapView regionThatFits:region];
+        [_mapView setRegion:adjustedRegion];
+    }
+}
+
+- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
+{
+    NSLog(@"%lf,%lf",coordinate.latitude,coordinate.longitude);
+    CLLocationDegrees latitude =  coordinate.latitude;
+    CLLocationDegrees longitude = coordinate.longitude;
+    [self getDataWithLatitude:longitude andLongitude:latitude];
+    
+}
+
+- (void)getDataWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude
+{
+
+    NSString * str = [NSString stringWithFormat:@"http://182.254.221.13:8080/api/v1.0/expert/list/%lf/%lf",latitude,longitude];
+    NSLog(@"%@",str);
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.resultArray removeAllObjects];
+        NSDictionary * dic = (NSDictionary *)responseObject;
+        NSArray * expertListArray = [dic objectForKey:@"list"];
+        for (NSDictionary * expertDic in expertListArray) {
+            KDExpertList * expert = [[KDExpertList alloc] init];
+            [expert setValuesForKeysWithDictionary:expertDic];
+            [self.resultArray addObject:expert];
+            
+        }
+        NSLog(@"%ld",self.resultArray.count);
+        [self addAnnotation];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+
+}
+
+#pragma mark - BMKMapViewDelegate
 - (BMKAnnotationView *)mapView:(BMKMapView *)view viewForAnnotation:(id <BMKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[BMKPointAnnotation class]]){
@@ -75,7 +190,11 @@
         annotationView.annotation = annotation;
         // 单击弹出泡泡，弹出泡泡前提annotation必须实现title属性
         annotationView.canShowCallout = YES;
+        annotationView.image = [UIImage imageNamed:@"iconfont-zhuanjiaku.png"];
+        //创建弹出的paopaoview
         KDMapView * view = [[KDMapView alloc] initWithFrame:CGRectMake(0, 0, 150, 100)];
+        view.detailButton.tag = [annotation.title integerValue];
+        [view.detailButton addTarget:self action:@selector(didClickEnterDetail:) forControlEvents:UIControlEventTouchUpInside];
         BMKActionPaopaoView *paopaoView = [[BMKActionPaopaoView alloc] initWithCustomView:view];
         paopaoView.frame = CGRectMake(0, 0, 150, 100);
         annotationView.paopaoView = paopaoView;
@@ -87,6 +206,23 @@
     return nil;
 
 }
+#pragma mark - 点击进入专家详情
+- (void)didClickEnterDetail:(UIButton *)button
+{
+    NSInteger expertId = button.tag;//通过tag值获取专家的id
+    KDExpertDetailViewController * detailVC = [[KDExpertDetailViewController alloc] init];
+    detailVC.urlId = expertId;
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+#pragma mark - 点击标注
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+{
+    BMKPointAnnotation * annotation = view.annotation;
+    
+    [_mapView setCenterCoordinate:annotation.coordinate animated:NO];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -96,7 +232,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    _mapView.delegate  = self;
+    _mapView.delegate  = self;
     
 }
 

@@ -37,5 +37,9 @@
     self.jobLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 50, 100, 40)];
     _jobLabel.text = @"CEO";
     [self addSubview:_jobLabel];
+    self.detailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _detailButton.frame = CGRectMake(100,30, 40, 40);
+    [_detailButton setImage:[UIImage imageNamed:@"iconfont-iconfontleft.png"] forState:UIControlStateNormal];
+    [self addSubview:_detailButton];
 }
 @end

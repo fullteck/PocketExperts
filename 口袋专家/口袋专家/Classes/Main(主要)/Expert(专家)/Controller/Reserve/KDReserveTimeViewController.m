@@ -7,13 +7,18 @@
 //
 
 #import "KDReserveTimeViewController.h"
-#import "KDExpertDetailViewController.h"
-#import "RBCustomDatePickerView.h"
-#import "KDReserveInfoViewController.h"
-#define Width [[UIScreen mainScreen] bounds].size.width
-#define Height [[UIScreen mainScreen] bounds].size.height
 
-@interface KDReserveTimeViewController ()
+#import "KDExpertDetailViewController.h"
+
+#import "RBCustomDatePickerView.h"
+
+#import "KDReserveInfoViewController.h"
+
+
+#import "KDConst.h"
+
+
+@interface KDReserveTimeViewController ()<UIActionSheetDelegate>
 {
     NSString * type;
     NSString * title;
@@ -135,15 +140,24 @@
 //选择时间按钮
 - (void)didClickPickTime:(UIButton *)button
 {
-    if (pickViewIsShow == NO) {
-        
-    [UIView animateWithDuration:1.5 animations:^{
-        self.timePickView = [[RBCustomDatePickerView alloc] initWithFrame:CGRectMake(0, 100, Width, Height)];
-        [self.view addSubview:_timePickView];
-        pickViewIsShow = YES;
-    }];
-        
-    }
+//    if (pickViewIsShow == NO) {
+//        
+//    [UIView animateWithDuration:1.5 animations:^{
+//        self.timePickView = [[RBCustomDatePickerView alloc] initWithFrame:CGRectMake(0, 100, Width, Height)];
+//        [self.view addSubview:_timePickView];
+//        pickViewIsShow = YES;
+//    }];
+//        
+//    }
+//    KDTimeActionSheet * sheet = [[KDTimeActionSheet alloc] initWithHeight:284.0f WithSheetTitle:@"timePicker"];
+//    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0,44, 320, 240)];
+//    label.text = @"在这你想干啥就干啥";
+//    label.backgroundColor = [UIColor redColor];
+//    label.textAlignment = NSTextAlignmentCenter;
+//    [sheet.view addSubview:label];
+//    [sheet showInView:self.view];
+
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
