@@ -125,7 +125,7 @@
     CGFloat leftLineX = DefaultFrameY*3;
     CGFloat leftLineY = 0;
     CGFloat leftLineW = 2;
-    CGFloat leftLineH = CGRectGetMaxY(_bubbleView.frame)+35.0f;
+    CGFloat leftLineH = CGRectGetMaxY(_bubbleView.frame)+20.0f;
     _leftLine.frame = CGRectMake(leftLineX, leftLineY, leftLineW, leftLineH);
     
     //midLine 的 frame
@@ -178,7 +178,7 @@
 #pragma clang diagnostic pop
     
     if (bubbleSize.height>45.0f) {
-        height = bubbleSize.height + 20.0f;
+        height = bubbleSize.height + 45.0f;
     }
     return height;
 }

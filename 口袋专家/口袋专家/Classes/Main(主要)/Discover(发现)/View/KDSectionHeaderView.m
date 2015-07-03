@@ -21,12 +21,4 @@
 - (void)addTarget:(id)target action:(SEL)action {
     [self.btn  addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 @end
