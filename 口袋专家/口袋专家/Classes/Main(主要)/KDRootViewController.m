@@ -35,7 +35,6 @@
     UINavigationController * NC1 = [[UINavigationController alloc] initWithRootViewController:expertVC];
     
     KDDiscoverTableViewController * disCoverTVC = [[KDDiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
-//    disCoverTVC.tableView.frame = [[UIScreen mainScreen] bounds];
     disCoverTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"发现" image:[UIImage imageNamed:@"iconfont-faxian.png"] tag:101];
     UINavigationController * NC2 = [[UINavigationController alloc] initWithRootViewController:disCoverTVC];
     

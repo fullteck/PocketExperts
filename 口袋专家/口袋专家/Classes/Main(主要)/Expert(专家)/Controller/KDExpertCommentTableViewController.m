@@ -33,7 +33,7 @@
     
     [self getNetworkRequest];
 }
-
+#pragma mark - 网络请求
 - (void)getNetworkRequest
 {
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
@@ -51,12 +51,7 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
+#pragma mark - Table view dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.resultArray.count;
 }
@@ -73,16 +68,22 @@
     KDExpertCommentCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     KDExpertComment * comment = [self.resultArray objectAtIndex:indexPath.row];
     cell.comment = comment;
-    
     return cell;
-
-
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 150;
 }
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 /*
 // Override to support conditional editing of the table view.

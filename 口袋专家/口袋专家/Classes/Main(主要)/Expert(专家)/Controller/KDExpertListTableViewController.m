@@ -31,12 +31,12 @@
 }
 
 #pragma mark---tableView协议中的方法
+//numberOfRow
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%ld",_expertArray.count);
     return _expertArray.count;
 }
-
+//cellForRow
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString * identifier = @"expertList";
@@ -51,20 +51,20 @@
     cell.expert = expert;
     
     return cell;
-    
-    
 }
 
+//heightForRow
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
 }
-
+//didSelectRow
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KDExpertDetailViewController * expertDetailVC = [[KDExpertDetailViewController alloc] init];
     KDExpertList * expert = [_expertArray objectAtIndex:indexPath.row];
     expertDetailVC.urlId = expert._id;
+    [expertDetailVC setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:expertDetailVC animated:YES];
 }
 

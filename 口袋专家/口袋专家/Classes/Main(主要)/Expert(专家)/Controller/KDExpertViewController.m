@@ -98,7 +98,7 @@
 
 }
 
-
+#pragma mark - 开始定位
 - (void)startLocation
 {
     //设置定位精确度，默认：kCLLocationAccuracyBest
@@ -113,6 +113,7 @@
     [_locService startUserLocationService];
 }
 
+#pragma mark - 把两个控制器添加到容器视图控制器中
 - (void)addChildController
 {
     //将专家列表和专家地图两个视图添加到视图容器控制器
@@ -149,25 +150,6 @@
     
 }
 
-- (void)KDRootViewControllerChangeStatus:(ExpertStatus)status
-{
-    switch (status) {
-        case ExpertStatusList:
-            if (self.listTVC.view.superview == nil) {
-                [self.view addSubview:self.listTVC.view];
-                [self.mapVC.view removeFromSuperview];
-                [self.delegate KDExpertViewControllerNavigationBar:ExpertStatusList];
-            }
-            break;
-        case ExpertStatusMap:
-            if (self.mapVC.view.superview == nil) {
-                [self.view addSubview:self.mapVC.view];
-                [_listTVC.view removeFromSuperview];
-                [self.delegate KDExpertViewControllerNavigationBar:ExpertStatusMap];
-            }
-            break;
-    }
-}
 
 #pragma mark - BMKUserLocationDetegate
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
