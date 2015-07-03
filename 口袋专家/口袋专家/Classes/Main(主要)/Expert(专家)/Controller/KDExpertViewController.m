@@ -7,17 +7,10 @@
 //
 
 #import "KDExpertViewController.h"
-
 #import "KDExpertListTableViewController.h"
-
 #import "KDExpertMapViewController.h"
-
-#import "RootViewController.h"
-
 #import "AFNetworking.h"
-
 #import "KDExpertList.h"
-
 #import "KDConst.h"
 
 #import <BaiduMapAPI/BMapKit.h>//引入所有的头文件
@@ -149,8 +142,6 @@
     }];
     
 }
-
-
 #pragma mark - BMKUserLocationDetegate
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {

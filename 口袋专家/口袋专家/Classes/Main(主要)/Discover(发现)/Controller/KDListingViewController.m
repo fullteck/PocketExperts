@@ -40,25 +40,31 @@
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
     [self.view addSubview:_myTableView];
+    
+    /** 设置 HeadView */
     self.listingHeadView = [[KDListingHeadView alloc] initWithFrame:CGRectMake(0, 0, Width, 85)];
     _myTableView.tableHeaderView = _listingHeadView;
     
 }
 #pragma mark - 加载数据
 - (void)loadData {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:URL_List parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *dic = responseObject[INV];
-        self.listDic = dic;
-        
-        NSArray *dataArray = [KDListModel objectArrayWithKeyValuesArray:dic[INVTOPIC]];
-        self.dataArray = dataArray;
-        [_myTableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (error) {
-            NSLog(@"%@",error);
-        }
-    }];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:URL_List parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *dic = responseObject[INV];
+            self.listDic = dic;
+            
+            NSArray *dataArray = [KDListModel objectArrayWithKeyValuesArray:dic[INVTOPIC]];
+            self.dataArray = dataArray;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_myTableView reloadData];
+            });
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (error) {
+                NSLog(@"%@",error);
+            }
+        }];
+    });
 }
 #pragma mark - 懒加载
 - (NSDictionary *)listDic {
@@ -96,16 +102,14 @@
     return cell;
 }
 
-- (void)pushToExperts {
-    NSLog(@"按钮被点击了!");
-}
-- (void)didClickChangeProfessor:(UIButton *)button {
-    NSLog(@"换专家");
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     KDListModel *listModel = self.dataArray[indexPath.row];
     CGFloat height = [KDListingCell cellWithHeight:listModel.content];
     return height + 130.0f;
 }
+#pragma mark - 专家列表按钮点击事件
+- (void)pushToExperts {
+    NSLog(@"按钮被点击了!");
+}
+
 @end

@@ -15,9 +15,9 @@
 #import "KDExpertListCell.h"
 
 #import "KDExpertDetailViewController.h"
-
-#import "KDConst.h"
-
+#define Width [[UIScreen mainScreen] bounds].size.width
+#define Height [[UIScreen mainScreen] bounds].size.height
+#define kNetRequestUrl @"http://182.254.221.13:8080/api/v1.0/expert/list/0.0/2.0"
 
 @interface KDExpertListTableViewController ()
 

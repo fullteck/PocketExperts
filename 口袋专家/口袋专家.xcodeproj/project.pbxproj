@@ -55,8 +55,6 @@
 		C7249D9D1B33C552009C448C /* KDConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249D921B33C552009C448C /* KDConst.m */; };
 		C7249DA51B33C7B9009C448C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C7249DA31B33C7B9009C448C /* AppDelegate.mm */; };
 		C7249DA61B33C7B9009C448C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DA41B33C7B9009C448C /* main.m */; };
-		C7249DB21B33C8B1009C448C /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DB11B33C8B1009C448C /* PPRevealSideViewController.m */; };
-		C7249DB51B33E68F009C448C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DB41B33E68F009C448C /* RootViewController.m */; };
 		C7249DB81B33E70C009C448C /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DB71B33E70C009C448C /* LeftViewController.m */; };
 		C7249DC01B33ED77009C448C /* KDDiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DBC1B33ED77009C448C /* KDDiscoverTableViewController.m */; };
 		C7249DC21B33ED77009C448C /* KDListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249DBF1B33ED77009C448C /* KDListingViewController.m */; };
@@ -197,10 +195,6 @@
 		C7249DA21B33C7B9009C448C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C7249DA31B33C7B9009C448C /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		C7249DA41B33C7B9009C448C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C7249DB01B33C8B1009C448C /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
-		C7249DB11B33C8B1009C448C /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
-		C7249DB31B33E68F009C448C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		C7249DB41B33E68F009C448C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C7249DB61B33E70C009C448C /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		C7249DB71B33E70C009C448C /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		C7249DBB1B33ED77009C448C /* KDDiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDDiscoverTableViewController.h; sourceTree = "<group>"; };
@@ -454,8 +448,6 @@
 				C7249D811B33C552009C448C /* Expert(专家) */,
 				C7249D851B33C552009C448C /* Login(登录) */,
 				C7249D891B33C552009C448C /* User(个人中心) */,
-				C7249DB31B33E68F009C448C /* RootViewController.h */,
-				C7249DB41B33E68F009C448C /* RootViewController.m */,
 				C7249DB61B33E70C009C448C /* LeftViewController.h */,
 				C7249DB71B33E70C009C448C /* LeftViewController.m */,
 				A0D557C71B46658500C3133F /* KDRootViewController.h */,
@@ -746,8 +738,6 @@
 				A08C32471B4143DB0049D6A0 /* UIPopoverListView.h */,
 				A08C32481B4143DB0049D6A0 /* UIPopoverListView.m */,
 				A0FC561A1B3D2A0800580677 /* CycleScollview */,
-				C7249DB01B33C8B1009C448C /* PPRevealSideViewController.h */,
-				C7249DB11B33C8B1009C448C /* PPRevealSideViewController.m */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
@@ -938,7 +928,6 @@
 				C7A03E101B3A58C200FC8F6A /* KDExpertIntroCell.m in Sources */,
 				A0596DC71B3A6537008AD558 /* KDExpertCommentTableViewController.m in Sources */,
 				A08C32431B4135980049D6A0 /* KDReserveInfoViewController.m in Sources */,
-				C7249DB51B33E68F009C448C /* RootViewController.m in Sources */,
 				A08E7D141B43D851001899B3 /* KDSearchExpertViewController.m in Sources */,
 				C7249DA61B33C7B9009C448C /* main.m in Sources */,
 				C7A03E181B3A58CB00FC8F6A /* KDExpertComment.m in Sources */,
@@ -953,7 +942,6 @@
 				C78811321B3C133E00813D65 /* KDExpertsTableViewController.m in Sources */,
 				C7249DD11B33ED8A009C448C /* KDListingCell.m in Sources */,
 				A0EFAF2A1B3BE147000F612C /* KDExpertEdu.m in Sources */,
-				C7249DB21B33C8B1009C448C /* PPRevealSideViewController.m in Sources */,
 				C7CA87F01B393468002C167F /* KDExpertListTableViewController.m in Sources */,
 				C78811381B3D41D800813D65 /* KDTopicScroll.m in Sources */,
 				A0EFAF241B3BB2DE000F612C /* KDReserveTimeViewController.m in Sources */,

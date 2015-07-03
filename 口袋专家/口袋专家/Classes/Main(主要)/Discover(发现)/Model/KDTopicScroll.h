@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface KDTopicScroll : NSObject
+/** scrollView 的图片 ID */
 @property (nonatomic ,assign) NSInteger _id;
+/** 排序 */
 @property (nonatomic ,assign) NSInteger sort;
+/** 图片地址 */
 @property (nonatomic ,copy) NSString *fileurl;
 
 
