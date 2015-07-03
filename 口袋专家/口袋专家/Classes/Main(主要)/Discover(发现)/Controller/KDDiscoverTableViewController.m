@@ -7,26 +7,16 @@
 //
 
 #import "KDDiscoverTableViewController.h"
-
-#import "KDListingViewController.h"
-
-#import "KDFirstTableViewCell.h"
-
-#import "KDConst.h"
-
 #import "KDExpertTeamTableViewController.h"
-
-#import "AFNetworking.h"
-
-#import "MJExtension.h"
-
-#import "KDTopicScroll.h"
-
-#import "KDExpertTeam.h"
-
+#import "KDListingViewController.h"
+#import "KDFirstTableViewCell.h"
 #import "UIImageView+WebCache.h"
-
+#import "KDTopicScroll.h"
+#import "AFNetworking.h"
+#import "KDExpertTeam.h"
 #import "KDExpertList.h"
+#import "MJExtension.h"
+#import "KDConst.h"
 
 @interface KDDiscoverTableViewController ()<UIScrollViewDelegate> {
     UIScrollView *_scrollView;      /** 顶部的 scrollView */
@@ -39,32 +29,22 @@
 @property (nonatomic, strong) NSMutableArray *dataArray;
 /** 存储专家团的数组 */
 @property (nonatomic, strong) NSMutableArray *expertsArray;
-
 @end
-
 @implementation KDDiscoverTableViewController
-
 - (instancetype)initWithStyle:(UITableViewStyle)style
 {
     if (self = [super initWithStyle:style]) {
-        
     self.automaticallyAdjustsScrollViewInsets = NO;
-
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = @"发现";
-    
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
     self.tableView.showsVerticalScrollIndicator = NO;
-
 }
-
+#pragma mark - 懒加载
 - (NSMutableArray *)scrollArray {
     if (_scrollArray == nil) {
         _scrollArray = [NSMutableArray arrayWithCapacity:10];
@@ -99,28 +79,24 @@
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"error = %@",error);
             }];
-
         });
                     }
     return _dataArray;
 }
-
+#pragma mark - 加载 scrollView 和 pageController
 - (void)initWithImageAndPageControl
 {
     _scrollView = [[UIScrollView alloc] init];
-    
     _scrollView.frame = CGRectMake(0, 64, 0, 180);
-    
     _scrollView.contentSize = CGSizeMake(Width*self.scrollArray.count, 0);
-    
     _scrollView.showsHorizontalScrollIndicator = NO;
     
+    /** 加载 scrollView 上的图片 */
     for (int i = 0; i < self.scrollArray.count; i++) {
         @autoreleasepool {
             KDTopicScroll *topicImage = self.scrollArray[i];
             UIImageView * picImage = [[UIImageView alloc] initWithFrame:CGRectMake(Width*i, 0, Width, 200)];
-            NSURL *url = [NSURL URLWithString:topicImage.fileurl];
-            [picImage sd_setImageWithURL:url];
+            [picImage sd_setImageWithURL:[NSURL URLWithString:topicImage.fileurl]];
             picImage.tag = 100+i;
             [_scrollView addSubview:picImage];
         }
@@ -128,35 +104,28 @@
    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(Width/2.5, 130, 15*self.scrollArray.count, 50)];
     _pageControl.pageIndicatorTintColor = [UIColor blackColor];
     _pageControl.numberOfPages = self.scrollArray.count;
-    
     [self.tableView addSubview:_pageControl];
-    
     [self.tableView bringSubviewToFront:_pageControl];
-    
     [_pageControl addTarget:self action:@selector(didClickPageChange:) forControlEvents:UIControlEventValueChanged];
     [self addTimer];
     [_scrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didEnterListing:)]];
-    
     self.tableView.tableHeaderView = _scrollView;
-    
     [self.tableView addSubview:_pageControl];
-    
     _scrollView.delegate = self;
 }
-//点击pageControl
+#pragma mark - pageControl的点击事件
 - (void)didClickPageChange:(UIPageControl *)pageControl
 {
     NSLog(@"====");
 }
 #pragma mark-----------定时器
-//添加定时器
 - (void)addTimer
 {
     _timer=[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     
 }
-//换到图片的下一张
+#pragma mark - 换到图片的下一张
 - (void)nextImage
 {
     int page = (int)_pageControl.currentPage;
@@ -171,7 +140,7 @@
     _scrollView.contentOffset=CGPointMake(X, 0);
     
 }
-//移除定时器
+#pragma mark - 移除定时器
 - (void)removieTimer
 {
     [_timer invalidate];
@@ -226,7 +195,6 @@
     KDExpertTeam *expertTeam = self.dataArray[indexPath.row];
     cell.topicName.text = expertTeam.title;
     cell.topicIntroduce.text = expertTeam.intro;
-//    cell.comment.text = [NSString stringWithFormat:@"%lu",expertTeam.pri];
     cell.expertNumber.text = [NSString stringWithFormat:@"%lu",expertTeam.exp_count];
     cell.expertsArray = expertTeam.expert;
     return cell;

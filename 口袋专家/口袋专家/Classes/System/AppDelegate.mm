@@ -7,16 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
 #import "KDBaseNavigationController.h"
-
-#import "PPRevealSideViewController.h"
-
-#import "RootViewController.h"
-
-#import "LeftViewController.h"
-
 #import "KDRootViewController.h"
+#import "LeftViewController.h"
 
 @interface AppDelegate ()
 

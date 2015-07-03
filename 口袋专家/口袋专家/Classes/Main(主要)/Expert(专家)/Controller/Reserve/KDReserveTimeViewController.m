@@ -144,7 +144,6 @@
         self.timePickView = [[KDTimePickView alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
         [_timePickView.cancleBtn addTarget:self action:@selector(didClickDismiss:) forControlEvents:UIControlEventTouchUpInside];
         [_timePickView.ensureBtn addTarget:self action:@selector(didClickEnsure:) forControlEvents:UIControlEventTouchUpInside];
-        
         [self.view.window addSubview:_timePickView];
         pickViewIsShow = YES;
     }

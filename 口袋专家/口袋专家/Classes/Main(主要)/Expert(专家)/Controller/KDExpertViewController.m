@@ -7,17 +7,10 @@
 //
 
 #import "KDExpertViewController.h"
-
 #import "KDExpertListTableViewController.h"
-
 #import "KDExpertMapViewController.h"
-
-#import "RootViewController.h"
-
 #import "AFNetworking.h"
-
 #import "KDExpertList.h"
-
 #import "KDConst.h"
 
 #import <BaiduMapAPI/BMapKit.h>//引入所有的头文件
@@ -147,26 +140,6 @@
         NSLog(@"%@",error);
     }];
     
-}
-
-- (void)KDRootViewControllerChangeStatus:(ExpertStatus)status
-{
-    switch (status) {
-        case ExpertStatusList:
-            if (self.listTVC.view.superview == nil) {
-                [self.view addSubview:self.listTVC.view];
-                [self.mapVC.view removeFromSuperview];
-                [self.delegate KDExpertViewControllerNavigationBar:ExpertStatusList];
-            }
-            break;
-        case ExpertStatusMap:
-            if (self.mapVC.view.superview == nil) {
-                [self.view addSubview:self.mapVC.view];
-                [_listTVC.view removeFromSuperview];
-                [self.delegate KDExpertViewControllerNavigationBar:ExpertStatusMap];
-            }
-            break;
-    }
 }
 
 #pragma mark - BMKUserLocationDetegate
