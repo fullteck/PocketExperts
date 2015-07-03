@@ -14,17 +14,22 @@
 
 #import "KDReserveInfoViewController.h"
 
-
 #import "KDConst.h"
+
+#import "KDTimePickView.h"
 
 
 @interface KDReserveTimeViewController ()<UIActionSheetDelegate>
 {
-    NSString * type;
-    NSString * title;
+    NSString * _type;
+    NSString * _title;
+    NSString * _reserveTime;
     BOOL pickViewIsShow;
 }
-@property(nonatomic,strong)RBCustomDatePickerView * timePickView;
+
+@property(nonatomic,strong)KDTimePickView * timePickView;//时间选择
+
+@property(nonatomic,strong)UIButton * timePickButton;
 
 @end
 
@@ -34,9 +39,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    type = [_infroDic objectForKey:@"kind"];
+    _type = [_infroDic objectForKey:@"kind"];
     [self ensureButtonTitle];
+    
     [self createBarButtonItems];
+    
     [self createSubviews];
 }
             
@@ -48,7 +55,7 @@
 {
     UIBarButtonItem * leftBI = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonItemStyleDone target:self action:@selector(didClickCancle:)];
     self.navigationItem.leftBarButtonItem = leftBI;
-    if ([type isEqualToString:@"0"]) {
+    if ([_type isEqualToString:@"0"]) {
         UIBarButtonItem * rightBI = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(didClickRightBI:)];
         self.navigationItem.rightBarButtonItem = rightBI;
     }else{
@@ -71,18 +78,10 @@
 
 - (void)didClickCommit:(UIBarButtonItem *)BI
 {
-    BOOL result = _timePickView.timeIsOk;
-    NSLog(@"%d",result);
-    if (_timePickView.timeIsOk == YES) {
-        NSLog(@"点击了提交");
 
         KDReserveInfoViewController * infoVC = [[KDReserveInfoViewController alloc] init];
         [self.navigationController pushViewController:infoVC animated:YES];
-        
 
-    }else{
-        NSLog(@"时间有误");
-    }
 }
 
 
@@ -93,7 +92,7 @@
 
 - (void)createSubviews
 {
-    if ([type isEqualToString:@"0"]) {
+    if ([_type isEqualToString:@"0"]) {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(100, 100, 100, 100);
         button.backgroundColor = [UIColor blackColor];
@@ -110,19 +109,19 @@
         UIButton * immediateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         immediateButton.frame = CGRectMake(20, 110+64, Width-40, 60);
         immediateButton.backgroundColor = [UIColor cyanColor];
-        if ([type isEqualToString:@"1"]) {
+        if ([_type isEqualToString:@"1"]) {
             [immediateButton setTitle:@"立即通话" forState:UIControlStateNormal];
         }else{
             [immediateButton setTitle:@"立即见面" forState:UIControlStateNormal];
         }
         [immediateButton addTarget:self action:@selector(didClickImmediateMeet:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:immediateButton];
-        UIButton * timePickButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        timePickButton.frame = CGRectMake(20, 180+64, Width-40, 60);
-        timePickButton.backgroundColor = [UIColor cyanColor];
-        [timePickButton setTitle:@"选择时间" forState:UIControlStateNormal];
-        [timePickButton addTarget:self action:@selector(didClickPickTime:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:timePickButton];
+        self.timePickButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        _timePickButton.frame = CGRectMake(20, 180+64, Width-40, 60);
+        _timePickButton.backgroundColor = [UIColor cyanColor];
+        [_timePickButton setTitle:@"选择时间" forState:UIControlStateNormal];
+        [_timePickButton addTarget:self action:@selector(didClickPickTime:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_timePickButton];
     }
 }
 
@@ -140,39 +139,54 @@
 //选择时间按钮
 - (void)didClickPickTime:(UIButton *)button
 {
-//    if (pickViewIsShow == NO) {
-//        
-//    [UIView animateWithDuration:1.5 animations:^{
-//        self.timePickView = [[RBCustomDatePickerView alloc] initWithFrame:CGRectMake(0, 100, Width, Height)];
-//        [self.view addSubview:_timePickView];
-//        pickViewIsShow = YES;
-//    }];
-//        
-//    }
-//    KDTimeActionSheet * sheet = [[KDTimeActionSheet alloc] initWithHeight:284.0f WithSheetTitle:@"timePicker"];
-//    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0,44, 320, 240)];
-//    label.text = @"在这你想干啥就干啥";
-//    label.backgroundColor = [UIColor redColor];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    [sheet.view addSubview:label];
-//    [sheet showInView:self.view];
+
+    if (pickViewIsShow == NO) {
+        self.timePickView = [[KDTimePickView alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];
+        [_timePickView.cancleBtn addTarget:self action:@selector(didClickDismiss:) forControlEvents:UIControlEventTouchUpInside];
+        [_timePickView.ensureBtn addTarget:self action:@selector(didClickEnsure:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view.window addSubview:_timePickView];
+        pickViewIsShow = YES;
+    }
 
     
 }
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+#pragma mark - TimePickerView上面按钮的点击事件
+//取消按钮
+- (void)didClickDismiss:(UIButton *)button
 {
-    if (pickViewIsShow == YES) {
-        [_timePickView removeFromSuperview];
-        pickViewIsShow = NO;
-        _timePickView.timeIsOk = YES;
-    }
+    [self timePickerViewDismiss];
+}
+//确定按钮
+- (void)didClickEnsure:(UIButton *)button
+{
+    // 获取用户通过UIDatePicker设置的日期和时间
+    NSDate *selected = [_timePickView.datePicker date];
+    // 创建一个日期格式器
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    // 为日期格式器设置格式字符串
+    [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];
+    // 使用日期格式器格式化日期、时间
+    NSString *destDateString = [dateFormatter stringFromDate:selected];
+    NSString *message =  [NSString stringWithFormat:
+                          @"您选择的日期和时间是：%@", destDateString];
+    NSLog(@"%@",message);
+
+    [self timePickerViewDismiss];
+    _reserveTime = destDateString;
+    [_timePickButton setTitle:_reserveTime forState:UIControlStateNormal];
+    
+
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+//讲view移除
+- (void)timePickerViewDismiss
 {
-    [super viewWillDisappear:animated];
+    [_timePickView removeFromSuperview];
+    pickViewIsShow = NO;
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {

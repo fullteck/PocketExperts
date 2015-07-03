@@ -7,11 +7,18 @@
 //
 
 #import "LeftViewController.h"
+
 #import "KDLeftHeadTableViewCell.h"
+
 #import "KDLeftSwitchTableViewCell.h"
 
+#import "KDMyReserveTableViewController.h"
+
+#import "KDConst.h"
+
 @interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (nonatomic, retain)UITableView *tableView;
+@property (nonatomic, strong)UITableView *tableView;
+@property (nonatomic, strong)NSArray * titleArray;
 @end
 
 @implementation LeftViewController
@@ -19,9 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300, 640) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Width, Height) style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
-    
+    self.titleArray = @[@"我的预约",@"我的智囊团",@"我的钱包",@"我的消息",@"分享赚时间",@"帮助中心"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
@@ -59,9 +66,20 @@
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
-        cell.textLabel.text = @"个人中心";
+        cell.textLabel.text = [self.titleArray objectAtIndex:indexPath.row - 2];
         
         return cell;
     }
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2) {
+        KDMyReserveTableViewController * myReserveTVC = [[KDMyReserveTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        NSLog(@"%@",self.navigationController);
+        [self.navigationController pushViewController:myReserveTVC animated:YES];
+    }
+}
+
+
 @end

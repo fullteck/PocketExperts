@@ -7,10 +7,16 @@
 //
 
 #import "AppDelegate.h"
+
 #import "KDBaseNavigationController.h"
+
 #import "PPRevealSideViewController.h"
+
 #import "RootViewController.h"
+
 #import "LeftViewController.h"
+
+#import "KDRootViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,11 +32,14 @@
     
 //    MainViewController *mainViewController = [[MainViewController alloc] init];
     
-    RootViewController *rootVC = [[RootViewController alloc] init];
+//    RootViewController *rootVC = [[RootViewController alloc] init];
+//    
+//    KDBaseNavigationController *navigationController = [[KDBaseNavigationController alloc] initWithRootViewController:rootVC];
+//
+//    self.window.rootViewController = [[PPRevealSideViewController alloc] initWithRootViewController:navigationController];
     
-    KDBaseNavigationController *navigationController = [[KDBaseNavigationController alloc] initWithRootViewController:rootVC];
-
-    self.window.rootViewController = [[PPRevealSideViewController alloc] initWithRootViewController:navigationController];
+    KDRootViewController * rootVC = [[KDRootViewController alloc] init];
+    self.window.rootViewController = rootVC;
     
     
     _mapManager = [[BMKMapManager alloc] init];
