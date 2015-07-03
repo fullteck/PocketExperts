@@ -17,8 +17,16 @@
 #import "AFNetworking.h"
 
 #import "KDExpertList.h"
-#define kNetRequestUrl @"http://182.254.221.13:8080/api/v1.0/expert/list/0.0/2.0"
-@interface KDExpertViewController ()
+
+#import "KDConst.h"
+
+#import <BaiduMapAPI/BMapKit.h>//引入所有的头文件
+
+@interface KDExpertViewController ()<BMKLocationServiceDelegate>
+{
+    BMKLocationService *_locService;
+
+}
 @property(nonatomic,strong)KDExpertListTableViewController *listTVC;
 @property(nonatomic,strong)KDExpertMapViewController *mapVC;
 
