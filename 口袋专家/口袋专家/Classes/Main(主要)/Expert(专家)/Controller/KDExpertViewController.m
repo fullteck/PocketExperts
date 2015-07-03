@@ -25,6 +25,9 @@
 @interface KDExpertViewController ()<BMKLocationServiceDelegate>
 {
     BMKLocationService *_locService;
+    UIBarButtonItem *_rightItem;
+    UIBarButtonItem *_ListItem;
+    UIBarButtonItem *_tempItem;
 
 }
 @property(nonatomic,strong)KDExpertListTableViewController *listTVC;
@@ -59,6 +62,7 @@
 
     self.title = @"专家";
     
+    [self buildBarButtonItem];
     
     [self startLocation];
 
@@ -66,6 +70,34 @@
 
     [self addChildController];
 }
+
+- (void)buildBarButtonItem
+{
+    _rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-ditu"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeMapPage:)];
+    self.navigationItem.rightBarButtonItem = _rightItem;
+    _ListItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-liebiao"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeListPage:)];
+}
+//切换到地图模式
+- (void)ChangeMapPage:(UIBarButtonItem *)BI
+{
+    if (_mapVC.view.superview == nil) {
+        [self.view addSubview:_mapVC.view];
+        [_listTVC.tableView removeFromSuperview];
+        self.navigationItem.rightBarButtonItem = _ListItem;
+    }
+
+}
+//切换到列表模式
+- (void)ChangeListPage:(UIBarButtonItem *)BI
+{
+    if (_listTVC.tableView.superview == nil) {
+        [self.view addSubview:_listTVC.tableView];
+        [_mapVC.view removeFromSuperview];
+        self.navigationItem.rightBarButtonItem = _rightItem;
+    }
+
+}
+
 
 - (void)startLocation
 {
@@ -107,8 +139,9 @@
             KDExpertList * expert = [[KDExpertList alloc] init];
             [expert setValuesForKeysWithDictionary:expertDic];
             [self.expertArray addObject:expert];
-
+            [self.listTVC.tableView reloadData];
         }
+        NSLog(@"%@",self.expertArray);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);

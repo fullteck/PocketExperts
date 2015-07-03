@@ -7,15 +7,25 @@
 //
 
 #import "KDDiscoverTableViewController.h"
+
 #import "KDListingViewController.h"
+
 #import "KDFirstTableViewCell.h"
+
 #import "KDConst.h"
+
 #import "KDExpertTeamTableViewController.h"
+
 #import "AFNetworking.h"
+
 #import "MJExtension.h"
+
 #import "KDTopicScroll.h"
+
 #import "KDExpertTeam.h"
+
 #import "UIImageView+WebCache.h"
+
 #import "KDExpertList.h"
 
 @interface KDDiscoverTableViewController ()<UIScrollViewDelegate> {
@@ -99,7 +109,7 @@
 {
     _scrollView = [[UIScrollView alloc] init];
     
-    _scrollView.frame = CGRectMake(0, 0, 0, 180);
+    _scrollView.frame = CGRectMake(0, 64, 0, 180);
     
     _scrollView.contentSize = CGSizeMake(Width*self.scrollArray.count, 0);
     
