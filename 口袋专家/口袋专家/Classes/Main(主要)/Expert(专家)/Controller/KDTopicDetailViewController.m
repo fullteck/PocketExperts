@@ -50,7 +50,7 @@
 - (void)getNetWorkRequest
 {
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:kNetUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:kTopicDetail parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary * dic = responseObject[@"topic"];
         self.content.text = dic[@"con"];
         

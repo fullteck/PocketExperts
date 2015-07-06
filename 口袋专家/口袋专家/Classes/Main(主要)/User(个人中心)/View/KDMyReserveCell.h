@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KDMyReserve.h"
+
 
 @interface KDMyReserveCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headPic;
@@ -17,5 +19,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *stateBtn;
 @property (weak, nonatomic) IBOutlet UIButton *radioBtn;
-
+@property(nonatomic,strong)KDMyReserve * reserve;
 @end

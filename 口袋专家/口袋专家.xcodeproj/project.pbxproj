@@ -30,6 +30,9 @@
 		A0B1C6071B428CE900D67465 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B1C6061B428CE900D67465 /* OpenGLES.framework */; };
 		A0B1C6091B428D0B00D67465 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B1C6081B428D0B00D67465 /* Security.framework */; };
 		A0B1C6131B42AD0300D67465 /* KDMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B1C6121B42AD0300D67465 /* KDMapView.m */; };
+		A0D328171B4A315400129DD0 /* KDMyReserve.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D328161B4A315400129DD0 /* KDMyReserve.m */; };
+		A0D3281E1B4A6AB200129DD0 /* KDReserveDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D3281C1B4A6AB200129DD0 /* KDReserveDetailViewController.m */; };
+		A0D3281F1B4A6AB200129DD0 /* KDReserveDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0D3281D1B4A6AB200129DD0 /* KDReserveDetailViewController.xib */; };
 		A0D557C61B462B1D00C3133F /* KDHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D557C51B462B1D00C3133F /* KDHandle.m */; };
 		A0D557C91B46658500C3133F /* KDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D557C81B46658500C3133F /* KDRootViewController.m */; };
 		A0D557CB1B4668DB00C3133F /* iconfont-faxian.png in Resources */ = {isa = PBXBuildFile; fileRef = A0D557CA1B4668DB00C3133F /* iconfont-faxian.png */; };
@@ -150,6 +153,11 @@
 		A0B1C6081B428D0B00D67465 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A0B1C6111B42AD0300D67465 /* KDMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDMapView.h; sourceTree = "<group>"; };
 		A0B1C6121B42AD0300D67465 /* KDMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDMapView.m; sourceTree = "<group>"; };
+		A0D328151B4A315400129DD0 /* KDMyReserve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDMyReserve.h; sourceTree = "<group>"; };
+		A0D328161B4A315400129DD0 /* KDMyReserve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDMyReserve.m; sourceTree = "<group>"; };
+		A0D3281B1B4A6AB200129DD0 /* KDReserveDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDReserveDetailViewController.h; sourceTree = "<group>"; };
+		A0D3281C1B4A6AB200129DD0 /* KDReserveDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDReserveDetailViewController.m; sourceTree = "<group>"; };
+		A0D3281D1B4A6AB200129DD0 /* KDReserveDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDReserveDetailViewController.xib; sourceTree = "<group>"; };
 		A0D557C41B462B1D00C3133F /* KDHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDHandle.h; sourceTree = "<group>"; };
 		A0D557C51B462B1D00C3133F /* KDHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDHandle.m; sourceTree = "<group>"; };
 		A0D557C71B46658500C3133F /* KDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDRootViewController.h; sourceTree = "<group>"; };
@@ -656,6 +664,9 @@
 			children = (
 				A0DEE09C1B45356200CF3004 /* KDMyReserveTableViewController.h */,
 				A0DEE09D1B45356200CF3004 /* KDMyReserveTableViewController.m */,
+				A0D3281B1B4A6AB200129DD0 /* KDReserveDetailViewController.h */,
+				A0D3281C1B4A6AB200129DD0 /* KDReserveDetailViewController.m */,
+				A0D3281D1B4A6AB200129DD0 /* KDReserveDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -663,6 +674,8 @@
 		C7249D8B1B33C552009C448C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A0D328151B4A315400129DD0 /* KDMyReserve.h */,
+				A0D328161B4A315400129DD0 /* KDMyReserve.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -829,6 +842,7 @@
 				A08E7D111B4390DD001899B3 /* iconfont-iconfontleft.png in Resources */,
 				A0596DCF1B3A831F008AD558 /* KDExpertIntroHeader.xib in Resources */,
 				C7249DD01B33ED8A009C448C /* KDFirstTableViewCell.xib in Resources */,
+				A0D3281F1B4A6AB200129DD0 /* KDReserveDetailViewController.xib in Resources */,
 				C7CA87E61B390426002C167F /* KDLeftHeadTableViewCell.xib in Resources */,
 				A0D557CB1B4668DB00C3133F /* iconfont-faxian.png in Resources */,
 				C7122D101B42B761001F53A1 /* mapapi.bundle in Resources */,
@@ -899,6 +913,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7249DC21B33ED77009C448C /* KDListingViewController.m in Sources */,
+				A0D328171B4A315400129DD0 /* KDMyReserve.m in Sources */,
 				A0596DC01B3A64F9008AD558 /* KDHeader.m in Sources */,
 				A0596DC41B3A651C008AD558 /* KDTopicDetailViewController.m in Sources */,
 				C788112A1B3BF89300813D65 /* KDExpertHeaderView.m in Sources */,
@@ -923,6 +938,7 @@
 				A08C32461B4138650049D6A0 /* KDReservePayController.m in Sources */,
 				C7122D0E1B42B056001F53A1 /* UITableViewCell+textHeight.m in Sources */,
 				C78811351B3D3F5C00813D65 /* KDExpertTeam.m in Sources */,
+				A0D3281E1B4A6AB200129DD0 /* KDReserveDetailViewController.m in Sources */,
 				A0596DD21B3A8344008AD558 /* KDExpertIntroHeader.m in Sources */,
 				C7249DCF1B33ED8A009C448C /* KDFirstTableViewCell.m in Sources */,
 				C7A03E101B3A58C200FC8F6A /* KDExpertIntroCell.m in Sources */,

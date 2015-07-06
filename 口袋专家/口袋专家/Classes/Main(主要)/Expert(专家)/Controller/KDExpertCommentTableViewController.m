@@ -8,8 +8,8 @@
 
 #import "KDExpertCommentTableViewController.h"
 #import "KDExpertCommentCell.h"
-#import "AFNetworking.h"
-#define kNetUrl @"http://192.168.2.36:5000/api/v1.0/comment/list/26/1"
+#import "KDConst.h"
+
 @interface KDExpertCommentTableViewController ()
 @property(nonatomic,strong)NSMutableArray * resultArray;
 @end
@@ -37,7 +37,7 @@
 - (void)getNetworkRequest
 {
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:kNetUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:kCommentList parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray * arr = responseObject[@"list"];
         for (NSDictionary * dic in arr) {
             KDExpertComment * comment = [[KDExpertComment alloc] init];
