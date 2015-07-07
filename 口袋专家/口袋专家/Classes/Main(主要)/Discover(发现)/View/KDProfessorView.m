@@ -29,6 +29,7 @@
 }
 
 
+
 - (void)createSubviews
 {
     self.picImage = [[UIImageView alloc] initWithFrame:CGRectMake(Width/5/4, 5, Width/10, Width/10)];

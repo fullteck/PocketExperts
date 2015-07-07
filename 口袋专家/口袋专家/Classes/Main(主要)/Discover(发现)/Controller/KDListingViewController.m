@@ -11,6 +11,8 @@
 #import "KDListingCell.h"
 #import "KDListModel.h"
 #import "KDConst.h"
+#import "UIBarButtonItem+Extension.h"
+#import "KDExpertsViewController.h"
 
 @interface KDListingViewController ()<UITableViewDataSource,UITableViewDelegate> {
     UITableView *_myTableView;
@@ -41,10 +43,18 @@
     _myTableView.dataSource = self;
     [self.view addSubview:_myTableView];
     
+    /** 设置 UIBarButtonItem */
+    UIBarButtonItem *leftBtn = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"back" highImage:@"back"];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+    
     /** 设置 HeadView */
     self.listingHeadView = [[KDListingHeadView alloc] initWithFrame:CGRectMake(0, 0, Width, 85)];
     _myTableView.tableHeaderView = _listingHeadView;
     
+}
+
+- (void)back {
+    NSLog(@"item 被点击了");
 }
 #pragma mark - 加载数据
 - (void)loadData {
@@ -110,6 +120,9 @@
 #pragma mark - 专家列表按钮点击事件
 - (void)pushToExperts {
     NSLog(@"按钮被点击了!");
+    KDExpertsViewController *expertsVC = [[KDExpertsViewController alloc] init];
+    expertsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:expertsVC] animated:YES completion:nil];
 }
 
 @end

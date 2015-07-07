@@ -8,6 +8,7 @@
 
 #import "KDDiscoverTableViewController.h"
 #import "KDExpertTeamTableViewController.h"
+#import "KDBaseNavigationController.h"
 #import "KDListingViewController.h"
 #import "KDFirstTableViewCell.h"
 #import "UIImageView+WebCache.h"
@@ -172,7 +173,8 @@
 - (void)didEnterListing:(UITapGestureRecognizer *)GR
 {
     KDListingViewController * listingVC = [[KDListingViewController alloc] init];
-    [self.navigationController pushViewController:listingVC animated:YES];
+    KDBaseNavigationController *NC = [[KDBaseNavigationController alloc] initWithRootViewController:listingVC];
+    [self presentViewController:NC animated:YES completion:nil];
     
 }
 
@@ -202,7 +204,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 155;
+    return 250;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

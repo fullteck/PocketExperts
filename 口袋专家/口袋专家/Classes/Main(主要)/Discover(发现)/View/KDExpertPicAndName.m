@@ -9,32 +9,18 @@
 #import "KDExpertPicAndName.h"
 #import "UIImageView+WebCache.h"
 
+@interface KDExpertPicAndName ()
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@end
 @implementation KDExpertPicAndName
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.picImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 5, frame.size.width - 5)];
-        [self addSubview:_picImage];
-        
-        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.picImage.frame), frame.size.width, 20)];
-        [self addSubview:_nameLabel];
-    }
-    return self;
++ (instancetype)picAndName {
+    return [[[NSBundle mainBundle] loadNibNamed:@"KDExpertPicAndName" owner:nil options:nil] firstObject];
 }
 - (void)setExpert:(KDTexpertList *)expert {
-    self.nameLabel.text = expert.name;
-    self.nameLabel.font = [UIFont systemFontOfSize:12];
-
+    self.name.text = expert.name;
     NSURL *url = [NSURL URLWithString:expert.avaurl];
-    [self.picImage sd_setImageWithURL:url];
-    if (expert.job) {
-        self.jobLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.nameLabel.frame), self.frame.size.width, 20)];
-        self.jobLabel.text = expert.job;
-        self.jobLabel.font = [UIFont systemFontOfSize:12];
-        [self addSubview:_jobLabel];
-    }
-
+    [self.icon sd_setImageWithURL:url];
 }
 
 

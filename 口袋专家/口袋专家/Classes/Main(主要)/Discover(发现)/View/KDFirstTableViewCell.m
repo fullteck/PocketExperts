@@ -9,6 +9,14 @@
 #import "KDFirstTableViewCell.h"
 #import "KDExpertPicAndName.h"
 
+@interface KDFirstTableViewCell () {
+    __weak IBOutlet UIView *expert01;
+    __weak IBOutlet UIView *expert02;
+    __weak IBOutlet UIView *expert03;
+    __weak IBOutlet UIView *expert04;
+    
+}
+@end
 @implementation KDFirstTableViewCell
 
 - (void)awakeFromNib {
@@ -17,15 +25,13 @@
 
 - (void)setExpertsArray:(NSArray *)expertsArray
 {
+    NSMutableArray *experts = [NSMutableArray arrayWithObjects:expert01,expert02,expert03,expert04, nil];
     static NSInteger count;
     count = expertsArray.count;
-    if (count > 4) {
-        count = 4;
-    }
     for (int i = 0; i < count; i++) {
-        KDExpertPicAndName *expert = [[KDExpertPicAndName alloc] initWithFrame:CGRectMake(70+i*65, 75, 60, 70)];
+        KDExpertPicAndName *expert = [KDExpertPicAndName picAndName];
         expert.expert = expertsArray[i];
-        [self.contentView addSubview:expert];
+        [(UIView *)experts[i] addSubview:expert];
     }
 }
 

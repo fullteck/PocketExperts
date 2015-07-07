@@ -1,23 +1,28 @@
 //
-//  KDBaseNavigationController.m
+//  KDExpertsViewController.m
 //  口袋专家
 //
-//  Created by 扶摇直上 on 15/6/18.
-//  Copyright © 2015年 扶摇直上. All rights reserved.
+//  Created by 扶摇直上 on 15/7/6.
+//  Copyright (c) 2015年 扶摇直上. All rights reserved.
 //
 
-#import "KDBaseNavigationController.h"
+#import "KDExpertsViewController.h"
 
-@interface KDBaseNavigationController ()
+@interface KDExpertsViewController ()
 
 @end
 
-@implementation KDBaseNavigationController
+@implementation KDExpertsViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationBar.barTintColor = [UIColor colorWithRed:93/255.0 green:163/255.0 blue:1.0 alpha:1.0];
-    // Do any additional setup after loading the view.    
+    self.view.backgroundColor = [UIColor redColor];
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
