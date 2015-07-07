@@ -8,7 +8,7 @@
 
 #import "KDExpertMapViewController.h"
 
-#import <BaiduMapAPI/BMapKit.h>//引入所有的头文件
+#import <BaiduMapAPI/BMapKit.h>
 
 #import "KDExpertList.h"
 
@@ -27,8 +27,8 @@
     BMKMapView * _mapView;
     
 }
-@property(nonatomic,strong)NSMutableArray * resultArray;
-@property(nonatomic,strong)NSMutableArray * annotationArr;
+@property(nonatomic,strong)NSMutableArray * resultArray;//存放数据
+@property(nonatomic,strong)NSMutableArray * annotationArr;//存放标注
 @end
 
 @implementation KDExpertMapViewController
@@ -61,7 +61,6 @@
 - (void)initWithMapView
 {
     _mapView = [[BMKMapView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    [_mapView setZoomLevel:16];
     _mapView.delegate = self;
     [self.view addSubview:_mapView];
     UIButton * buttomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -71,10 +70,9 @@
     [buttomBtn addTarget:self action:@selector(didClickSearchExpert:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttomBtn];
 }
-
+#pragma mark - 查找专家
 - (void)didClickSearchExpert:(UIButton *)button
 {
-    NSLog(@"==");
     KDSearchExpertViewController * searchVC = [[KDSearchExpertViewController alloc] init];
     [self.navigationController pushViewController:searchVC animated:YES];
 }
@@ -82,6 +80,7 @@
 #pragma mark - 在地图上显示专家
 - (void)addAnnotation
 {
+    //先移除地图上已有的标注
     [_mapView removeAnnotations:self.annotationArr];
     [self.annotationArr removeAllObjects];
 
@@ -101,7 +100,7 @@
     
 }
 
-
+#pragma mark - 根据地图上的标注自动显示可见范围(暂时不用)
 // 设置地图当前显示的区域
 - (void)setMapRegion:(NSArray * )arr
 {
@@ -134,7 +133,7 @@
         [_mapView setRegion:adjustedRegion];
     }
 }
-
+#pragma mark - 点击地图上的空白搜索附近的专家(测试用)
 - (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
 {
     NSLog(@"%lf,%lf",coordinate.latitude,coordinate.longitude);
@@ -143,7 +142,7 @@
     [self getDataWithLatitude:longitude andLongitude:latitude];
     
 }
-
+//根据经纬度搜索专家
 - (void)getDataWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude
 {
 
@@ -212,13 +211,15 @@
     NSInteger expertId = button.tag;//通过tag值获取专家的id
     KDExpertDetailViewController * detailVC = [[KDExpertDetailViewController alloc] init];
     detailVC.urlId = expertId;
+    [detailVC setHidesBottomBarWhenPushed:YES];
+
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 #pragma mark - 点击标注
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
 {
-    BMKPointAnnotation * annotation = view.annotation;
+    BMKPointAnnotation * annotation = (BMKPointAnnotation *)view.annotation;
     
     [_mapView setCenterCoordinate:annotation.coordinate animated:NO];
 }

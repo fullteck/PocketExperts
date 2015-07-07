@@ -37,5 +37,9 @@ return [self keyValues].description; \
 #define URL_List @"http://182.254.221.13:8080/api/v1.0/discovery/Inventory/9"
 /** 专家列表 */
 #define kNetRequestUrl @"http://182.254.221.13:8080/api/v1.0/expert/list/0.0/32.3213213" 
-/** 专家评论 */
-#define kNetUrl @"http://192.168.2.36:5000/api/v1.0/topic/info/50"
+/** 专家话题详情 */
+#define kTopicDetail @"http://182.254.221.13:8080/api/v1.0/topic/info/50"
+/** 专家评论列表 */
+#define kCommentList @"http://182.254.221.13:8080/api/v1.0/comment/list/26/1"
+/** 我的预约 */
+#define kMyReserve @"http://182.254.221.13:8080/api/v1.0/appointment/list/1"

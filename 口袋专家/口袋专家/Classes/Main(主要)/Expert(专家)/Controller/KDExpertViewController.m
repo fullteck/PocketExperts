@@ -91,7 +91,7 @@
 
 }
 
-
+#pragma mark - 开始定位
 - (void)startLocation
 {
     //设置定位精确度，默认：kCLLocationAccuracyBest
@@ -106,6 +106,7 @@
     [_locService startUserLocationService];
 }
 
+#pragma mark - 把两个控制器添加到容器视图控制器中
 - (void)addChildController
 {
     //将专家列表和专家地图两个视图添加到视图容器控制器
@@ -141,7 +142,6 @@
     }];
     
 }
-
 #pragma mark - BMKUserLocationDetegate
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {

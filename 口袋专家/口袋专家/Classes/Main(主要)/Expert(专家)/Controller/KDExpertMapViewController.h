@@ -8,5 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @interface KDExpertMapViewController : UIViewController
-@property(nonatomic,strong)NSMutableArray * expertArray;
+
+@property(nonatomic,strong)NSMutableArray * expertArray;//用来接收传过来的数据
+
 @end

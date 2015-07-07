@@ -24,24 +24,22 @@
 
 - (void)buildTabBarController
 {
-    //创建专家视图控制器
     KDExpertViewController * expertVC = [[KDExpertViewController alloc] init];
-    expertVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"专家" image:[UIImage imageNamed:@"iconfont-zhuanjiaku"] tag:100];
+    expertVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"专家" image:[UIImage imageNamed:@"experts_normal"] tag:100];
+    [expertVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"experts_selected"]];
     UINavigationController * NC1 = [[UINavigationController alloc] initWithRootViewController:expertVC];
     
-    //创建发现视图控制器
     KDDiscoverTableViewController * disCoverTVC = [[KDDiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    disCoverTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"发现" image:[UIImage imageNamed:@"iconfont-faxian"] tag:101];
-    disCoverTVC.automaticallyAdjustsScrollViewInsets = YES;
+    disCoverTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"发现" image:[UIImage imageNamed:@"found_normal"] tag:101];
+    disCoverTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"发现" image:[UIImage imageNamed:@"found_selected"] tag:101];
     UINavigationController * NC2 = [[UINavigationController alloc] initWithRootViewController:disCoverTVC];
     
-    //添加个人中心视图控制器
     LeftViewController * leftVC = [[LeftViewController alloc] init];
-    leftVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的" image:[UIImage imageNamed:@"iconfont-gerenzhongxin"] tag:102];
+    leftVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的" image:[UIImage imageNamed:@"my_normal"] tag:102];
+    [leftVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"my_selected"]];
     UINavigationController * NC3 = [[UINavigationController alloc] initWithRootViewController:leftVC];
+    self.viewControllers =  @[NC2,NC1,NC3];
     
-    //添加到 tabbar
-    self.viewControllers =  @[NC1,NC2,NC3];
     
 }
 @end

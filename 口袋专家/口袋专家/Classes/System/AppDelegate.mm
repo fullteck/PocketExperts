@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "KDBaseNavigationController.h"
 #import "KDRootViewController.h"
 #import "LeftViewController.h"
 
@@ -22,17 +21,16 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
+        
     KDRootViewController * rootVC = [[KDRootViewController alloc] init];
     self.window.rootViewController = rootVC;
+    
     
     _mapManager = [[BMKMapManager alloc] init];
     BOOL ret = [_mapManager start:@"080oHl2ZFGgxpVt7mKG7N2z8"  generalDelegate:nil];
     if (!ret) {
         NSLog(@"manager start failed!");
     }
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     [self.window makeKeyAndVisible];
     

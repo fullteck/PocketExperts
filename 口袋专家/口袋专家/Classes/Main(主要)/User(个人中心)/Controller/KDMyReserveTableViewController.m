@@ -12,14 +12,18 @@
 
 #import "KDMyReserveCell.h"
 
+#import "KDMyReserve.h"
+
+#import "KDReserveDetailViewController.h"
+
 @interface KDMyReserveTableViewController ()
 
-@property(nonatomic,strong)NSMutableArray * resultArray;
-
+@property(nonatomic,strong)NSMutableArray * resultArray;//数据源
+@property(nonatomic,strong)NSMutableDictionary * dic;
 @end
 
 @implementation KDMyReserveTableViewController
-
+//懒加载
 - (NSMutableArray *)resultArray
 {
     if (_resultArray == nil) {
@@ -27,11 +31,37 @@
     }
     return _resultArray;
 }
+- (NSMutableDictionary *)dic
+{
+    if (_dic == nil) {
+        _dic = [NSMutableDictionary dictionary];
+    }
+    return _dic;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.dic setObject:@1 forKey:@"type"];
     [self buildTableHeaderView];
+    [self initWithData];
+}
+
+- (void)initWithData
+{
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:kMyReserve parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSArray * listArray = responseObject[@"list"];
+        for (NSDictionary * dic in listArray) {
+            KDMyReserve * reserve = [[KDMyReserve alloc] init];
+            [reserve setValuesForKeysWithDictionary:dic];
+            [self.resultArray addObject:reserve];
+        }
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error = %@",error);
+    }];
 }
 
 - (void)buildTableHeaderView
@@ -58,7 +88,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return self.resultArray.count;
 }
 
 
@@ -71,8 +101,10 @@
         [tableView registerNib:nib forCellReuseIdentifier:identifier];
         nibResgistered = YES;
     }
-    KDMyReserveCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
+    KDMyReserve * reserve = [self.resultArray objectAtIndex:indexPath.row];
+    KDMyReserveCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.reserve = reserve;
     
     return cell;
 }
@@ -82,7 +114,20 @@
     return 120;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    KDMyReserve * reserve = [self.resultArray objectAtIndex:indexPath.row];
+    NSString * reserveId = reserve._id;
+    NSInteger state = reserve.state;
+    NSLog(@"%ld",state);
+    [self.dic setObject:reserveId forKey:@"id"];
+    
+    [self.dic setObject:[NSNumber numberWithInteger:state] forKey:@"state"];
+    KDReserveDetailViewController * reserveDetailVC = [[KDReserveDetailViewController alloc] init];
+    reserveDetailVC.dic = self.dic;
+    [self.navigationController pushViewController:reserveDetailVC animated:YES];
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

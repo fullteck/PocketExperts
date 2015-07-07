@@ -8,8 +8,8 @@
 
 #import "KDExpertCommentTableViewController.h"
 #import "KDExpertCommentCell.h"
-#import "AFNetworking.h"
-#define kNetUrl @"http://192.168.2.36:5000/api/v1.0/comment/list/26/1"
+#import "KDConst.h"
+
 @interface KDExpertCommentTableViewController ()
 @property(nonatomic,strong)NSMutableArray * resultArray;
 @end
@@ -33,11 +33,11 @@
     
     [self getNetworkRequest];
 }
-
+#pragma mark - 网络请求
 - (void)getNetworkRequest
 {
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:kNetUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:kCommentList parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray * arr = responseObject[@"list"];
         for (NSDictionary * dic in arr) {
             KDExpertComment * comment = [[KDExpertComment alloc] init];
@@ -51,12 +51,7 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
+#pragma mark - Table view dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.resultArray.count;
 }
@@ -73,16 +68,22 @@
     KDExpertCommentCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     KDExpertComment * comment = [self.resultArray objectAtIndex:indexPath.row];
     cell.comment = comment;
-    
     return cell;
-
-
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 150;
 }
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 /*
 // Override to support conditional editing of the table view.
