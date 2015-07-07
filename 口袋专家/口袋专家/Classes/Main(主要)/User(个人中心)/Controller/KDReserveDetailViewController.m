@@ -9,6 +9,8 @@
 #import "KDReserveDetailViewController.h"
 #import "KDConst.h"
 #import "UIImageView+WebCache.h"
+#import "KDCancleReserveController.h"
+#import "KDListenViewController.h"
 @interface KDReserveDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *headPic;//头像
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;//姓名
@@ -32,14 +34,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.view.frame = CGRectMake(0, 64, Width, Height);
+
+    [self createBarButtonItemByType:[[_dic objectForKey:@"state"] integerValue]];
     [self getRequestWithDic:_dic];
     
     NSLog(@"crash");
     
 }
+#pragma mark - 创建UIBarButtonItem
+- (void)createBarButtonItemByType:(NSInteger)type
+{
+    if (type == 0) {
+        return;
+    }else if (type == 1){
+        UIBarButtonItem * BI = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(didClickCancle:)];
+        self.navigationItem.rightBarButtonItem = BI;
+    }else{
+        UIBarButtonItem * BI = [[UIBarButtonItem alloc] initWithTitle:@"听录音" style:UIBarButtonItemStyleDone target:self action:@selector(didClickListen:)];
+        self.navigationItem.rightBarButtonItem = BI;
+    }
+}
+#pragma mark - UIBarButtonItem触发的方法
+- (void)didClickCancle:(UIBarButtonItem *)BI
+{
+    KDCancleReserveController * cancleVC = [[KDCancleReserveController alloc] init];
+    [self.navigationController pushViewController:cancleVC animated:YES];
+}
+
+- (void)didClickListen:(UIBarButtonItem *)BI
+{
+    KDListenViewController * listenVC = [[KDListenViewController alloc] init];
+    [self.navigationController pushViewController:listenVC animated:YES];
+}
 
 
+#pragma mark - 根据传过来的参数进行网络请求
 - (void)getRequestWithDic:(NSMutableDictionary *)dic
 {
 
@@ -96,14 +125,7 @@
     }];
 }
 
-- (void)initWithDictionary:(NSDictionary *)dict
-{
-//    NSLog(@"%@",dict);
- 
-    
-    
-}
-
+#pragma mark - 时间转换
 - (NSString *)getTimeWithNumber:(NSInteger)number
 {
     NSDate * date = [NSDate dateWithTimeIntervalSince1970:number];

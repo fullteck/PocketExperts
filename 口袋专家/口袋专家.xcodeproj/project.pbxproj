@@ -40,6 +40,8 @@
 		A0DEE09E1B45356200CF3004 /* KDMyReserveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DEE09D1B45356200CF3004 /* KDMyReserveTableViewController.m */; };
 		A0DEE0A21B45383D00CF3004 /* KDMyReserveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0DEE0A01B45383D00CF3004 /* KDMyReserveCell.m */; };
 		A0DEE0A31B45383D00CF3004 /* KDMyReserveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0DEE0A11B45383D00CF3004 /* KDMyReserveCell.xib */; };
+		A0EBC7C41B4B79F100D75C1C /* KDCancleReserveController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EBC7C31B4B79F100D75C1C /* KDCancleReserveController.m */; };
+		A0EBC7C71B4B7CEA00D75C1C /* KDListenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EBC7C61B4B7CEA00D75C1C /* KDListenViewController.m */; };
 		A0EFAF241B3BB2DE000F612C /* KDReserveTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EFAF231B3BB2DE000F612C /* KDReserveTimeViewController.m */; };
 		A0EFAF271B3BE0A0000F612C /* KDExpertJob.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EFAF261B3BE0A0000F612C /* KDExpertJob.m */; };
 		A0EFAF2A1B3BE147000F612C /* KDExpertEdu.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EFAF291B3BE147000F612C /* KDExpertEdu.m */; };
@@ -170,6 +172,10 @@
 		A0DEE09F1B45383D00CF3004 /* KDMyReserveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDMyReserveCell.h; sourceTree = "<group>"; };
 		A0DEE0A01B45383D00CF3004 /* KDMyReserveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDMyReserveCell.m; sourceTree = "<group>"; };
 		A0DEE0A11B45383D00CF3004 /* KDMyReserveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDMyReserveCell.xib; sourceTree = "<group>"; };
+		A0EBC7C21B4B79F100D75C1C /* KDCancleReserveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDCancleReserveController.h; sourceTree = "<group>"; };
+		A0EBC7C31B4B79F100D75C1C /* KDCancleReserveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDCancleReserveController.m; sourceTree = "<group>"; };
+		A0EBC7C51B4B7CEA00D75C1C /* KDListenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDListenViewController.h; sourceTree = "<group>"; };
+		A0EBC7C61B4B7CEA00D75C1C /* KDListenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDListenViewController.m; sourceTree = "<group>"; };
 		A0EFAF221B3BB2DE000F612C /* KDReserveTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDReserveTimeViewController.h; sourceTree = "<group>"; };
 		A0EFAF231B3BB2DE000F612C /* KDReserveTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDReserveTimeViewController.m; sourceTree = "<group>"; };
 		A0EFAF251B3BE0A0000F612C /* KDExpertJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertJob.h; sourceTree = "<group>"; };
@@ -667,6 +673,10 @@
 				A0D3281B1B4A6AB200129DD0 /* KDReserveDetailViewController.h */,
 				A0D3281C1B4A6AB200129DD0 /* KDReserveDetailViewController.m */,
 				A0D3281D1B4A6AB200129DD0 /* KDReserveDetailViewController.xib */,
+				A0EBC7C21B4B79F100D75C1C /* KDCancleReserveController.h */,
+				A0EBC7C31B4B79F100D75C1C /* KDCancleReserveController.m */,
+				A0EBC7C51B4B7CEA00D75C1C /* KDListenViewController.h */,
+				A0EBC7C61B4B7CEA00D75C1C /* KDListenViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -941,6 +951,7 @@
 				A0D3281E1B4A6AB200129DD0 /* KDReserveDetailViewController.m in Sources */,
 				A0596DD21B3A8344008AD558 /* KDExpertIntroHeader.m in Sources */,
 				C7249DCF1B33ED8A009C448C /* KDFirstTableViewCell.m in Sources */,
+				A0EBC7C71B4B7CEA00D75C1C /* KDListenViewController.m in Sources */,
 				C7A03E101B3A58C200FC8F6A /* KDExpertIntroCell.m in Sources */,
 				A0596DC71B3A6537008AD558 /* KDExpertCommentTableViewController.m in Sources */,
 				A08C32431B4135980049D6A0 /* KDReserveInfoViewController.m in Sources */,
@@ -955,6 +966,7 @@
 				A0DEE09B1B450A8B00CF3004 /* KDTimePickView.m in Sources */,
 				A0B1C6131B42AD0300D67465 /* KDMapView.m in Sources */,
 				C7249DC01B33ED77009C448C /* KDDiscoverTableViewController.m in Sources */,
+				A0EBC7C41B4B79F100D75C1C /* KDCancleReserveController.m in Sources */,
 				C78811321B3C133E00813D65 /* KDExpertsTableViewController.m in Sources */,
 				C7249DD11B33ED8A009C448C /* KDListingCell.m in Sources */,
 				A0EFAF2A1B3BE147000F612C /* KDExpertEdu.m in Sources */,

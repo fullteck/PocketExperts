@@ -118,7 +118,11 @@
 {
     KDMyReserve * reserve = [self.resultArray objectAtIndex:indexPath.row];
     NSString * reserveId = reserve._id;
+    NSInteger state = reserve.state;
+    NSLog(@"%ld",state);
     [self.dic setObject:reserveId forKey:@"id"];
+    
+    [self.dic setObject:[NSNumber numberWithInteger:state] forKey:@"state"];
     KDReserveDetailViewController * reserveDetailVC = [[KDReserveDetailViewController alloc] init];
     reserveDetailVC.dic = self.dic;
     [self.navigationController pushViewController:reserveDetailVC animated:YES];
