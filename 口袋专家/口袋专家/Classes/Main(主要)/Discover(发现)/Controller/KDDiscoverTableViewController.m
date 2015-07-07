@@ -18,6 +18,7 @@
 #import "KDExpertList.h"
 #import "MJExtension.h"
 #import "KDConst.h"
+#import "KDTool.h"
 
 @interface KDDiscoverTableViewController ()<UIScrollViewDelegate> {
     UIScrollView *_scrollView;      /** 顶部的 scrollView */
@@ -35,7 +36,7 @@
 - (instancetype)initWithStyle:(UITableViewStyle)style
 {
     if (self = [super initWithStyle:style]) {
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = YES;
     }
     return self;
 }
@@ -204,7 +205,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 250;
+    return [KDTool instance].height + 32;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
