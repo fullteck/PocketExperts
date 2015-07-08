@@ -48,13 +48,14 @@
     self.navigationItem.leftBarButtonItem = leftBtn;
     
     /** 设置 HeadView */
-    self.listingHeadView = [[KDListingHeadView alloc] initWithFrame:CGRectMake(0, 0, Width, 85)];
+    self.listingHeadView = [KDListingHeadView instance];
     _myTableView.tableHeaderView = _listingHeadView;
+    _myTableView.tableHeaderView.backgroundColor = [UIColor clearColor];
     
 }
 
 - (void)back {
-    NSLog(@"item 被点击了");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - 加载数据
 - (void)loadData {
@@ -63,6 +64,7 @@
         [manager GET:URL_List parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dic = responseObject[INV];
             self.listDic = dic;
+            self.listingHeadView.titleLabel.text = self.listDic[@"title"];
             
             NSArray *dataArray = [KDListModel objectArrayWithKeyValuesArray:dic[INVTOPIC]];
             self.dataArray = dataArray;

@@ -31,17 +31,27 @@
 
 @implementation KDListingCell
 + (instancetype)cellWithTableView:(UITableView *)tableView {
-    static NSString *ID = @"listing";
-    KDListingCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[KDListingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    static NSString * identifier = @"listing";
+    BOOL nibResgistered = NO;
+    if (!nibResgistered) {
+        UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDListingCell class]) bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:identifier];
+        nibResgistered = YES;
     }
+    KDListingCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+
     return cell;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        [self createSubviews];
+    }
+    return self;
+}
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
         [self createSubviews];
     }
     return self;
@@ -56,15 +66,17 @@
     _leftLine.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:_leftLine];
 
-    UIImageView *leftDot = [[UIImageView alloc] initWithFrame:CGRectMake(23.0f, 20.0f, 15, 15)];
-    leftDot.image = [UIImage imageNamed:@"iconfont-yuandian"];
+    UIImageView *leftDot = [[UIImageView alloc] initWithFrame:CGRectMake(28.0f, 22.0f, 15, 15)];
+    leftDot.image = [UIImage imageNamed:@"point"];
     [self.contentView addSubview:leftDot];
     
     _title = [[UILabel alloc] init];
+    _title.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:19];
+    _title.textColor = [UIColor colorWithRed:93/255.0 green:163/255.0 blue:1.0 alpha:1.0];
 
     _content = [[UILabel alloc] init];
     _content.numberOfLines = 0;
-    _content.font = LabelFont;
+    _content.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
     _content.lineBreakMode = NSLineBreakByCharWrapping;
     
     _expertsBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -101,7 +113,7 @@
     CGFloat contentHeight = [UITableViewCell getTextHeight:_content.text fintSize:15.0f labelWidth:self.frame.size.width-20];
     CGFloat contentX = titleX;
     CGFloat contentY = CGRectGetMaxY(_title.frame) + DefaultFrameY;
-    CGFloat contentW = SUBWIDTH - 30;
+    CGFloat contentW = SUBWIDTH - 50;
     CGFloat contentH = contentHeight;
     _content.frame = CGRectMake(contentX, contentY, contentW, contentH);
     [_bubbleView addSubview:_content];
@@ -117,21 +129,21 @@
     //bubbleView 的 frame
     CGFloat bubbleViewX = DefaultFrameY*5;
     CGFloat bubbleViewY = DefaultFrameY;
-    CGFloat bubbleViewW = SUBWIDTH;
+    CGFloat bubbleViewW = SUBWIDTH - 20;
     CGFloat bubbleViewH = CGRectGetMaxY(_expertsBtn.frame) + DefaultFrameY;
     _bubbleView.frame = CGRectMake(bubbleViewX, bubbleViewY, bubbleViewW, bubbleViewH);
     
     //leftLine 的 frame
-    CGFloat leftLineX = DefaultFrameY*3;
-    CGFloat leftLineY = 0;
-    CGFloat leftLineW = 2;
+    CGFloat leftLineX = DefaultFrameY*3+5;
+    CGFloat leftLineY = -10;
+    CGFloat leftLineW = 1;
     CGFloat leftLineH = CGRectGetMaxY(_bubbleView.frame)+20.0f;
     _leftLine.frame = CGRectMake(leftLineX, leftLineY, leftLineW, leftLineH);
     
     //midLine 的 frame
     CGFloat midLineX = DefaultFrameY;
     CGFloat midLineY = CGRectGetMaxY(_content.frame)+DefaultFrameY;
-    CGFloat midLineW = SUBWIDTH - DefaultFrameY;
+    CGFloat midLineW = SUBWIDTH - DefaultFrameY - 20;
     CGFloat midLineH = 1;
     _midLine.frame = CGRectMake(midLineX, midLineY, midLineW, midLineH);
     [_bubbleView addSubview:_midLine];

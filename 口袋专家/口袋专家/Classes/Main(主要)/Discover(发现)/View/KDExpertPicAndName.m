@@ -22,12 +22,6 @@
 }
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        if (Width == 320) {
-            self.iconWidth.constant -= 15;
-            self.iconHeight.constant -= 35;
-        }
-//        self.iconWidth.constant -= Width == 320 ? 15 : 0;
-//        self.iconHeight.constant -= Width == 320 ? 15 : 0;;
     }
     return self;
 }

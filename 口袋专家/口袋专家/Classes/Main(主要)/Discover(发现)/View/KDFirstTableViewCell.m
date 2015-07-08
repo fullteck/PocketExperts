@@ -23,14 +23,14 @@
 
 - (void)setExpertsArray:(NSArray *)expertsArray
 {
-    CGFloat padding = (self.bgView.frame.size.width - 180)/3;
-    CGFloat expertW = Width == 320 ? 30 : 45;
-    CGFloat expertH = Width == 320 ? 48 : 65;
+    CGFloat padding = (self.bgView.frame.size.width - 180)/4;
+//    CGFloat expertW = Width == 320 ? 30 : 45;
+//    CGFloat expertH = Width == 320 ? 48 : 65;
     static NSInteger count;
     count = expertsArray.count;
     for (int i = 0; i < count; i++) {
         KDExpertPicAndName *expert = [KDExpertPicAndName picAndName];
-        expert.frame = CGRectMake((expertW + padding)*i, 0, expertW, expertH);
+        expert.frame = CGRectMake((45 + padding)*i, 0, 45, 65);
         expert.expert = expertsArray[i];
         expert.autoresizingMask = UIViewAutoresizingNone;
         [self.bgView addSubview:expert];

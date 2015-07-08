@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface KDListingHeadView : UIView
-@property(nonatomic,strong)UIImageView * markImage;
-@property(nonatomic,strong)UILabel * titleLabel;
-@property(nonatomic,strong)UILabel * personLabel;
-@property(nonatomic,strong)UILabel * timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
++ (instancetype)instance;
 @end

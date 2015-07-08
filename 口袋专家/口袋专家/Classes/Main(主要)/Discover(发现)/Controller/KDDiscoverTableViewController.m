@@ -97,7 +97,7 @@
     for (int i = 0; i < self.scrollArray.count; i++) {
         @autoreleasepool {
             KDTopicScroll *topicImage = self.scrollArray[i];
-            UIImageView * picImage = [[UIImageView alloc] initWithFrame:CGRectMake(Width*i, 0, Width, 200)];
+            UIImageView * picImage = [[UIImageView alloc] initWithFrame:CGRectMake(Width*i, 0, Width, 180)];
             [picImage sd_setImageWithURL:[NSURL URLWithString:topicImage.fileurl]];
             picImage.tag = 100+i;
             [_scrollView addSubview:picImage];
@@ -174,9 +174,7 @@
 - (void)didEnterListing:(UITapGestureRecognizer *)GR
 {
     KDListingViewController * listingVC = [[KDListingViewController alloc] init];
-    KDBaseNavigationController *NC = [[KDBaseNavigationController alloc] initWithRootViewController:listingVC];
-    [self presentViewController:NC animated:YES completion:nil];
-    
+    [self.navigationController pushViewController:listingVC animated:YES];
 }
 
 #pragma mark - Table view data source
