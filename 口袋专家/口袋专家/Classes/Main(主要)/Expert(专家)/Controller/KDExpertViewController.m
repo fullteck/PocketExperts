@@ -12,7 +12,7 @@
 #import "AFNetworking.h"
 #import "KDExpertList.h"
 #import "KDConst.h"
-
+#import "KDSearchExpertViewController.h"
 #import <BaiduMapAPI/BMapKit.h>//引入所有的头文件
 
 @interface KDExpertViewController ()<BMKLocationServiceDelegate>
@@ -77,8 +77,20 @@
         [self.view addSubview:_mapVC.view];
         [_listTVC.tableView removeFromSuperview];
         self.navigationItem.rightBarButtonItem = _ListItem;
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button.frame = CGRectMake(0, 0, 200, 44);
+        button.backgroundColor = [UIColor whiteColor];
+        [button addTarget:self action:@selector(didClickEnterSearch:) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.titleView = button;
+        
     }
 
+}
+
+- (void)didClickEnterSearch:(UIButton *)button
+{
+    KDSearchExpertViewController * VC = [[KDSearchExpertViewController alloc] init];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 //切换到列表模式
 - (void)ChangeListPage:(UIBarButtonItem *)BI
@@ -87,6 +99,7 @@
         [self.view addSubview:_listTVC.tableView];
         [_mapVC.view removeFromSuperview];
         self.navigationItem.rightBarButtonItem = _rightItem;
+        self.navigationItem.titleView = nil;
     }
 
 }
