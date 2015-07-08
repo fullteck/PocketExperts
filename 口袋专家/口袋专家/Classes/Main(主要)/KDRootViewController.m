@@ -11,6 +11,7 @@
 #import "KDExpertViewController.h"
 #import "LeftViewController.h"
 #import "KDConst.h"
+#import "KDBaseNavigationController.h"
 @interface KDRootViewController ()
 
 @end
@@ -27,17 +28,17 @@
     KDExpertViewController * expertVC = [[KDExpertViewController alloc] init];
     expertVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"专家" image:[UIImage imageNamed:@"experts_normal"] tag:100];
     [expertVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"experts_selected"]];
-    UINavigationController * NC1 = [[UINavigationController alloc] initWithRootViewController:expertVC];
+    KDBaseNavigationController * NC1 = [[KDBaseNavigationController alloc] initWithRootViewController:expertVC];
     
-    KDDiscoverTableViewController * disCoverTVC = [[KDDiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    KDDiscoverTableViewController * disCoverTVC = [[KDDiscoverTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     disCoverTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"发现" image:[UIImage imageNamed:@"found_normal"] tag:101];
     disCoverTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"发现" image:[UIImage imageNamed:@"found_selected"] tag:101];
-    UINavigationController * NC2 = [[UINavigationController alloc] initWithRootViewController:disCoverTVC];
+    KDBaseNavigationController * NC2 = [[KDBaseNavigationController alloc] initWithRootViewController:disCoverTVC];
     
     LeftViewController * leftVC = [[LeftViewController alloc] init];
     leftVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的" image:[UIImage imageNamed:@"my_normal"] tag:102];
     [leftVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"my_selected"]];
-    UINavigationController * NC3 = [[UINavigationController alloc] initWithRootViewController:leftVC];
+    KDBaseNavigationController * NC3 = [[KDBaseNavigationController alloc] initWithRootViewController:leftVC];
     self.viewControllers =  @[NC2,NC1,NC3];
     
     

@@ -8,14 +8,12 @@
 
 #import "KDFirstTableViewCell.h"
 #import "KDExpertPicAndName.h"
+#import "KDTool.h"
+#import "KDConst.h"
 
-@interface KDFirstTableViewCell () {
-    __weak IBOutlet UIView *expert01;
-    __weak IBOutlet UIView *expert02;
-    __weak IBOutlet UIView *expert03;
-    __weak IBOutlet UIView *expert04;
-    
-}
+@interface KDFirstTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+
 @end
 @implementation KDFirstTableViewCell
 
@@ -25,14 +23,19 @@
 
 - (void)setExpertsArray:(NSArray *)expertsArray
 {
-    NSMutableArray *experts = [NSMutableArray arrayWithObjects:expert01,expert02,expert03,expert04, nil];
+    CGFloat padding = (self.bgView.frame.size.width - 180)/3;
+    CGFloat expertW = Width == 320 ? 30 : 45;
+    CGFloat expertH = Width == 320 ? 48 : 65;
     static NSInteger count;
     count = expertsArray.count;
     for (int i = 0; i < count; i++) {
         KDExpertPicAndName *expert = [KDExpertPicAndName picAndName];
+        expert.frame = CGRectMake((expertW + padding)*i, 0, expertW, expertH);
         expert.expert = expertsArray[i];
-        [(UIView *)experts[i] addSubview:expert];
+        expert.autoresizingMask = UIViewAutoresizingNone;
+        [self.bgView addSubview:expert];
     }
+    [KDTool instance].height = CGRectGetMaxY(self.bgView.frame);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
