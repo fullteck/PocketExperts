@@ -113,7 +113,7 @@
     self.listTVC = [[KDExpertListTableViewController alloc] initWithStyle:UITableViewStylePlain];
     NSLog(@"%ld",self.expertArray.count);
     _listTVC.expertArray = self.expertArray;
-    self.listTVC.view.frame = CGRectMake(0, 0, 375, 667);
+    self.listTVC.view.frame = [[UIScreen mainScreen] bounds];
     self.mapVC = [[KDExpertMapViewController alloc] init];
     _mapVC.expertArray = self.expertArray;
     [self addChildViewController:self.listTVC];

@@ -55,6 +55,7 @@
 
 - (void)back {
     NSLog(@"item 被点击了");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - 加载数据
 - (void)loadData {
