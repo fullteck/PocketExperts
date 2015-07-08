@@ -7,11 +7,13 @@
 //
 
 #import "KDExpertListCell.h"
-
+#import "KDHandle.h"
+#import "UIImageView+WebCache.h"
 @implementation KDExpertListCell
 
 - (void)awakeFromNib {
     // Initialization code
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -25,6 +27,13 @@
     self.nameLabel.text = expert.name;
     self.jobLabel.text = expert.job;
     self.meet_cLabel.text = [NSString stringWithFormat:@"%ld",expert.meet_c];
+    [self.headpic sd_setImageWithURL:[NSURL URLWithString:expert.avaurl]];
+    self.headpic.layer.cornerRadius = 40;
+    self.headpic.layer.masksToBounds = YES;
+
+    CGFloat height = CGRectGetMaxY(self.headpic.frame);
+    [KDHandle shareInstance].cellHeight = height+16;
+    
 }
 
 @end

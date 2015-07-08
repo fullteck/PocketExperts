@@ -11,8 +11,7 @@
 @interface KDHandle : NSObject
 
 + (KDHandle *)shareInstance;
-
-
+@property(nonatomic,assign)NSInteger cellHeight;
 
 
 @end

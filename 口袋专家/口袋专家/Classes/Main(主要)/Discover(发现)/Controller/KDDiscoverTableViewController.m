@@ -18,8 +18,9 @@
 #import "KDExpertList.h"
 #import "MJExtension.h"
 #import "KDConst.h"
-#import "KDTool.h"
-
+#import "KDDisTopic.h"
+#import "KDSecondTableViewCell.h"
+#import "KDHandle.h"
 @interface KDDiscoverTableViewController ()<UIScrollViewDelegate> {
     UIScrollView *_scrollView;      /** 顶部的 scrollView */
     UIPageControl *_pageControl;    /** 顶部的 pageController */
@@ -31,12 +32,15 @@
 @property (nonatomic, strong) NSMutableArray *dataArray;
 /** 存储专家团的数组 */
 @property (nonatomic, strong) NSMutableArray *expertsArray;
+/** 存储专家话题的数组 */
+@property(nonatomic,strong)NSMutableArray * expertArray;
+
 @end
 @implementation KDDiscoverTableViewController
 - (instancetype)initWithStyle:(UITableViewStyle)style
 {
     if (self = [super initWithStyle:style]) {
-    self.automaticallyAdjustsScrollViewInsets = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     }
     return self;
 }
@@ -44,7 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"发现";
-    self.tableView.showsVerticalScrollIndicator = NO;
+    //self.tableView.showsVerticalScrollIndicator = NO;
 }
 #pragma mark - 懒加载
 - (NSMutableArray *)scrollArray {
@@ -61,6 +65,14 @@
     return _expertsArray;
 }
 
+- (NSMutableArray *)expertArray
+{
+    if (_expertArray == nil) {
+        _expertArray = [NSMutableArray array];
+    }
+    return _expertArray;
+}
+
 - (NSMutableArray *)dataArray {
     if (_dataArray == nil) {
         _dataArray = [NSMutableArray array];
@@ -70,10 +82,13 @@
                 NSDictionary *dic = responseObject[@"discovery"];
                 NSArray *tempArray = dic[@"topic_team"];
                 NSArray *scrollArray = dic[@"ad"];
+                NSArray * expertTopic = dic[@"topic"];
                 
                 _scrollArray = [KDTopicScroll objectArrayWithKeyValuesArray:scrollArray];
-                _dataArray = [KDExpertTeam objectArrayWithKeyValuesArray:tempArray];
-
+                NSArray * teamArray = [KDExpertTeam objectArrayWithKeyValuesArray:tempArray];
+                NSArray * topicArray = [KDDisTopic objectArrayWithKeyValuesArray:expertTopic];
+                [_dataArray addObject:teamArray];
+                [_dataArray addObject:topicArray];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self initWithImageAndPageControl];
                     [self.tableView reloadData];
@@ -178,32 +193,71 @@
 }
 
 #pragma mark - Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return self.dataArray.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSArray * arr = [self.dataArray objectAtIndex:section];
+    return arr.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * identifier = @"First";
-    BOOL nibResgistered = NO;
-    if (!nibResgistered) {
-        UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDFirstTableViewCell class]) bundle:nil];
-        [tableView registerNib:nib forCellReuseIdentifier:identifier];
-        nibResgistered = YES;
+    if (indexPath.section == 0) {
+        static NSString * identifier = @"First";
+        BOOL nibResgistered = NO;
+        if (!nibResgistered) {
+            UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDFirstTableViewCell class]) bundle:nil];
+            [tableView registerNib:nib forCellReuseIdentifier:identifier];
+            nibResgistered = YES;
+        }
+        KDFirstTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        KDExpertTeam *expertTeam = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        cell.topicName.text = expertTeam.title;
+        cell.topicIntroduce.text = expertTeam.intro;
+        cell.expertNumber.text = [NSString stringWithFormat:@"%lu",expertTeam.exp_count];
+        cell.expertsArray = expertTeam.expert;
+        return cell;
+
+    }else{
+        static NSString * identifier = @"second";
+        BOOL nibResgistered = NO;
+        if (!nibResgistered) {
+            UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDSecondTableViewCell class]) bundle:nil];
+            [tableView registerNib:nib forCellReuseIdentifier:identifier];
+            nibResgistered = YES;
+        }
+        KDSecondTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        KDDisTopic *topic = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        cell.expertTopic = topic;
+        return cell;
+
     }
-    KDFirstTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    KDExpertTeam *expertTeam = self.dataArray[indexPath.row];
-    cell.topicName.text = expertTeam.title;
-    cell.topicIntroduce.text = expertTeam.intro;
-    cell.expertNumber.text = [NSString stringWithFormat:@"%lu",expertTeam.exp_count];
-    cell.expertsArray = expertTeam.expert;
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [KDTool instance].height + 32;
+    if (indexPath.section == 0) {
+        return 250;
+    }else{
+        return [KDHandle shareInstance].cellHeight;
+    }
+
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.001;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

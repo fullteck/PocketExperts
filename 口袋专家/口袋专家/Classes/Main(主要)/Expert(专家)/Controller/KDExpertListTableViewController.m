@@ -15,12 +15,13 @@
 #import "KDExpertListCell.h"
 
 #import "KDExpertDetailViewController.h"
-#define Width [[UIScreen mainScreen] bounds].size.width
-#define Height [[UIScreen mainScreen] bounds].size.height
-#define kNetRequestUrl @"http://182.254.221.13:8080/api/v1.0/expert/list/0.0/2.0"
 
-@interface KDExpertListTableViewController ()
+#import "KDHandle.h"
 
+#import "KDConst.h"
+
+@interface KDExpertListTableViewController ()<UIScrollViewDelegate>
+@property(nonatomic,strong)UIScrollView * kindScrollView;
 @end
 
 @implementation KDExpertListTableViewController
@@ -28,6 +29,36 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [self createTableHeaderView];
+}
+//创建scrollView
+- (void)createTableHeaderView
+{
+    
+    NSArray * kindArray = @[@"全部",@"媒体",@"自媒体",@"营销",@"产品",@"设计"];
+    self.kindScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, Width, 42)];
+    _kindScrollView.contentSize = CGSizeMake(Width/5*6, 0);
+    self.tableView.tableHeaderView = _kindScrollView;
+    _kindScrollView.delegate = self;
+    for (int i = 0; i < kindArray.count; i++) {
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button.frame = CGRectMake(Width/5*i, 0, Width/5, 42);
+        [button setTitle:[kindArray objectAtIndex:i] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+        [button addTarget:self action:@selector(didClickChangeKind:) forControlEvents:UIControlEventTouchUpInside];
+        [_kindScrollView addSubview:button];
+        
+    }
+//    UISegmentedControl * segment = [[UISegmentedControl alloc] initWithItems:kindArray];
+//    segment.frame = CGRectMake(0, 0, Width, 42);
+//    self.tableView.tableHeaderView = segment;
+    
+}
+
+- (void)didClickChangeKind:(UIButton *)button
+{
+    NSLog(@"===");
 }
 
 #pragma mark---tableView协议中的方法
@@ -49,14 +80,14 @@
     KDExpertListCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     KDExpertList * expert = [_expertArray objectAtIndex:indexPath.row];
     cell.expert = expert;
-    
     return cell;
 }
 
 //heightForRow
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    NSLog(@"%ld",[KDHandle shareInstance].cellHeight);
+    return [KDHandle shareInstance].cellHeight;
 }
 //didSelectRow
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

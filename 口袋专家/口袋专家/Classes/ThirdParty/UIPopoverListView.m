@@ -50,7 +50,7 @@
                                                   blue:152./255.
                                                  alpha:1.0f];
     
-    _titleView.textAlignment = UITextAlignmentCenter;
+    _titleView.textAlignment = NSTextAlignmentCenter;
     _titleView.textColor = [UIColor whiteColor];
     CGFloat xWidth = self.bounds.size.width;
     _titleView.lineBreakMode = UILineBreakModeTailTruncation;
