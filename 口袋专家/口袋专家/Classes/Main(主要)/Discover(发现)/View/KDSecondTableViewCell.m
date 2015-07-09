@@ -19,6 +19,15 @@
 @end
 
 @implementation KDSecondTableViewCell
++ (instancetype)cellWithTableView:(UITableView *)tableView {
+    static NSString *ID = @"KDSecondTableViewCell";
+    KDSecondTableViewCell * cell = (KDSecondTableViewCell *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:ID];
+    if (cell == nil) {
+        NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDSecondTableViewCell" owner:self options:nil];
+        cell = [arr lastObject];
+    }
+    return cell;
+}
 
 - (void)awakeFromNib {
     // Initialization code
@@ -41,7 +50,7 @@
     NSLog(@"%@",[expertTopic.expert objectForKey:@"avaurl"]);
     [self.headpic sd_setImageWithURL:[NSURL URLWithString:[expertTopic.expert objectForKey:@"avaurl"]]];
     CGFloat height = CGRectGetMaxY(self.headpic.frame);
-    [KDHandle shareInstance].cellHeight = height +16;
+    [KDHandle shareInstance].cellHeight = height + 40;
 }
 
 @end

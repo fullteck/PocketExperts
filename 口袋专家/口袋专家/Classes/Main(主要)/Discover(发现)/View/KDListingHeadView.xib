@@ -7,29 +7,28 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KDListingHeadView">
-            <rect key="frame" x="0.0" y="0.0" width="466" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="466" height="64"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="captionbg" translatesAutoresizingMaskIntoConstraints="NO" id="jgP-zS-s7n">
-                    <rect key="frame" x="32" y="32" width="402" height="68"/>
+                    <rect key="frame" x="16" y="16" width="434" height="48"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pW3-VE-fdC">
-                    <rect key="frame" x="48" y="46" width="370" height="40"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pW3-VE-fdC">
+                    <rect key="frame" x="32" y="32" width="402" height="18"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="pW3-VE-fdC" secondAttribute="bottom" constant="14" id="Ai5-lN-2aO"/>
-                <constraint firstItem="pW3-VE-fdC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="48" id="D6d-W2-ErH"/>
-                <constraint firstItem="pW3-VE-fdC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="46" id="Egu-Dp-Dcn"/>
-                <constraint firstItem="jgP-zS-s7n" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="ZZQ-wV-a2x"/>
-                <constraint firstAttribute="trailing" secondItem="pW3-VE-fdC" secondAttribute="trailing" constant="48" id="iq7-ux-Wrf"/>
-                <constraint firstAttribute="trailing" secondItem="jgP-zS-s7n" secondAttribute="trailing" constant="32" id="jH7-bG-38h"/>
+                <constraint firstItem="pW3-VE-fdC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="D6d-W2-ErH"/>
+                <constraint firstItem="pW3-VE-fdC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="Egu-Dp-Dcn"/>
+                <constraint firstItem="jgP-zS-s7n" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ZZQ-wV-a2x"/>
+                <constraint firstAttribute="trailing" secondItem="pW3-VE-fdC" secondAttribute="trailing" constant="32" id="iq7-ux-Wrf"/>
+                <constraint firstAttribute="trailing" secondItem="jgP-zS-s7n" secondAttribute="trailing" constant="16" id="jH7-bG-38h"/>
                 <constraint firstAttribute="bottom" secondItem="jgP-zS-s7n" secondAttribute="bottom" id="zL6-Hh-Sm3"/>
-                <constraint firstItem="jgP-zS-s7n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="zk4-hs-E7m"/>
+                <constraint firstItem="jgP-zS-s7n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="zk4-hs-E7m"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

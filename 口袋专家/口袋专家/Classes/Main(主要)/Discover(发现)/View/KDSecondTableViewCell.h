@@ -10,4 +10,5 @@
 #import "KDDisTopic.h"
 @interface KDSecondTableViewCell : UITableViewCell
 @property(nonatomic,strong)KDDisTopic * expertTopic;
++ (instancetype)cellWithTableView:(UITableView *)tableView;
 @end
