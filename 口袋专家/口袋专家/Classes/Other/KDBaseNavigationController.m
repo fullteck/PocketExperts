@@ -21,7 +21,7 @@
     
     //这里我们设置的是颜色，还可以设置shadow等，具体可以参见api
     NSDictionary * dict = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
-    
+    self.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationBar.titleTextAttributes = dict;
     self.navigationBar.barTintColor = [UIColor colorWithRed:93/255.0 green:163/255.0 blue:1.0 alpha:1.0];
     // Do any additional setup after loading the view.

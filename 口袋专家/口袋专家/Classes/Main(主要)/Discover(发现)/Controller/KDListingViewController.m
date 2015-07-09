@@ -32,13 +32,13 @@
     [super viewDidLoad];
     self.navigationItem.title = @"清单";
     [self initWithTableView];
-    [self loadData];
+//    [self loadData];
 }
 #pragma mark - 初始化 tableView
 - (void)initWithTableView {
     _myTableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _myTableView.backgroundColor = [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1];
+    _myTableView.backgroundColor = BGColor;
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
     [self.view addSubview:_myTableView];
@@ -51,12 +51,12 @@
     self.listingHeadView = [KDListingHeadView instance];
     _myTableView.tableHeaderView = _listingHeadView;
     _myTableView.tableHeaderView.backgroundColor = [UIColor clearColor];
-    
 }
 
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 #pragma mark - 加载数据
 - (void)loadData {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -65,7 +65,6 @@
             NSDictionary *dic = responseObject[INV];
             self.listDic = dic;
             self.listingHeadView.titleLabel.text = self.listDic[@"title"];
-            
             NSArray *dataArray = [KDListModel objectArrayWithKeyValuesArray:dic[INVTOPIC]];
             self.dataArray = dataArray;
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -89,6 +88,7 @@
 - (NSArray *)dataArray {
     if (_dataArray == nil) {
         _dataArray = [NSArray array];
+        [self loadData];
     }
     return _dataArray;
 }

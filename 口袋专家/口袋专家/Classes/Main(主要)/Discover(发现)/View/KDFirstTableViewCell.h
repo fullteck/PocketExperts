@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *comment;
 @property (weak, nonatomic) IBOutlet UILabel *expertNumber;
 @property (nonatomic ,strong) NSArray *expertsArray;
++ (instancetype)cellWithTableView:(UITableView *)tableView;
 @end

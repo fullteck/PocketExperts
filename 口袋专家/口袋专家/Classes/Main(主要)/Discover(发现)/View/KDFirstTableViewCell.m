@@ -8,7 +8,7 @@
 
 #import "KDFirstTableViewCell.h"
 #import "KDExpertPicAndName.h"
-#import "KDTool.h"
+#import "KDHandle.h"
 #import "KDConst.h"
 
 @interface KDFirstTableViewCell ()
@@ -16,6 +16,15 @@
 
 @end
 @implementation KDFirstTableViewCell
++ (instancetype)cellWithTableView:(UITableView *)tableView {
+    static NSString *ID = @"KDFirstTableViewCell";
+    KDFirstTableViewCell * cell = (KDFirstTableViewCell *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:ID];
+    if (cell == nil) {
+        NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDFirstTableViewCell" owner:self options:nil];
+        cell = [arr lastObject];
+    }
+    return cell;
+}
 
 - (void)awakeFromNib {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -24,8 +33,6 @@
 - (void)setExpertsArray:(NSArray *)expertsArray
 {
     CGFloat padding = (self.bgView.frame.size.width - 180)/4;
-//    CGFloat expertW = Width == 320 ? 30 : 45;
-//    CGFloat expertH = Width == 320 ? 48 : 65;
     static NSInteger count;
     count = expertsArray.count;
     for (int i = 0; i < count; i++) {
@@ -35,7 +42,7 @@
         expert.autoresizingMask = UIViewAutoresizingNone;
         [self.bgView addSubview:expert];
     }
-    [KDTool instance].height = CGRectGetMaxY(self.bgView.frame);
+    [KDHandle shareInstance].cellHeight = CGRectGetMaxY(self.bgView.frame) + 36;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
