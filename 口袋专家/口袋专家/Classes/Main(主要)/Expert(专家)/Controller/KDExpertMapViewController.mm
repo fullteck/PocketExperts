@@ -63,19 +63,8 @@
     _mapView = [[BMKMapView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _mapView.delegate = self;
     [self.view addSubview:_mapView];
-    UIButton * buttomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttomBtn.frame = CGRectMake(0, Height-60-64, Width, 60);
-    buttomBtn.backgroundColor = [UIColor redColor];
-    [buttomBtn setTitle:@"找专家" forState:UIControlStateNormal];
-    [buttomBtn addTarget:self action:@selector(didClickSearchExpert:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:buttomBtn];
 }
-#pragma mark - 查找专家
-- (void)didClickSearchExpert:(UIButton *)button
-{
-    KDSearchExpertViewController * searchVC = [[KDSearchExpertViewController alloc] init];
-    [self.navigationController pushViewController:searchVC animated:YES];
-}
+
 
 #pragma mark - 在地图上显示专家
 - (void)addAnnotation

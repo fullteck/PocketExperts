@@ -9,6 +9,13 @@
 #import "KDExpertListCell.h"
 #import "KDHandle.h"
 #import "UIImageView+WebCache.h"
+
+@interface KDExpertListCell ()
+{
+    BOOL roundIsSet;
+}
+@end
+
 @implementation KDExpertListCell
 
 - (void)awakeFromNib {
@@ -28,12 +35,15 @@
     self.jobLabel.text = expert.job;
     self.meet_cLabel.text = [NSString stringWithFormat:@"%ld",expert.meet_c];
     [self.headpic sd_setImageWithURL:[NSURL URLWithString:expert.avaurl]];
+  
     self.headpic.layer.cornerRadius = 40;
     self.headpic.layer.masksToBounds = YES;
 
     CGFloat height = CGRectGetMaxY(self.headpic.frame);
+    NSLog(@"cell = %f",height);
     [KDHandle shareInstance].cellHeight = height+16;
     
 }
+
 
 @end
