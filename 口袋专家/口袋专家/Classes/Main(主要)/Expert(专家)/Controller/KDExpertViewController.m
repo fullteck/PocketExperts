@@ -15,7 +15,9 @@
 #import "KDSearchExpertViewController.h"
 #import <BaiduMapAPI/BMapKit.h>//引入所有的头文件
 
-@interface KDExpertViewController ()<BMKLocationServiceDelegate>
+
+
+@interface KDExpertViewController ()<BMKLocationServiceDelegate,KDSearchExpertOnMap>
 {
     BMKLocationService *_locService;
     UIBarButtonItem *_rightItem;
@@ -66,9 +68,9 @@
 
 - (void)buildBarButtonItem
 {
-    _rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-ditu"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeMapPage:)];
+    _rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"map"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeMapPage:)];
     self.navigationItem.rightBarButtonItem = _rightItem;
-    _ListItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-liebiao"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeListPage:)];
+    _ListItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list"] style:UIBarButtonItemStyleDone target:self action:@selector(ChangeListPage:)];
 }
 //切换到地图模式
 - (void)ChangeMapPage:(UIBarButtonItem *)BI
@@ -77,21 +79,41 @@
         [self.view addSubview:_mapVC.view];
         [_listTVC.tableView removeFromSuperview];
         self.navigationItem.rightBarButtonItem = _ListItem;
-        UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        button.frame = CGRectMake(0, 0, 200, 44);
-        button.backgroundColor = [UIColor whiteColor];
-        [button addTarget:self action:@selector(didClickEnterSearch:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.titleView = button;
-        
+
+        [self createTitleView];
     }
 
 }
+#pragma mark - 创建titleView
+- (void)createTitleView
+{
+    UIView * titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 302.5, 30)];
+    UIImageView * backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 302.5, 30)];
+    backImage.image = [UIImage imageNamed:@"search box"];
+    [titleView addSubview:backImage];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(27, 0, 302.5-27, 30)];
+    label.text = @"找专家";
+    label.font = [UIFont systemFontOfSize:14];
+    label.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1.0];
+    [titleView addSubview:label];
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect]
+    ;
+    button.frame = CGRectMake(0, 0, 302.5, 30);
+    [button addTarget:self action:@selector(didClickEnterSearch:) forControlEvents:UIControlEventTouchUpInside];
+    [titleView addSubview:button];
+    self.navigationItem.titleView = titleView;
+}
 
+#pragma mark - 点击进去搜专家界面
 - (void)didClickEnterSearch:(UIButton *)button
 {
     KDSearchExpertViewController * VC = [[KDSearchExpertViewController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
+    [VC setHidesBottomBarWhenPushed:YES];
+    VC.delegate = self.mapVC;
+    [self.navigationController pushViewController:VC animated:NO];
 }
+
+
 //切换到列表模式
 - (void)ChangeListPage:(UIBarButtonItem *)BI
 {
@@ -124,7 +146,6 @@
 {
     //将专家列表和专家地图两个视图添加到视图容器控制器
     self.listTVC = [[KDExpertListTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    NSLog(@"%ld",self.expertArray.count);
     _listTVC.expertArray = self.expertArray;
     self.listTVC.view.frame = [[UIScreen mainScreen] bounds];
     self.mapVC = [[KDExpertMapViewController alloc] init];

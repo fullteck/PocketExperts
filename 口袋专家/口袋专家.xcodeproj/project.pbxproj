@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0263FC81B4E197D0082349B /* KDMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0263FC71B4E197D0082349B /* KDMapView.xib */; };
 		A0596DBC1B3A6447008AD558 /* KDExpertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DBB1B3A6447008AD558 /* KDExpertDetailViewController.m */; };
 		A0596DC01B3A64F9008AD558 /* KDHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DBE1B3A64F9008AD558 /* KDHeader.m */; };
 		A0596DC11B3A64F9008AD558 /* KDHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0596DBF1B3A64F9008AD558 /* KDHeader.xib */; };
@@ -123,6 +124,7 @@
 
 /* Begin PBXFileReference section */
 		532417BE14BA7656F678F002 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0263FC71B4E197D0082349B /* KDMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDMapView.xib; sourceTree = "<group>"; };
 		A0596DBA1B3A6447008AD558 /* KDExpertDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertDetailViewController.h; sourceTree = "<group>"; };
 		A0596DBB1B3A6447008AD558 /* KDExpertDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertDetailViewController.m; sourceTree = "<group>"; };
 		A0596DBD1B3A64F9008AD558 /* KDHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDHeader.h; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 			children = (
 				A0B1C6111B42AD0300D67465 /* KDMapView.h */,
 				A0B1C6121B42AD0300D67465 /* KDMapView.m */,
+				A0263FC71B4E197D0082349B /* KDMapView.xib */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				A0596DD71B3A8B56008AD558 /* KDExpertJobCell.xib in Resources */,
 				C788112C1B3C05E000813D65 /* SectionHeaderView.xib in Resources */,
 				C78811191B3B9EEA00813D65 /* KDExpertHeaderView.xib in Resources */,
+				A0263FC81B4E197D0082349B /* KDMapView.xib in Resources */,
 				C769D1081B4CFF4400976F69 /* KDListingHeadView.xib in Resources */,
 				C7CA87EB1B39075E002C167F /* KDLeftSwitchTableViewCell.xib in Resources */,
 				C769D10C1B4D1A1C00976F69 /* KDListingCell.xib in Resources */,
