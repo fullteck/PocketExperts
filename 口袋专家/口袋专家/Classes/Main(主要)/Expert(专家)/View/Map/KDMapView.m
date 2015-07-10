@@ -7,6 +7,17 @@
 //
 
 #import "KDMapView.h"
+#import "UIImageView+WebCache.h"
+
+@interface KDMapView ()
+@property (weak, nonatomic) IBOutlet UIImageView *headpic;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *job;
+@property (weak, nonatomic) IBOutlet UIImageView *star;
+@property (weak, nonatomic) IBOutlet UILabel *commentNum;
+
+@end
+
 
 @implementation KDMapView
 
@@ -18,28 +29,19 @@
 }
 */
 
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        [self createSubviews];
-    }
-    return self;
+- (void)setExpert:(KDExpertList *)expert
+{
+    self.name.text = expert.name;
+    self.job.text = expert.job;
+    [self.headpic sd_setImageWithURL:[NSURL URLWithString:expert.avaurl]];
+    self.headpic.layer.cornerRadius = 30;
+    self.headpic.layer.masksToBounds = YES;
 }
 
-- (void)createSubviews
++ (instancetype)instance
 {
-    self.backgroundColor = [UIColor whiteColor];
-    self.headPic = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 60, 60)];
-    _headPic.backgroundColor = [UIColor cyanColor];
-    [self addSubview:_headPic];
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 5, 100, 40)];
-    _nameLabel.text = @"马化腾";
-    [self addSubview:_nameLabel];
-    self.jobLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 50, 100, 40)];
-    _jobLabel.text = @"CEO";
-    [self addSubview:_jobLabel];
-    self.detailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _detailButton.frame = CGRectMake(100,30, 40, 40);
-    [_detailButton setImage:[UIImage imageNamed:@"iconfont-iconfontleft.png"] forState:UIControlStateNormal];
-    [self addSubview:_detailButton];
+    return [[[NSBundle mainBundle] loadNibNamed:@"KDMapView" owner:nil options:nil] firstObject];
+
 }
+
 @end

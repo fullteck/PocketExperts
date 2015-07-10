@@ -7,11 +7,10 @@
 //
 
 #import "KDListingHeadView.h"
-#define Width [[UIScreen mainScreen] bounds].size.width
+#import "AFNetworking.h"
+#import "KDConst.h"
 
 @interface KDListingHeadView ()
-@property(nonatomic,strong)UIImageView * markImage;
-
 @end
 @implementation KDListingHeadView
 + (instancetype)instance {

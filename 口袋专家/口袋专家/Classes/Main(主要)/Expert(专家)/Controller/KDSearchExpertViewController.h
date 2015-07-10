@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KDSearchExpertViewController : UIViewController
+@protocol KDSearchExpertOnMap <NSObject>
+- (void)getSearchResultByClickButton:(NSString *)kindStr;//点击类别
+- (void)getSearchResultByCLickReturn:(NSString *)textStr;//点击键盘的return键直接返回地图
+- (void)getSearchResultByClickTableViewRow:(NSArray *)resultArray;//点击tableview的row返回地图
+- (void)getRequestByUrl:(NSString *)url;
 
+@end
+
+@interface KDSearchExpertViewController : UIViewController
+@property(nonatomic,assign)id<KDSearchExpertOnMap>delegate;
 @end

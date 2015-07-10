@@ -31,6 +31,8 @@ return [self keyValues].description; \
 #define Height [[UIScreen mainScreen] bounds].size.height
 #define ViewW self.frame.size.width
 #define ViewH self.frame.size.height
+
+#define BGColor [UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1]
 /** 发现首页 */
 #define URL_Discover @"http://182.254.221.13:8080/api/v1.0/discovery/list"
 /** 清单页面 */

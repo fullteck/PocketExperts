@@ -68,12 +68,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"专家详情";
-    UIBarButtonItem * BI = [[UIBarButtonItem alloc] initWithTitle:@"预约" style:UIBarButtonItemStyleDone target:self action:@selector(didClickReserve:)];
-    self.navigationItem.rightBarButtonItem = BI;
+
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"asd"] forBarMetrics:UIBarMetricsDefaultPrompt];
+//    self.navigationController.navigationBar.translucent = YES;
+    [self createBarButtonItem];
     [self initWithTableView];
     [self getNetworkWithUrl];
 }
+
+- (void)createBarButtonItem
+{
+    UIBarButtonItem * leftBI = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(didClickBack:)];
+    self.navigationItem.leftBarButtonItem = leftBI;
+    UIBarButtonItem * likeBI = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"like"] style:UIBarButtonItemStyleDone target:self action:@selector(didClickLike:)];
+    UIBarButtonItem * shareBI = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStyleDone target:self action:@selector(didClickShare:)];
+    NSArray * rightArr = @[shareBI,likeBI];
+    self.navigationItem.rightBarButtonItems =  rightArr;
+}
+
+#pragma mark - UIBarButtonItem对应的触发事件
+
+- (void)didClickBack:(UIBarButtonItem *)BI
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didClickLike:(UIBarButtonItem *)BI
+{
+    NSLog(@"点击了赞");
+}
+
+- (void)didClickShare:(UIBarButtonItem *)BI
+{
+    NSLog(@"点击了分享");
+}
+
 //点击预约按钮
 - (void)didClickReserve:(UIBarButtonItem *)BI
 {
@@ -97,10 +129,8 @@
     NSString * headStr = @"http://182.254.221.13:8080";
     NSString * footStr = [NSString stringWithFormat:@"/api/v1.0/expert/info/%d",11];
     NSString * str = [headStr stringByAppendingString:footStr];
-    NSLog(@"%@",str);
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
         //把解析出得数据加到字典里
         NSDictionary * dic = responseObject[@"expert"];
         self.dic = dic[@"info"];

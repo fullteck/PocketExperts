@@ -20,17 +20,11 @@
 + (instancetype)picAndName {
     return [[[NSBundle mainBundle] loadNibNamed:@"KDExpertPicAndName" owner:nil options:nil] firstObject];
 }
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-    }
-    return self;
-}
 - (void)setExpert:(KDTexpertList *)expert {
     self.name.text = expert.name;
     NSURL *url = [NSURL URLWithString:expert.avaurl];
     [self.icon sd_setImageWithURL:url];
 }
-
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     self.icon.layer.masksToBounds = YES;

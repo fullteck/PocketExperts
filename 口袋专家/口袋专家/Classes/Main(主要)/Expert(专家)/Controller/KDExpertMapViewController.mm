@@ -48,6 +48,26 @@
     }
     return _annotationArr;
 }
+#pragma mark - KDSearchExpertOnMap 协议中的方法
+- (void)getRequestByUrl:(NSString *)url
+{
+    NSLog(@"%@",url);
+}
+//点击类别
+- (void)getSearchResultByClickButton:(NSString *)kindStr
+{
+    NSLog(@"点击了类别");
+}
+//点击键盘的return键直接返回地图
+- (void)getSearchResultByCLickReturn:(NSString *)textStr
+{
+    NSLog(@"点击了return");
+}
+//点击tableview的row返回地图
+- (void)getSearchResultByClickTableViewRow:(NSArray *)resultArray
+{
+    NSLog(@"点击了tableview");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,6 +85,10 @@
     [self.view addSubview:_mapView];
 }
 
+- (void)getRequestWithUrl:(NSString *)str
+{
+    
+}
 
 #pragma mark - 在地图上显示专家
 - (void)addAnnotation
@@ -73,17 +97,28 @@
     [_mapView removeAnnotations:self.annotationArr];
     [self.annotationArr removeAllObjects];
 
-    //解析数据
-    for (KDExpertList * expert in self.resultArray) {
+    for (int i = 0; i < self.resultArray.count; i++) {
+        KDExpertList * expert = [self.resultArray objectAtIndex:i];
         NSArray * ptArr = expert.geo;
         CLLocationDegrees latitude = [[ptArr objectAtIndex:0] doubleValue];
         CLLocationDegrees longitude = [[ptArr objectAtIndex:1] doubleValue];
         CLLocationCoordinate2D pt = CLLocationCoordinate2DMake(latitude,longitude);
         BMKPointAnnotation * annotion = [[BMKPointAnnotation alloc] init];
         annotion.coordinate = pt;
-        annotion.title = [NSString stringWithFormat:@"%ld",expert._id];
+        annotion.title = [NSString stringWithFormat:@"%d",i];
         [self.annotationArr addObject:annotion];
     }
+//    //解析数据
+//    for (KDExpertList * expert in self.resultArray) {
+//        NSArray * ptArr = expert.geo;
+//        CLLocationDegrees latitude = [[ptArr objectAtIndex:0] doubleValue];
+//        CLLocationDegrees longitude = [[ptArr objectAtIndex:1] doubleValue];
+//        CLLocationCoordinate2D pt = CLLocationCoordinate2DMake(latitude,longitude);
+//        BMKPointAnnotation * annotion = [[BMKPointAnnotation alloc] init];
+//        annotion.coordinate = pt;
+//        annotion.title = [NSString stringWithFormat:@"%ld",expert._id];
+//        [self.annotationArr addObject:annotion];
+//    }
     NSLog(@"%ld",self.annotationArr.count);
     [_mapView addAnnotations:self.annotationArr];
     
@@ -173,18 +208,21 @@
             // 设置重天上掉下的效果(annotation)
             ((BMKPinAnnotationView*)annotationView).animatesDrop = YES;
         }
+        int i = [annotation.title intValue];
+        KDExpertList * expert = [self.resultArray objectAtIndex:i];
         // 设置位置
         annotationView.centerOffset = CGPointMake(0, -(annotationView.frame.size.height * 0.5));
         annotationView.annotation = annotation;
         // 单击弹出泡泡，弹出泡泡前提annotation必须实现title属性
         annotationView.canShowCallout = YES;
-        annotationView.image = [UIImage imageNamed:@"iconfont-zhuanjiaku.png"];
+        annotationView.image = [UIImage imageNamed:@"expert positioning"];
         //创建弹出的paopaoview
-        KDMapView * view = [[KDMapView alloc] initWithFrame:CGRectMake(0, 0, 150, 100)];
-        view.detailButton.tag = [annotation.title integerValue];
-        [view.detailButton addTarget:self action:@selector(didClickEnterDetail:) forControlEvents:UIControlEventTouchUpInside];
+        KDMapView * view = [KDMapView instance];
+        view.expert = expert;
+        view.nextBtn.tag = expert._id;
+        [view.nextBtn addTarget:self action:@selector(didClickEnterDetail:) forControlEvents:UIControlEventTouchUpInside];
         BMKActionPaopaoView *paopaoView = [[BMKActionPaopaoView alloc] initWithCustomView:view];
-        paopaoView.frame = CGRectMake(0, 0, 150, 100);
+//        paopaoView.frame = CGRectMake(0, 0, 150, 100);
         annotationView.paopaoView = paopaoView;
 //         设置是否可以拖拽
         annotationView.draggable = NO;
@@ -197,9 +235,8 @@
 #pragma mark - 点击进入专家详情
 - (void)didClickEnterDetail:(UIButton *)button
 {
-    NSInteger expertId = button.tag;//通过tag值获取专家的id
     KDExpertDetailViewController * detailVC = [[KDExpertDetailViewController alloc] init];
-    detailVC.urlId = expertId;
+    detailVC.urlId = button.tag;
     [detailVC setHidesBottomBarWhenPushed:YES];
 
     [self.navigationController pushViewController:detailVC animated:YES];

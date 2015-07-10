@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface KDExpertMapViewController : UIViewController
+#import "KDSearchExpertViewController.h"
+
+@interface KDExpertMapViewController : UIViewController<KDSearchExpertOnMap>
 
 @property(nonatomic,strong)NSMutableArray * expertArray;//用来接收传过来的数据
 

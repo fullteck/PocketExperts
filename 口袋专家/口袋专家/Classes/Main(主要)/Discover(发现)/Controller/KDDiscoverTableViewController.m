@@ -40,7 +40,7 @@
 - (instancetype)initWithStyle:(UITableViewStyle)style
 {
     if (self = [super initWithStyle:style]) {
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = YES;
     }
     return self;
 }
@@ -207,14 +207,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        static NSString * identifier = @"First";
-        BOOL nibResgistered = NO;
-        if (!nibResgistered) {
-            UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDFirstTableViewCell class]) bundle:nil];
-            [tableView registerNib:nib forCellReuseIdentifier:identifier];
-            nibResgistered = YES;
-        }
-        KDFirstTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        KDFirstTableViewCell *cell = [KDFirstTableViewCell cellWithTableView:tableView];
         
         KDExpertTeam *expertTeam = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.topicName.text = expertTeam.title;
@@ -224,14 +217,7 @@
         return cell;
 
     }else{
-        static NSString * identifier = @"second";
-        BOOL nibResgistered = NO;
-        if (!nibResgistered) {
-            UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDSecondTableViewCell class]) bundle:nil];
-            [tableView registerNib:nib forCellReuseIdentifier:identifier];
-            nibResgistered = YES;
-        }
-        KDSecondTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        KDSecondTableViewCell *cell = [KDSecondTableViewCell cellWithTableView:tableView];
         
         KDDisTopic *topic = [[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.expertTopic = topic;
@@ -243,7 +229,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 250;
+        return [KDHandle shareInstance].cellHeight;
     }else{
         return [KDHandle shareInstance].cellHeight;
     }

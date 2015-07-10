@@ -11,11 +11,6 @@
 @interface KDHeader : UIView
 @property(nonatomic,strong)KDExpertList * expert;
 @property (weak, nonatomic) IBOutlet UIImageView *backImage;
-@property (weak, nonatomic) IBOutlet UIImageView *headImage;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *jobLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *autoImage;
-@property (weak, nonatomic) IBOutlet UIImageView *vipImage;
 
 
 
