@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08F03BF11B4FF90B00CAA7D8 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F03BF01B4FF90B00CAA7D8 /* BaiduMapAPI.framework */; };
 		A0596DBC1B3A6447008AD558 /* KDExpertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DBB1B3A6447008AD558 /* KDExpertDetailViewController.m */; };
 		A0596DC01B3A64F9008AD558 /* KDHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DBE1B3A64F9008AD558 /* KDHeader.m */; };
 		A0596DC11B3A64F9008AD558 /* KDHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0596DBF1B3A64F9008AD558 /* KDHeader.xib */; };
@@ -53,7 +54,6 @@
 		C7122D081B424BDA001F53A1 /* KDListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7122D071B424BDA001F53A1 /* KDListModel.m */; };
 		C7122D0E1B42B056001F53A1 /* UITableViewCell+textHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C7122D0D1B42B056001F53A1 /* UITableViewCell+textHeight.m */; };
 		C7122D101B42B761001F53A1 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7122D0F1B42B761001F53A1 /* mapapi.bundle */; };
-		C7122D111B42B990001F53A1 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B1C6041B428BEC00D67465 /* BaiduMapAPI.framework */; };
 		C7249D621B33C46E009C448C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7249D611B33C46E009C448C /* Images.xcassets */; };
 		C7249D711B33C46E009C448C /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249D701B33C46E009C448C /* ____Tests.m */; };
 		C7249D9C1B33C552009C448C /* KDBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7249D901B33C552009C448C /* KDBaseNavigationController.m */; };
@@ -122,6 +122,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08F03BF01B4FF90B00CAA7D8 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = ../../BaiduMapAPI.framework; sourceTree = "<group>"; };
 		532417BE14BA7656F678F002 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0596DBA1B3A6447008AD558 /* KDExpertDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertDetailViewController.h; sourceTree = "<group>"; };
 		A0596DBB1B3A6447008AD558 /* KDExpertDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertDetailViewController.m; sourceTree = "<group>"; };
@@ -304,7 +305,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7122D111B42B990001F53A1 /* BaiduMapAPI.framework in Frameworks */,
+				08F03BF11B4FF90B00CAA7D8 /* BaiduMapAPI.framework in Frameworks */,
 				A0B1C6091B428D0B00D67465 /* Security.framework in Frameworks */,
 				A0B1C6071B428CE900D67465 /* OpenGLES.framework in Frameworks */,
 				A0FC56121B3CFECD00580677 /* CoreGraphics.framework in Frameworks */,
@@ -370,6 +371,7 @@
 		A1C8CEE4A1F3123AD74C50C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				08F03BF01B4FF90B00CAA7D8 /* BaiduMapAPI.framework */,
 				A0B1C6081B428D0B00D67465 /* Security.framework */,
 				A0B1C6061B428CE900D67465 /* OpenGLES.framework */,
 				A0B1C6041B428BEC00D67465 /* BaiduMapAPI.framework */,
@@ -1138,6 +1140,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					/Users/fuyaozhishang/Downloads,
 					/Users/fullteck/Downloads,
+					/Users/zhaoyongjie/Desktop,
 				);
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1158,6 +1161,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					/Users/fuyaozhishang/Downloads,
 					/Users/fullteck/Downloads,
+					/Users/zhaoyongjie/Desktop,
 				);
 				INFOPLIST_FILE = "口袋专家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
