@@ -50,10 +50,6 @@
         [_kindScrollView addSubview:button];
         
     }
-//    UISegmentedControl * segment = [[UISegmentedControl alloc] initWithItems:kindArray];
-//    segment.frame = CGRectMake(0, 0, Width, 42);
-//    self.tableView.tableHeaderView = segment;
-    
 }
 
 - (void)didClickChangeKind:(UIButton *)button
@@ -70,17 +66,7 @@
 //cellForRow
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    static NSString * identifier = @"expertList";
-//    BOOL nibResgistered = NO;
-//    if (!nibResgistered) {
-//        UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertListCell class]) bundle:nil];
-//        [tableView registerNib:nib forCellReuseIdentifier:identifier];
-//        nibResgistered = YES;
-//    }
-//    KDExpertListCell * cell = (KDExpertListCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     KDExpertList * expert = [_expertArray objectAtIndex:indexPath.row];
-//    cell.expert = expert;
-//    return cell;
     KDExpertListCell * cell = (KDExpertListCell *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"expertList"];
     if (cell == nil) {
         NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDExpertListCell" owner:self options:nil];

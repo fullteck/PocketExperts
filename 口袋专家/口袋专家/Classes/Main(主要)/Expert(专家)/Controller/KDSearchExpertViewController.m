@@ -8,11 +8,12 @@
 
 #import "KDSearchExpertViewController.h"
 #import "KDConst.h"
-
+#import "KDSearchListController.h"
 
 @interface KDSearchExpertViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     BOOL tableViewIsAdd;
+    NSString * _searchStr;
 }
 @property(nonatomic,strong)UITextField * searchTF;
 @property(nonatomic,strong)UITableView * searchResultTableView;
@@ -106,8 +107,8 @@
 #pragma mark - UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    _searchStr = string;
     [self createTableView];
-
     return YES;
 }
 
@@ -147,19 +148,17 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"12"];
     }
-    cell.textLabel.text = @"搜索结果";
+    NSLog(@"%@",_searchTF.text);
+    cell.textLabel.text = _searchStr;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"点我干啥");
-    [_searchResultTableView removeFromSuperview];
-    _searchResultTableView = nil;
-    tableViewIsAdd = NO;
-    NSArray * arr = [NSArray array];
-    [self.navigationController popViewControllerAnimated:YES];
-    [_delegate getSearchResultByClickTableViewRow:arr];
+    [_searchTF resignFirstResponder];
+    KDSearchListController * searchListTVC = [[KDSearchListController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:searchListTVC animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {

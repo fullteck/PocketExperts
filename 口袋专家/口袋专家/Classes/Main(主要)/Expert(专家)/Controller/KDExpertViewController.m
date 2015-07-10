@@ -169,7 +169,6 @@
             [self.expertArray addObject:expert];
             [self.listTVC.tableView reloadData];
         }
-        NSLog(@"%@",self.expertArray);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
