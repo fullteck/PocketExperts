@@ -7,6 +7,7 @@
 //
 
 #import "KDHeader.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface KDHeader ()
 @property (weak, nonatomic) IBOutlet UIView *buttomView;
@@ -15,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *job;
 @property (weak, nonatomic) IBOutlet UIImageView *star;
 @property (weak, nonatomic) IBOutlet UILabel *like;
+@property (weak, nonatomic) IBOutlet UILabel *shuoming;
+@property (weak, nonatomic) IBOutlet UIView *border;
 
 
 @end
@@ -25,7 +28,13 @@
 }
 
 
-
+- (void)awakeFromNib
+{
+    
+    self.border.layer.borderColor = [[UIColor redColor] CGColor];
+    self.border.layer.borderWidth = 0.5;
+    self.border.layer.cornerRadius = 2;
+}
 
 - (void)setExpert:(KDExpertList *)expert
 {

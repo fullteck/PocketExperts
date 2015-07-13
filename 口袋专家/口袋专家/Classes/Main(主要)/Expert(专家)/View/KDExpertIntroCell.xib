@@ -25,21 +25,34 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="details column" translatesAutoresizingMaskIntoConstraints="NO" id="c9G-Lw-ZHs">
+                        <rect key="frame" x="287" y="281" width="63" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="63" id="8GS-4N-g7u"/>
+                            <constraint firstAttribute="height" constant="24" id="f0z-fq-kWf"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="hhQ-68-yDy" secondAttribute="trailing" constant="16" id="0kc-RM-gVn"/>
                     <constraint firstAttribute="trailing" secondItem="Qwh-of-9zW" secondAttribute="trailing" constant="16" id="Kfw-em-OSk"/>
                     <constraint firstItem="hhQ-68-yDy" firstAttribute="top" secondItem="Qwh-of-9zW" secondAttribute="bottom" constant="16" id="Nf3-jB-BmK"/>
+                    <constraint firstAttribute="trailing" secondItem="c9G-Lw-ZHs" secondAttribute="trailing" constant="16" id="TfS-0b-tDp"/>
                     <constraint firstItem="Qwh-of-9zW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="cre-YY-1Tx"/>
                     <constraint firstItem="Qwh-of-9zW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kmE-yG-Fld"/>
                     <constraint firstItem="hhQ-68-yDy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="uXd-Dd-kLo"/>
+                    <constraint firstItem="c9G-Lw-ZHs" firstAttribute="top" secondItem="hhQ-68-yDy" secondAttribute="bottom" constant="13" id="vFR-pC-ffu"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="detail" destination="c9G-Lw-ZHs" id="xOj-MK-XYm"/>
                 <outlet property="headpic" destination="Qwh-of-9zW" id="yZG-Ny-e9K"/>
                 <outlet property="intro" destination="hhQ-68-yDy" id="amZ-cB-7Ea"/>
             </connections>
             <point key="canvasLocation" x="495" y="326"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="details column" width="63" height="24"/>
+    </resources>
 </document>

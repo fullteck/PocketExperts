@@ -150,8 +150,8 @@
                                         <constraint firstAttribute="width" constant="24" id="wSg-Oo-Yo7"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="374" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MF9-XC-hvE">
-                                    <rect key="frame" x="0.0" y="35" width="118" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="374" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MF9-XC-hvE">
+                                    <rect key="frame" x="0.0" y="35" width="118" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="ERF-vS-zmD"/>
                                     </constraints>
@@ -218,6 +218,33 @@
                         <constraint firstItem="Z5w-1q-4wM" firstAttribute="width" secondItem="dbJ-DS-eAH" secondAttribute="width" multiplier="0.25" id="xia-Ia-g9g"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9I-aF-367">
+                    <rect key="frame" x="297" y="351" width="48" height="15"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是专家" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pN2-Yc-NHi">
+                            <rect key="frame" x="4" y="0.0" width="40" height="15"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
+                            <color key="textColor" red="1" green="0.35294117647058826" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="pN2-Yc-NHi" secondAttribute="trailing" constant="4" id="Ir6-PE-8pc"/>
+                        <constraint firstItem="pN2-Yc-NHi" firstAttribute="leading" secondItem="Q9I-aF-367" secondAttribute="leading" constant="4" id="ObR-Na-Fnu"/>
+                        <constraint firstAttribute="height" constant="15" id="YbQ-Qe-3xX"/>
+                        <constraint firstItem="pN2-Yc-NHi" firstAttribute="top" secondItem="Q9I-aF-367" secondAttribute="top" id="aR8-JI-sRn"/>
+                        <constraint firstAttribute="bottom" secondItem="pN2-Yc-NHi" secondAttribute="bottom" id="vlc-gN-ac3"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                            <color key="value" red="1" green="0.35294117647058826" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -229,6 +256,7 @@
                 <constraint firstAttribute="centerX" secondItem="bAP-ls-bFl" secondAttribute="centerX" id="MAp-K4-sYl"/>
                 <constraint firstItem="QRP-2K-V4I" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ojh-yp-dot"/>
                 <constraint firstAttribute="centerX" secondItem="QRP-2K-V4I" secondAttribute="centerX" id="P3E-a6-Wri"/>
+                <constraint firstItem="Q9I-aF-367" firstAttribute="leading" secondItem="lFr-Lu-W2b" secondAttribute="trailing" constant="5" id="VRE-BE-sQg"/>
                 <constraint firstItem="s8H-Eb-giU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="181.5" id="Whe-LW-e04"/>
                 <constraint firstItem="lFr-Lu-W2b" firstAttribute="top" secondItem="2cF-RK-Aaq" secondAttribute="bottom" constant="17" id="etr-ms-hTn"/>
                 <constraint firstAttribute="centerX" secondItem="8Fh-ZB-5zF" secondAttribute="centerX" id="f1b-lI-Rlb"/>
@@ -238,6 +266,7 @@
                 <constraint firstItem="lFy-Ll-8mb" firstAttribute="centerY" secondItem="bAP-ls-bFl" secondAttribute="centerY" id="lgf-di-u0j"/>
                 <constraint firstAttribute="trailing" secondItem="dbJ-DS-eAH" secondAttribute="trailing" id="oBU-ZW-JAb"/>
                 <constraint firstAttribute="centerX" secondItem="2cF-RK-Aaq" secondAttribute="centerX" id="pkC-Ti-zxy"/>
+                <constraint firstItem="Q9I-aF-367" firstAttribute="centerY" secondItem="lFr-Lu-W2b" secondAttribute="centerY" constant="1" id="rAu-PM-dge"/>
                 <constraint firstAttribute="bottom" secondItem="dbJ-DS-eAH" secondAttribute="bottom" id="rU7-tv-jnz"/>
                 <constraint firstItem="8Fh-ZB-5zF" firstAttribute="top" secondItem="s8H-Eb-giU" secondAttribute="bottom" constant="9" id="ygH-qB-ftq"/>
             </constraints>
@@ -245,6 +274,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backImage" destination="QRP-2K-V4I" id="SNr-Z3-Sdz"/>
+                <outlet property="border" destination="Q9I-aF-367" id="mPc-or-nUH"/>
                 <outlet property="buttomView" destination="dbJ-DS-eAH" id="WkG-bg-vvS"/>
                 <outlet property="headpic" destination="2MT-gh-W1f" id="fkb-z2-mQd"/>
                 <outlet property="job" destination="lFr-Lu-W2b" id="UBj-Hp-36U"/>

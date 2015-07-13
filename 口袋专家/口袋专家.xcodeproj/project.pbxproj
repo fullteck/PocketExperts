@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		08EE44F81B52458200F8CE51 /* KDExpertDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EE44F71B52458200F8CE51 /* KDExpertDetailHeaderView.m */; };
 		08EE44FA1B52458C00F8CE51 /* KDExpertDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08EE44F91B52458C00F8CE51 /* KDExpertDetailHeaderView.xib */; };
+		08EE44FE1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EE44FC1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.m */; };
+		08EE44FF1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08EE44FD1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.xib */; };
 		08F03BF31B4FFA4C00CAA7D8 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F03BF21B4FFA4C00CAA7D8 /* BaiduMapAPI.framework */; };
 		A0263FC81B4E197D0082349B /* KDMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0263FC71B4E197D0082349B /* KDMapView.xib */; };
 		A0596DBC1B3A6447008AD558 /* KDExpertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DBB1B3A6447008AD558 /* KDExpertDetailViewController.m */; };
 		A0596DC01B3A64F9008AD558 /* KDHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DBE1B3A64F9008AD558 /* KDHeader.m */; };
 		A0596DC11B3A64F9008AD558 /* KDHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0596DBF1B3A64F9008AD558 /* KDHeader.xib */; };
-		A0596DC41B3A651C008AD558 /* KDTopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DC31B3A651C008AD558 /* KDTopicDetailViewController.m */; };
 		A0596DC71B3A6537008AD558 /* KDExpertCommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DC61B3A6537008AD558 /* KDExpertCommentTableViewController.m */; };
 		A0596DCA1B3A6560008AD558 /* KDExpertList.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DC91B3A6560008AD558 /* KDExpertList.m */; };
 		A0596DCD1B3A7C5B008AD558 /* KDExpertIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0596DCC1B3A7C5B008AD558 /* KDExpertIntroViewController.m */; };
@@ -131,6 +132,9 @@
 		08EE44F61B52458200F8CE51 /* KDExpertDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertDetailHeaderView.h; sourceTree = "<group>"; };
 		08EE44F71B52458200F8CE51 /* KDExpertDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertDetailHeaderView.m; sourceTree = "<group>"; };
 		08EE44F91B52458C00F8CE51 /* KDExpertDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDExpertDetailHeaderView.xib; sourceTree = "<group>"; };
+		08EE44FB1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertTopicDetailViewController.h; sourceTree = "<group>"; };
+		08EE44FC1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertTopicDetailViewController.m; sourceTree = "<group>"; };
+		08EE44FD1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDExpertTopicDetailViewController.xib; sourceTree = "<group>"; };
 		08F03BF21B4FFA4C00CAA7D8 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = ../../BaiduMapAPI.framework; sourceTree = "<group>"; };
 		532417BE14BA7656F678F002 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0263FC71B4E197D0082349B /* KDMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDMapView.xib; sourceTree = "<group>"; };
@@ -139,8 +143,6 @@
 		A0596DBD1B3A64F9008AD558 /* KDHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDHeader.h; sourceTree = "<group>"; };
 		A0596DBE1B3A64F9008AD558 /* KDHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDHeader.m; sourceTree = "<group>"; };
 		A0596DBF1B3A64F9008AD558 /* KDHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDHeader.xib; sourceTree = "<group>"; };
-		A0596DC21B3A651C008AD558 /* KDTopicDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDTopicDetailViewController.h; sourceTree = "<group>"; };
-		A0596DC31B3A651C008AD558 /* KDTopicDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDTopicDetailViewController.m; sourceTree = "<group>"; };
 		A0596DC51B3A6537008AD558 /* KDExpertCommentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertCommentTableViewController.h; sourceTree = "<group>"; };
 		A0596DC61B3A6537008AD558 /* KDExpertCommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertCommentTableViewController.m; sourceTree = "<group>"; };
 		A0596DC81B3A6560008AD558 /* KDExpertList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertList.h; sourceTree = "<group>"; };
@@ -590,8 +592,9 @@
 				A0596DDD1B3AA4CE008AD558 /* Reserve */,
 				A0596DC51B3A6537008AD558 /* KDExpertCommentTableViewController.h */,
 				A0596DC61B3A6537008AD558 /* KDExpertCommentTableViewController.m */,
-				A0596DC21B3A651C008AD558 /* KDTopicDetailViewController.h */,
-				A0596DC31B3A651C008AD558 /* KDTopicDetailViewController.m */,
+				08EE44FB1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.h */,
+				08EE44FC1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.m */,
+				08EE44FD1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.xib */,
 				A0596DBA1B3A6447008AD558 /* KDExpertDetailViewController.h */,
 				A0596DBB1B3A6447008AD558 /* KDExpertDetailViewController.m */,
 				C7249DD41B33ED9C009C448C /* KDExpertViewController.h */,
@@ -896,6 +899,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08EE44FF1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.xib in Resources */,
 				A08E7D111B4390DD001899B3 /* iconfont-iconfontleft.png in Resources */,
 				A0596DCF1B3A831F008AD558 /* KDExpertIntroHeader.xib in Resources */,
 				C7249DD01B33ED8A009C448C /* KDFirstTableViewCell.xib in Resources */,
@@ -978,7 +982,6 @@
 				C7249DC21B33ED77009C448C /* KDListingViewController.m in Sources */,
 				A0D328171B4A315400129DD0 /* KDMyReserve.m in Sources */,
 				A0596DC01B3A64F9008AD558 /* KDHeader.m in Sources */,
-				A0596DC41B3A651C008AD558 /* KDTopicDetailViewController.m in Sources */,
 				C788112A1B3BF89300813D65 /* KDExpertHeaderView.m in Sources */,
 				A0596DCD1B3A7C5B008AD558 /* KDExpertIntroViewController.m in Sources */,
 				C7249DCE1B33ED8A009C448C /* KDExpertPicAndName.m in Sources */,
@@ -1013,6 +1016,7 @@
 				A08C32431B4135980049D6A0 /* KDReserveInfoViewController.m in Sources */,
 				A08E7D141B43D851001899B3 /* KDSearchExpertViewController.m in Sources */,
 				C7249DA61B33C7B9009C448C /* main.m in Sources */,
+				08EE44FE1B53FB5B00F8CE51 /* KDExpertTopicDetailViewController.m in Sources */,
 				C7A03E181B3A58CB00FC8F6A /* KDExpertComment.m in Sources */,
 				A0596DE01B3AA4F3008AD558 /* KDReserveController.m in Sources */,
 				A0EFAF271B3BE0A0000F612C /* KDExpertJob.m in Sources */,

@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headpic;
 @property (weak, nonatomic) IBOutlet UILabel *intro;
 
-
+- (CGFloat)getHeight;
 + (CGFloat)getHeight;
 
 @end

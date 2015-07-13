@@ -26,7 +26,6 @@
 
 #import "KDHeader.h"
 
-#import "KDTopicDetailViewController.h"
 
 #import "KDExpertCommentTableViewController.h"
 
@@ -39,6 +38,8 @@
 #import "KDExpertDetailHeaderView.h"
 
 #import "KDHandle.h"
+
+#import "KDExpertTopicDetailViewController.h"
 
 
 @interface KDExpertDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -74,10 +75,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.alpha = 1;
+//    self.navigationController.navigationBar.tintColor = nil;
     self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"asd"] forBarMetrics:UIBarMetricsDefaultPrompt];
-//    self.navigationController.navigationBar.translucent = YES;
     [self createBarButtonItem];
     [self initWithTableView];
     [self getNetworkWithUrl];
@@ -190,19 +190,6 @@
 {
 
     return [[self.resultArray objectAtIndex:section] count];
-//    if (section == 0) {
-//        return 1;
-//    }else if (section == 1){
-//        return 1;
-//    }else if (section == 2){
-//        return [[self.resultArray objectAtIndex:0] count];
-//    }else if (section == 3){
-//        return [[self.resultArray objectAtIndex:1] count];
-//        
-//    }else{
-//        return [[self.resultArray objectAtIndex:2] count];
-//    }
-//    return arr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -285,11 +272,13 @@
 //点击cell时的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        KDTopicDetailViewController * topicVC = [[KDTopicDetailViewController alloc] init];
+    if (indexPath.section == 2) {
+        KDExpertTopicDetailViewController * topicVC = [[KDExpertTopicDetailViewController alloc] initWithNibName:@"KDExpertTopicDetailViewController" bundle:nil];
         KDExpertTopic * topic = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        topicVC.topicTitle = topic.title;
-        topicVC.grade = topicVC.grade;
+        KDExpertList * expert = [[self.resultArray objectAtIndex:3] objectAtIndex:0];
+        
+        topicVC.topic = topic.title;
+        topicVC.expert = expert;
         [self.navigationController pushViewController:topicVC animated:YES];
     }
 }

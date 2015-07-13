@@ -23,6 +23,7 @@
     if (_resultarray == nil) {
         _resultarray = [NSMutableArray array];
     }
+    
     return _resultarray;
 }
 

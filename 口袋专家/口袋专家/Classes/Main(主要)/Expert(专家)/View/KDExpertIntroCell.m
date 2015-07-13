@@ -12,6 +12,7 @@
 @interface KDExpertIntroCell ()
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *detail;
 
 
 @end
@@ -21,7 +22,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    [KDHandle shareInstance].cellHeight = CGRectGetMaxY(self.intro.frame) + 16;
+    [KDHandle shareInstance].cellHeight = CGRectGetMaxY(self.detail.frame) + 16;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
