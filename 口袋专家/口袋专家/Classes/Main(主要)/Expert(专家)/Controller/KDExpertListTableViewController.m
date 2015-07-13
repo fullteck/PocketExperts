@@ -67,7 +67,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KDExpertList * expert = [_expertArray objectAtIndex:indexPath.row];
-    KDExpertListCell * cell = (KDExpertListCell *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"expertList"];
+    KDExpertListCell * cell = (KDExpertListCell *)[tableView dequeueReusableCellWithIdentifier:@"expertList"];
     if (cell == nil) {
         NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDExpertListCell" owner:self options:nil];
         cell = [arr lastObject];
