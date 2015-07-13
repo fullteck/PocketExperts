@@ -23,6 +23,15 @@
 
 }
 
++ (instancetype)cellWithTableView:(UITableView *)tableView {
+    KDExpertListCell * cell = (KDExpertListCell *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"expertList"];
+    if (cell == nil) {
+        NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDExpertListCell" owner:self options:nil];
+        cell = [arr lastObject];
+    }
+    return cell;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

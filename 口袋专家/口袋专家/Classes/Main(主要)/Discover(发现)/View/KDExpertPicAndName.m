@@ -20,6 +20,15 @@
 + (instancetype)picAndName {
     return [[[NSBundle mainBundle] loadNibNamed:@"KDExpertPicAndName" owner:nil options:nil] firstObject];
 }
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.autoresizingMask = UIViewAutoresizingNone;
+//        self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    }
+    return self;
+}
+
 - (void)setExpert:(KDTexpertList *)expert {
     self.name.text = expert.name;
     NSURL *url = [NSURL URLWithString:expert.avaurl];
@@ -28,8 +37,8 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     self.icon.layer.masksToBounds = YES;
-    self.icon.layer.cornerRadius = self.frame.size.width * 0.5;
-    NSLog(@"%f,%f",self.icon.frame.size.width,self.icon.frame.size.height);
+    self.icon.layer.cornerRadius = self.icon.frame.size.width * 0.5;
+    NSLog(@"width = %f,height = %f",self.frame.size.width,self.frame.size.height);
 }
 
 @end

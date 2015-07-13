@@ -78,6 +78,8 @@
 		C7249DE11B33EF1F009C448C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE01B33EF1F009C448C /* QuartzCore.framework */; };
 		C7249DE31B33EF28009C448C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE21B33EF28009C448C /* CoreLocation.framework */; };
 		C7249DE51B33EF35009C448C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7249DE41B33EF35009C448C /* SystemConfiguration.framework */; };
+		C7689D5E1B53C53100ACA40C /* KDLeftHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7689D5C1B53C53100ACA40C /* KDLeftHeaderView.m */; };
+		C7689D5F1B53C53100ACA40C /* KDLeftHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7689D5D1B53C53100ACA40C /* KDLeftHeaderView.xib */; };
 		C769D0FB1B4A216800976F69 /* KDExpertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C769D0FA1B4A216800976F69 /* KDExpertsViewController.m */; };
 		C769D0FE1B4B772E00976F69 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C769D0FD1B4B772E00976F69 /* UIBarButtonItem+Extension.m */; };
 		C769D1011B4B77F800976F69 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C769D1001B4B77F800976F69 /* UIView+Extension.m */; };
@@ -250,6 +252,9 @@
 		C7249DE01B33EF1F009C448C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C7249DE21B33EF28009C448C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C7249DE41B33EF35009C448C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C7689D5B1B53C53100ACA40C /* KDLeftHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDLeftHeaderView.h; sourceTree = "<group>"; };
+		C7689D5C1B53C53100ACA40C /* KDLeftHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDLeftHeaderView.m; sourceTree = "<group>"; };
+		C7689D5D1B53C53100ACA40C /* KDLeftHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KDLeftHeaderView.xib; sourceTree = "<group>"; };
 		C769D0F91B4A216800976F69 /* KDExpertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpertsViewController.h; sourceTree = "<group>"; };
 		C769D0FA1B4A216800976F69 /* KDExpertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpertsViewController.m; sourceTree = "<group>"; };
 		C769D0FC1B4B772E00976F69 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
@@ -725,6 +730,9 @@
 		C7249D8C1B33C552009C448C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C7689D5B1B53C53100ACA40C /* KDLeftHeaderView.h */,
+				C7689D5C1B53C53100ACA40C /* KDLeftHeaderView.m */,
+				C7689D5D1B53C53100ACA40C /* KDLeftHeaderView.xib */,
 				C7CA87E21B390426002C167F /* KDLeftHeadTableViewCell.h */,
 				C7CA87E31B390426002C167F /* KDLeftHeadTableViewCell.m */,
 				C7CA87E41B390426002C167F /* KDLeftHeadTableViewCell.xib */,
@@ -905,6 +913,7 @@
 				A0AAB8411B4FD24D001B62E7 /* KDChatNumberView.xib in Resources */,
 				A0AC8FBD1B4CFA3A00814F1A /* KDSecondTableViewCell.xib in Resources */,
 				C7A03E111B3A58C200FC8F6A /* KDExpertIntroCell.xib in Resources */,
+				C7689D5F1B53C53100ACA40C /* KDLeftHeaderView.xib in Resources */,
 				A0596DD71B3A8B56008AD558 /* KDExpertJobCell.xib in Resources */,
 				C788112C1B3C05E000813D65 /* SectionHeaderView.xib in Resources */,
 				C78811191B3B9EEA00813D65 /* KDExpertHeaderView.xib in Resources */,
@@ -975,6 +984,7 @@
 				A0AAB83C1B4F9FEC001B62E7 /* KDSearchListController.m in Sources */,
 				C7CA87EA1B39075E002C167F /* KDLeftSwitchTableViewCell.m in Sources */,
 				C788112F1B3C05F300813D65 /* KDSectionHeaderView.m in Sources */,
+				C7689D5E1B53C53100ACA40C /* KDLeftHeaderView.m in Sources */,
 				C769D0FB1B4A216800976F69 /* KDExpertsViewController.m in Sources */,
 				C769D0FE1B4B772E00976F69 /* UIBarButtonItem+Extension.m in Sources */,
 				A08C32491B4143DB0049D6A0 /* UIPopoverListView.m in Sources */,

@@ -7,43 +7,60 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KDExpertPicAndName">
-            <rect key="frame" x="0.0" y="0.0" width="45" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="73.5" height="74"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdB-LD-3Ls">
+                    <rect key="frame" x="14.5" y="0.0" width="45" height="45"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="paP-6o-RGj"/>
+                        <constraint firstAttribute="height" constant="45" id="u74-LL-Uva"/>
+                        <constraint firstAttribute="width" constant="45" id="zLo-VT-oMZ"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="u74-LL-Uva"/>
+                        </mask>
+                    </variation>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小熊三" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nds-AI-dX4">
-                    <rect key="frame" x="0.0" y="51" width="45" height="19"/>
+                    <rect key="frame" x="14.5" y="51" width="45" height="17"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdB-LD-3Ls">
-                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="45" id="qTI-GM-HvM"/>
-                        <constraint firstAttribute="height" constant="45" id="u74-LL-Uva"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Nds-AI-dX4" firstAttribute="top" secondItem="hdB-LD-3Ls" secondAttribute="bottom" constant="6" id="3kA-ab-ihU"/>
                 <constraint firstAttribute="bottom" secondItem="Nds-AI-dX4" secondAttribute="bottom" id="5IX-pB-7t3"/>
+                <constraint firstAttribute="centerX" secondItem="hdB-LD-3Ls" secondAttribute="centerX" id="Gzq-pV-UQ7"/>
                 <constraint firstItem="Nds-AI-dX4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rn3-fr-bdn"/>
+                <constraint firstItem="Nds-AI-dX4" firstAttribute="leading" secondItem="hdB-LD-3Ls" secondAttribute="leading" id="Snu-vW-4Jh"/>
                 <constraint firstAttribute="trailing" secondItem="hdB-LD-3Ls" secondAttribute="trailing" id="a2r-ku-VTJ"/>
+                <constraint firstItem="Nds-AI-dX4" firstAttribute="width" secondItem="hdB-LD-3Ls" secondAttribute="width" id="cOI-6d-atT"/>
                 <constraint firstItem="hdB-LD-3Ls" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dib-K4-hjD"/>
                 <constraint firstItem="hdB-LD-3Ls" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iYb-Gb-pkh"/>
                 <constraint firstAttribute="trailing" secondItem="Nds-AI-dX4" secondAttribute="trailing" id="z5Q-dk-xXp"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="a2r-ku-VTJ"/>
+                    <exclude reference="iYb-Gb-pkh"/>
+                    <exclude reference="5IX-pB-7t3"/>
+                    <exclude reference="Rn3-fr-bdn"/>
+                    <exclude reference="z5Q-dk-xXp"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="icon" destination="hdB-LD-3Ls" id="KqU-iL-6e3"/>
                 <outlet property="iconHeight" destination="u74-LL-Uva" id="fpS-Ln-QpR"/>
-                <outlet property="iconWidth" destination="qTI-GM-HvM" id="Aos-J6-sHP"/>
                 <outlet property="name" destination="Nds-AI-dX4" id="UUe-g0-gZ2"/>
             </connections>
-            <point key="canvasLocation" x="382.5" y="236"/>
+            <point key="canvasLocation" x="391" y="238"/>
         </view>
     </objects>
 </document>

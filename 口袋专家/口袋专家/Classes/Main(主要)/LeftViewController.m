@@ -7,18 +7,17 @@
 //
 
 #import "LeftViewController.h"
-
 #import "KDLeftHeadTableViewCell.h"
-
 #import "KDLeftSwitchTableViewCell.h"
-
 #import "KDMyReserveTableViewController.h"
-
+#import "KDLeftHeaderView.h"
+#import "KDBaseNavigationController.h"
 #import "KDConst.h"
 
 @interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong)UITableView *tableView;
-@property (nonatomic, strong)NSArray * titleArray;
+/** 存储所有的 title */
+@property (nonatomic, strong)NSArray *titleArray;
 @end
 
 @implementation LeftViewController
@@ -26,59 +25,85 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Width, Height) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Width, Height) style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
-    self.titleArray = @[@"我的预约",@"我的智囊团",@"我的钱包",@"我的消息",@"分享赚时间",@"帮助中心"];
+    
+    NSArray *titleArray = @[@"我约的专家",@"我的智囊团",@"我的心愿单",@"我的钱包"];
+    NSArray *otherTitleArray = @[@"成为专家",@"分享赚时间",@"帮助中心"];
+    
+    self.titleArray = @[titleArray,otherTitleArray];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        KDLeftHeaderView *headerView = [KDLeftHeaderView instance];
+        [headerView addTarget:self action:@selector(login)];
+        return headerView;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 200;
+    }
+    return 5;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return [self.titleArray[section] count];
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == 0) {
-        return 120;
-    } else if (indexPath.row == 1) {
-        return 90;
-    } else {
-        return 44;
-    }
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        KDLeftHeadTableViewCell *cell = [KDLeftHeadTableViewCell instance];
-        return cell;
-    } else if (indexPath.row == 1) {
-        KDLeftSwitchTableViewCell *cell = [KDLeftSwitchTableViewCell instance];
-        return cell;
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.text = self.titleArray[indexPath.section][indexPath.row];
+
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            cell.imageView.image = [UIImage imageNamed:@"an appointment of experts"];
+        } else if (indexPath.row == 1) {
+            cell.imageView.image = [UIImage imageNamed:@"my think tank"];
+        } else if (indexPath.row == 2) {
+            cell.imageView.image = [UIImage imageNamed:@"my like"];
+        } else {
+            cell.imageView.image = [UIImage imageNamed:@"my wallet"];
+        }
     } else {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-        cell.textLabel.text = [self.titleArray objectAtIndex:indexPath.row - 2];
-        
-        return cell;
+        if (indexPath.row == 0) {
+            cell.imageView.image = [UIImage imageNamed:@"become an expert"];
+        } else if (indexPath.row == 1) {
+            cell.imageView.image = [UIImage imageNamed:@"share to make time"];
+        } else {
+            cell.imageView.image = [UIImage imageNamed:@"help center"];
+        }
     }
+        return cell;
+}
+
+- (void)login {
+    NSLog(@"登录");
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 2) {
-        KDMyReserveTableViewController * myReserveTVC = [[KDMyReserveTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        NSLog(@"%@",self.navigationController);
-        [self.navigationController pushViewController:myReserveTVC animated:YES];
-    }
+            KDMyReserveTableViewController * myReserveTVC = [[KDMyReserveTableViewController alloc] initWithStyle:UITableViewStylePlain];
+            KDBaseNavigationController *NC =[[KDBaseNavigationController alloc] initWithRootViewController:myReserveTVC];
+            myReserveTVC.title = self.titleArray[indexPath.section][indexPath.row];
+            
+            [self presentViewController:NC animated:YES completion:nil];
+
 }
 
 
