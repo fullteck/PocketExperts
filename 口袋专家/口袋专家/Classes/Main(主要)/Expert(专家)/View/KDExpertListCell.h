@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KDExpertList.h"
+
 @interface KDExpertListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headpic;
 @property (weak, nonatomic) IBOutlet UIImageView *sexpic;
@@ -16,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *gradepic;
 @property (weak, nonatomic) IBOutlet UILabel *meet_cLabel;
 @property(nonatomic,strong)KDExpertList * expert;
-
++ (instancetype)cellWithTableView:(UITableView *)tableView;
 @end

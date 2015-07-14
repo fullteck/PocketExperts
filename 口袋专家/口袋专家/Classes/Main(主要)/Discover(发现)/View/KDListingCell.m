@@ -49,19 +49,29 @@
     
     return cell;
 }
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    return self;
+}
+
 #pragma mark - 子控件的赋值
 - (void)setList:(KDListModel *)list {
     _list = list;
     _title.text = list.title;
     _content.text = list.content;
-    CGFloat padding = (self.bgView.frame.size.width - 150)/4;
+    CGFloat padding = self.bgView.frame.size.width/4;
+    NSLog(@"%f",self.bgView.frame.size.width);
+    NSLog(@"%f",padding);
+
     static NSInteger count;
     count = _list.expert.count;
     for (int i = 0; i < count; i++) {
         KDExpertPicAndName *expert = [KDExpertPicAndName picAndName];
-        expert.frame = CGRectMake((45 + padding)*i, 0, 45, 65);
+        expert.frame = CGRectMake((padding - 10)*i, 0, padding-10, padding);
         expert.expert = _list.expert[i];
-        expert.autoresizingMask = UIViewAutoresizingNone;
+        NSLog(@"%f,%f",expert.frame.size.width,expert.frame.size.height);
         [self.bgView addSubview:expert];
     }
     [KDHandle shareInstance].cellHeight = CGRectGetMaxY(self.bgView.frame) + 36;

@@ -53,7 +53,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bf-9f-4dH">
-                                        <rect key="frame" x="31" y="128.5" width="294" height="100.5"/>
+                                        <rect key="frame" x="16" y="128.5" width="332" height="100.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNy-Hl-znS">
@@ -79,7 +79,7 @@
                                     <constraint firstItem="oiE-aL-vhE" firstAttribute="top" secondItem="wWG-FF-qBF" secondAttribute="top" constant="0.5" id="K02-fy-jEP"/>
                                     <constraint firstItem="cNy-Hl-znS" firstAttribute="leading" secondItem="wgr-cj-A6r" secondAttribute="leading" constant="12" id="MN6-hI-IE1"/>
                                     <constraint firstItem="fgW-Lj-tn3" firstAttribute="centerY" secondItem="wWG-FF-qBF" secondAttribute="centerY" id="NLw-GY-ywv"/>
-                                    <constraint firstAttribute="trailing" secondItem="4Bf-9f-4dH" secondAttribute="trailing" constant="31" id="Ofu-G6-CbY"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Bf-9f-4dH" secondAttribute="trailing" constant="8" id="Ofu-G6-CbY"/>
                                     <constraint firstItem="4Bf-9f-4dH" firstAttribute="top" secondItem="m1i-nH-BXY" secondAttribute="bottom" constant="16" id="Ogn-nw-qDQ"/>
                                     <constraint firstItem="m1i-nH-BXY" firstAttribute="leading" secondItem="oiE-aL-vhE" secondAttribute="leading" id="QdA-ey-nYR"/>
                                     <constraint firstAttribute="trailing" secondItem="TFh-Yr-sH5" secondAttribute="trailing" id="RCZ-2b-d8q"/>
@@ -89,7 +89,7 @@
                                     <constraint firstAttribute="bottom" secondItem="TFh-Yr-sH5" secondAttribute="bottom" id="aJm-rn-bzs"/>
                                     <constraint firstItem="m1i-nH-BXY" firstAttribute="centerY" secondItem="oiE-aL-vhE" secondAttribute="centerY" constant="2.5" id="bgl-w8-hvh"/>
                                     <constraint firstItem="TFh-Yr-sH5" firstAttribute="top" secondItem="wgr-cj-A6r" secondAttribute="top" id="db1-zj-nzp"/>
-                                    <constraint firstItem="4Bf-9f-4dH" firstAttribute="leading" secondItem="wgr-cj-A6r" secondAttribute="leading" constant="31" id="dqP-rp-fIt"/>
+                                    <constraint firstItem="4Bf-9f-4dH" firstAttribute="leading" secondItem="wgr-cj-A6r" secondAttribute="leading" constant="16" id="dqP-rp-fIt"/>
                                     <constraint firstItem="cNy-Hl-znS" firstAttribute="leading" secondItem="TFh-Yr-sH5" secondAttribute="leading" id="e2Y-zk-Mgy"/>
                                     <constraint firstAttribute="trailing" secondItem="cNy-Hl-znS" secondAttribute="trailing" id="eCu-RW-6oB"/>
                                     <constraint firstItem="m1i-nH-BXY" firstAttribute="top" secondItem="oiE-aL-vhE" secondAttribute="top" constant="-1.5" id="fmT-Lf-8f7"/>
@@ -114,10 +114,10 @@
                                         <exclude reference="Zo0-eD-bSS"/>
                                         <exclude reference="aJm-rn-bzs"/>
                                         <exclude reference="zli-ca-HK6"/>
-                                        <exclude reference="bgl-w8-hvh"/>
                                         <exclude reference="MN6-hI-IE1"/>
                                         <exclude reference="e2Y-zk-Mgy"/>
                                         <exclude reference="tcx-3P-ojx"/>
+                                        <exclude reference="bgl-w8-hvh"/>
                                         <exclude reference="i3k-AI-2vz"/>
                                     </mask>
                                 </variation>

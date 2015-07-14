@@ -38,8 +38,7 @@
     LeftViewController * leftVC = [[LeftViewController alloc] init];
     leftVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的" image:[UIImage imageNamed:@"my_normal"] tag:102];
     [leftVC.tabBarItem setSelectedImage:[UIImage imageNamed:@"my_selected"]];
-    KDBaseNavigationController * NC3 = [[KDBaseNavigationController alloc] initWithRootViewController:leftVC];
-    self.viewControllers =  @[NC2,NC1,NC3];
+    self.viewControllers =  @[NC2,NC1,leftVC];
     
     
 }

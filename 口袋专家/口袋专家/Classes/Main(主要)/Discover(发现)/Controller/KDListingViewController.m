@@ -108,7 +108,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     KDListingCell * cell = [KDListingCell cellWithTableView:tableView];
     KDListModel *list = self.dataArray[indexPath.row];
-    
     cell.list = list;
     [cell addTarget:self action:@selector(pushToExperts)];
     return cell;
@@ -121,10 +120,8 @@
 }
 #pragma mark - 专家列表按钮点击事件
 - (void)pushToExperts {
-    NSLog(@"按钮被点击了!");
     KDExpertsViewController *expertsVC = [[KDExpertsViewController alloc] init];
-    expertsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:expertsVC] animated:YES completion:nil];
+    [self.navigationController pushViewController:expertsVC animated:YES];
 }
 
 @end

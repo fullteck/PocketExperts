@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface KDExpertIntroCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *introducepic;
-@property (weak, nonatomic) IBOutlet UILabel *introLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *headpic;
+@property (weak, nonatomic) IBOutlet UILabel *intro;
+
+- (CGFloat)getHeight;
++ (CGFloat)getHeight;
 
 @end

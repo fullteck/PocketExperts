@@ -26,7 +26,6 @@
 
 #import "KDHeader.h"
 
-#import "KDTopicDetailViewController.h"
 
 #import "KDExpertCommentTableViewController.h"
 
@@ -35,6 +34,12 @@
 #import "KDReserveController.h"
 
 #import "KDConst.h"
+
+#import "KDExpertDetailHeaderView.h"
+
+#import "KDHandle.h"
+
+#import "KDExpertTopicDetailViewController.h"
 
 
 @interface KDExpertDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -70,10 +75,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.alpha = 1;
+//    self.navigationController.navigationBar.tintColor = nil;
     self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"asd"] forBarMetrics:UIBarMetricsDefaultPrompt];
-//    self.navigationController.navigationBar.translucent = YES;
     [self createBarButtonItem];
     [self initWithTableView];
     [self getNetworkWithUrl];
@@ -107,7 +111,7 @@
 }
 
 //点击预约按钮
-- (void)didClickReserve:(UIBarButtonItem *)BI
+- (void)didCickReserve:(UIButton *)button
 {
     NSLog(@"点击了预约");
     KDReserveController * reserveVC = [[KDReserveController alloc] init];
@@ -117,11 +121,18 @@
 #pragma mark - initTableView
 - (void)initWithTableView
 {
-    self.detailTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Width, Height) style:UITableViewStyleGrouped];
+    self.detailTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Width, Height-44) style:UITableViewStyleGrouped];
     _detailTableView.delegate = self;
     _detailTableView.dataSource = self;
     [self.view addSubview:_detailTableView];
     self.detailTableView.tableHeaderView = [KDHeader instance];
+    UIButton * reserveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    reserveBtn.frame = CGRectMake(0,Height-44-64, Width, 44);
+    [reserveBtn setTitle:@"预约" forState:UIControlStateNormal];
+    [reserveBtn setBackgroundColor:[UIColor colorWithRed:93/255.0 green:163/255.0 blue:255/255.0 alpha:1.0]];
+    [self.view addSubview:reserveBtn];
+    [reserveBtn addTarget:self action:@selector(didCickReserve:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 #pragma mark - NetWork
 - (void)getNetworkWithUrl
@@ -132,17 +143,19 @@
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //把解析出得数据加到字典里
+        NSArray * one = @[@"1"];
+        [self.resultArray addObject:one];
+        NSArray * two = @[@"2"];
+        [self.resultArray addObject:two];
         NSDictionary * dic = responseObject[@"expert"];
         self.dic = dic[@"info"];
         NSArray * topicArray = dic[@"topic"];
         NSMutableArray * topicArr = [NSMutableArray array];
         for (NSDictionary * dic1 in topicArray) {
-            NSLog(@"%@",dic1);
             KDExpertTopic * topic = [[KDExpertTopic alloc] init];
             [topic setValuesForKeysWithDictionary:dic1];
             [topicArr addObject:topic];
         }
-        NSLog(@"!!!%@",topicArr);
         [self.resultArray addObject:topicArr];
         NSDictionary * introDic = dic[@"info"];
         KDExpertList * expert = [[KDExpertList alloc] init];
@@ -157,7 +170,6 @@
             [commentArr addObject:comment];
         }
         [self.resultArray addObject:commentArr];
-        NSLog(@"%@",self.resultArray);
         [self.detailTableView reloadData];
         KDHeader * header = (KDHeader *)self.detailTableView.tableHeaderView;
         header.expert = [[self.resultArray objectAtIndex:1] objectAtIndex:0];
@@ -176,70 +188,80 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray * arr = [self.resultArray objectAtIndex:section];
-    return arr.count;
+
+    return [[self.resultArray objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        static NSString * identifier = @"topic";
-        BOOL nibResgistered = NO;
-        if (!nibResgistered) {
-            UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertTopicCell class]) bundle:nil];
-            [tableView registerNib:nib forCellReuseIdentifier:identifier];
-            nibResgistered = YES;
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"biaoqian"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"biaoqian"];
         }
-        KDExpertTopicCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        cell.textLabel.text = @"biaoqian";
+        return cell;
+    }else if (indexPath.section == 1){
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"lingyu"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"lingyu"];
+        }
+        cell.textLabel.text = @"lingyu";
+        return cell;
+
+    }
+    
+    if (indexPath.section == 2) {
+        KDExpertTopicCell * cell = (KDExpertTopicCell *)[tableView dequeueReusableCellWithIdentifier:@"expertList"];
+        if (cell == nil) {
+            NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDExpertTopicCell" owner:self options:nil];
+            cell = [arr lastObject];
+        }
         KDExpertTopic * topic = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.topic = topic;
         return cell;
-    }else if (indexPath.section == 1){
-        static NSString * identifier = @"intro";
-        BOOL nibResgistered = NO;
-        if (!nibResgistered) {
-            UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertIntroCell class]) bundle:nil];
-            [tableView registerNib:nib forCellReuseIdentifier:identifier];
-            nibResgistered = YES;
+    }else if (indexPath.section == 3){
+        KDExpertIntroCell * cell = (KDExpertIntroCell *)[tableView dequeueReusableCellWithIdentifier:@"expertIntro"];
+        if (cell == nil) {
+            NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDExpertIntroCell" owner:self options:nil];
+            cell = [arr lastObject];
         }
-        KDExpertIntroCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+
     KDExpertList * expert = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]
         ;
-        [cell.introducepic sd_setImageWithURL:[NSURL URLWithString:expert.fileurl]];
-        cell.introLabel.text = expert.intro;
+        [cell.headpic sd_setImageWithURL:[NSURL URLWithString:expert.fileurl]];
+        cell.intro.text = expert.intro;
         return cell;
 
     }else{
-        static NSString * identifier = @"comment";
-        BOOL nibResgistered = NO;
-        if (!nibResgistered) {
-            UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertCommentCell class]) bundle:nil];
-            [tableView registerNib:nib forCellReuseIdentifier:identifier];
-            nibResgistered = YES;
+        KDExpertCommentCell * cell = (KDExpertCommentCell *)[tableView dequeueReusableCellWithIdentifier:@"expertComment"];
+        if (cell == nil) {
+            NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDExpertCommentCell" owner:self options:nil];
+            cell = [arr lastObject];
         }
-        KDExpertCommentCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         KDExpertComment * comment = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.comment = comment;
         return cell;
-
     }
 
 }
 //cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return 100;
-    }else if (indexPath.section == 1){
-        return 200;;
+    if (indexPath.section == 2) {
+        return [KDHandle shareInstance].cellHeight;
+    }else if (indexPath.section == 3){
+        return [KDHandle shareInstance].cellHeight;;
+    }else if (indexPath.section == 4){
+        return [KDHandle shareInstance].cellHeight;
     }else{
-        return 150;
+        return 40;
     }
 }
 //区头的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 40;
 }
 
 //区尾的高度
@@ -250,41 +272,30 @@
 //点击cell时的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        KDTopicDetailViewController * topicVC = [[KDTopicDetailViewController alloc] init];
+    if (indexPath.section == 2) {
+        KDExpertTopicDetailViewController * topicVC = [[KDExpertTopicDetailViewController alloc] initWithNibName:@"KDExpertTopicDetailViewController" bundle:nil];
         KDExpertTopic * topic = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        topicVC.topicTitle = topic.title;
-        topicVC.grade = topicVC.grade;
+        KDExpertList * expert = [[self.resultArray objectAtIndex:3] objectAtIndex:0];
+        
+        topicVC.topic = topic.title;
+        topicVC.expert = expert;
         [self.navigationController pushViewController:topicVC animated:YES];
     }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSArray * array = @[@"话题",@"专家介绍",@"评论"];
-    UIView * commentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width, 30)];
-    UIButton * moreButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    moreButton.frame = CGRectMake(Width-20, 5, 20, 20);
-    moreButton.tag = 100+section;
-    [moreButton addTarget:self action:@selector(didClickButton:) forControlEvents:UIControlEventTouchUpInside];
-    [moreButton setBackgroundImage:[UIImage imageNamed:@"iconfont-iconfontleft.png"] forState:UIControlStateNormal];
-    [commentView addSubview:moreButton];
-    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 30)];
-    label.text = array[section];
-    [commentView addSubview:label];
-    if (section == 0) {
-        [moreButton setBackgroundImage:nil forState:UIControlStateNormal];
-        return commentView;
-    }else{
-        return commentView;
-    }
+    NSArray * array = @[@"label column",@"coverage area column",@"topic column",@"introduction column",@"comments column"];
+    KDExpertDetailHeaderView * view = [KDExpertDetailHeaderView instance];
+    view.picImage.image = [UIImage imageNamed:[array objectAtIndex:section]];
+    return view;
+    
     
 }
 //区头上箭头的点击事件
 - (void)didClickButton:(UIButton *)button
 {
     if (button.tag == 101) {
-        NSLog(@"点击了专家介绍");
         KDExpertIntroViewController * introVC = [[KDExpertIntroViewController alloc] init];
         introVC.infoDic = self.dic;
         [self.navigationController pushViewController:introVC animated:YES];

@@ -7,14 +7,11 @@
 //
 
 #import "KDMyReserveTableViewController.h"
-
 #import "KDConst.h"
-
 #import "KDMyReserveCell.h"
-
 #import "KDMyReserve.h"
-
 #import "KDReserveDetailViewController.h"
+#import "UIBarButtonItem+Extension.h"
 
 @interface KDMyReserveTableViewController ()
 
@@ -42,8 +39,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.dic setObject:@1 forKey:@"type"];
+    
+    /** 设置 UIBarButtonItem */
+    UIBarButtonItem *leftBtn = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"back" highImage:@"back"];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+    
     [self buildTableHeaderView];
     [self initWithData];
+}
+
+- (void)back {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)initWithData

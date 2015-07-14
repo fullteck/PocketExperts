@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "KDExpertTopic.h"
 @interface KDExpertTopicCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *introLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *gradepic;
+
+
+
 @property(nonatomic,strong)KDExpertTopic * topic;
 
 @end

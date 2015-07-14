@@ -7,11 +7,22 @@
 //
 
 #import "KDExpertIntroCell.h"
+#import "KDHandle.h"
+
+@interface KDExpertIntroCell ()
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *detail;
+
+
+@end
+
 
 @implementation KDExpertIntroCell
 
 - (void)awakeFromNib {
     // Initialization code
+    [KDHandle shareInstance].cellHeight = CGRectGetMaxY(self.detail.frame) + 16;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -19,5 +30,7 @@
 
     // Configure the view for the selected state
 }
+
+
 
 @end
