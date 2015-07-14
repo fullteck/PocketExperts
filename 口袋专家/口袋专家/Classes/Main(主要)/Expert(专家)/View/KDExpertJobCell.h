@@ -10,11 +10,7 @@
 #import "KDExpertJob.h"
 
 @interface KDExpertJobCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *startLabel;
-@property (weak, nonatomic) IBOutlet UILabel *endLabel;
-@property (weak, nonatomic) IBOutlet UILabel *company;
-@property (weak, nonatomic) IBOutlet UILabel *job;
-@property (weak, nonatomic) IBOutlet UILabel *introLabel;
+
 @property(nonatomic,strong)KDExpertJob * expertJob;
 
 

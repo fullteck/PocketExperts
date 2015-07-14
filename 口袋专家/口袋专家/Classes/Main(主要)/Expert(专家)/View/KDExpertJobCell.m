@@ -7,11 +7,24 @@
 //
 
 #import "KDExpertJobCell.h"
+#import "KDHandle.h"
+
+@interface KDExpertJobCell ()
+@property (weak, nonatomic) IBOutlet UILabel *job;
+@property (weak, nonatomic) IBOutlet UILabel *company;
+@property (weak, nonatomic) IBOutlet UILabel *begin;
+
+@property (weak, nonatomic) IBOutlet UILabel *end;
+@property (weak, nonatomic) IBOutlet UIImageView *buttomView;
+
+
+@end
 
 @implementation KDExpertJobCell
 
 - (void)awakeFromNib {
     // Initialization code
+    [KDHandle shareInstance].cellHeight = CGRectGetMaxY(self.buttomView.frame);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -25,11 +38,10 @@
     NSString * startTime = [self getTimeWithNumber:expertJob.start];
     NSString * endTime = [self getTimeWithNumber:expertJob.end];
 
-    self.startLabel.text = startTime;
-    self.endLabel.text = endTime;
+    self.begin.text = startTime;
+    self.end.text = endTime;
     self.company.text = expertJob.name;
     self.job.text = expertJob.job;
-    self.introLabel.text = expertJob.intro;
 }
 
 - (NSString *)getTimeWithNumber:(NSInteger)number

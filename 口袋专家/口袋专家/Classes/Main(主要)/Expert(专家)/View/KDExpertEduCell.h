@@ -9,11 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "KDExpertEdu.h"
 @interface KDExpertEduCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *startLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *endLabel;
-@property (weak, nonatomic) IBOutlet UILabel *school;
-@property (weak, nonatomic) IBOutlet UILabel *eduPower;
-@property (weak, nonatomic) IBOutlet UILabel *major;
 @property(nonatomic,strong)KDExpertEdu * edu;
 @end

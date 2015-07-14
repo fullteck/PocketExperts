@@ -18,6 +18,10 @@
 
 #import "KDExpertEdu.h"
 
+#import "KDConst.h"
+
+#import "KDHandle.h"
+
 @interface KDExpertIntroViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView * introTableView;
 @property(nonatomic,strong)NSMutableArray * resultArray;
@@ -95,7 +99,11 @@
     _introTableView.delegate = self;
     _introTableView.dataSource = self;
     [self.view addSubview:_introTableView];
-    _introTableView.tableHeaderView = [KDExpertIntroHeader instance];
+    KDExpertIntroHeader * introHeader = [KDExpertIntroHeader instance];
+    CGFloat height = introHeader.getHeight;
+    introHeader.frame = CGRectMake(0, 0, Width, height);
+    _introTableView.tableHeaderView = introHeader;
+    
 }
 #pragma mark---tableView协议中必须实现的方法
 
@@ -112,27 +120,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        static NSString * identifier = @"work";
-        BOOL nibResgistered = NO;
-        if (!nibResgistered) {
-            UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertJobCell class]) bundle:nil];
-            [tableView registerNib:nib forCellReuseIdentifier:identifier];
-            nibResgistered = YES;
+        KDExpertJobCell * cell = (KDExpertJobCell *)[tableView dequeueReusableCellWithIdentifier:@"job"];
+        if (cell == nil) {
+            NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDExpertJobCell" owner:self options:nil];
+            cell = [arr lastObject];
         }
-        KDExpertJobCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
         KDExpertJob * job = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.expertJob = job;
         
         return cell;
     }else{
-            static NSString * identifier = @"education";
-            BOOL nibResgistered = NO;
-            if (!nibResgistered) {
-                UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertEduCell class]) bundle:nil];
-                [tableView registerNib:nib forCellReuseIdentifier:identifier];
-                nibResgistered = YES;
-            }
-            KDExpertEduCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        KDExpertEduCell * cell = (KDExpertEduCell *)[tableView dequeueReusableCellWithIdentifier:@"edu"];
+        if (cell == nil) {
+            NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDExpertEduCell" owner:self options:nil];
+            cell = [arr lastObject];
+        }
+
         KDExpertEdu * edu = [[self.resultArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.edu = edu;
         return cell;
@@ -147,9 +151,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 100;
+        return [KDHandle shareInstance].cellHeight;
     }else{
-        return 100;
+        return [KDHandle shareInstance].cellHeight;
     }
 }
 

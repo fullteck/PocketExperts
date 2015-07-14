@@ -9,6 +9,7 @@
 #import "KDExpertCommentTableViewController.h"
 #import "KDExpertCommentCell.h"
 #import "KDConst.h"
+#import "KDHandle.h"
 
 @interface KDExpertCommentTableViewController ()
 @property(nonatomic,strong)NSMutableArray * resultArray;
@@ -30,7 +31,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    self.navigationItem.title = @"评论";
     [self getNetworkRequest];
 }
 #pragma mark - 网络请求
@@ -58,14 +59,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * identifier = @"expertComment";
-    BOOL nibResgistered = NO;
-    if (!nibResgistered) {
-        UINib * nib = [UINib nibWithNibName:NSStringFromClass([KDExpertCommentCell class]) bundle:nil];
-        [tableView registerNib:nib forCellReuseIdentifier:identifier];
-        nibResgistered = YES;
+    KDExpertCommentCell * cell = (KDExpertCommentCell *)[tableView dequeueReusableCellWithIdentifier:@"expertComment"];
+    if (cell == nil) {
+        NSArray * arr = [[NSBundle mainBundle] loadNibNamed:@"KDExpertCommentCell" owner:self options:nil];
+        cell = [arr lastObject];
     }
-    KDExpertCommentCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+  
     KDExpertComment * comment = [self.resultArray objectAtIndex:indexPath.row];
     cell.comment = comment;
     return cell;
@@ -75,7 +74,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return [KDHandle shareInstance].cellHeight;
 }
 
 

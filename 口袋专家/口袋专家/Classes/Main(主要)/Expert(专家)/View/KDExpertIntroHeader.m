@@ -21,4 +21,10 @@
 {
     return [[[NSBundle mainBundle] loadNibNamed:@"KDExpertIntroHeader" owner:nil options:nil] firstObject];
 }
+
+- (CGFloat)getHeight
+{
+    return CGRectGetMaxY(self.introduce.frame) + 16;
+}
+
 @end

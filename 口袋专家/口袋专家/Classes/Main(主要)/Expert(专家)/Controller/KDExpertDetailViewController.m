@@ -75,9 +75,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBar.alpha = 1;
-//    self.navigationController.navigationBar.tintColor = nil;
-    self.navigationController.navigationBar.translucent = NO;
+//    self.navigationController.navigationBar.alpha = 1;
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"transparent background"] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.translucent = NO;
     [self createBarButtonItem];
     [self initWithTableView];
     [self getNetworkWithUrl];
@@ -127,19 +127,38 @@
     [self.view addSubview:_detailTableView];
     self.detailTableView.tableHeaderView = [KDHeader instance];
     UIButton * reserveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    reserveBtn.frame = CGRectMake(0,Height-44-64, Width, 44);
+    reserveBtn.frame = CGRectMake(0,Height-44, Width, 44);
     [reserveBtn setTitle:@"预约" forState:UIControlStateNormal];
     [reserveBtn setBackgroundColor:[UIColor colorWithRed:93/255.0 green:163/255.0 blue:255/255.0 alpha:1.0]];
     [self.view addSubview:reserveBtn];
     [reserveBtn addTarget:self action:@selector(didCickReserve:) forControlEvents:UIControlEventTouchUpInside];
+    //创建footerView
+    UIView * footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width, 40)];
+    footView.backgroundColor = [UIColor whiteColor];
+    //创建更多评论button
+    UIButton * moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    moreBtn.frame = CGRectMake(Width-107, 0, 91, 24);
+    [moreBtn addTarget:self action:@selector(didClickEnterMoreComment:) forControlEvents:UIControlEventTouchUpInside];
+    [moreBtn setBackgroundImage:[UIImage imageNamed:@"more comments column"] forState:UIControlStateNormal];
+    [footView addSubview:moreBtn];
+    _detailTableView.tableFooterView = footView;
     
 }
+
+#pragma mark - 点击更多评论进入评论界面
+- (void)didClickEnterMoreComment:(UIButton *)button
+{
+    KDExpertCommentTableViewController * commentTVC = [[KDExpertCommentTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:commentTVC animated:YES];
+}
+
 #pragma mark - NetWork
 - (void)getNetworkWithUrl
 {
     NSString * headStr = @"http://182.254.221.13:8080";
     NSString * footStr = [NSString stringWithFormat:@"/api/v1.0/expert/info/%d",11];
     NSString * str = [headStr stringByAppendingString:footStr];
+    NSLog(@"%@",str);
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //把解析出得数据加到字典里
@@ -192,6 +211,7 @@
     return [[self.resultArray objectAtIndex:section] count];
 }
 
+#pragma mark - cellForRow
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -231,6 +251,7 @@
         ;
         [cell.headpic sd_setImageWithURL:[NSURL URLWithString:expert.fileurl]];
         cell.intro.text = expert.intro;
+        [cell.detailBtn addTarget:self action:@selector(didClickIntro:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
 
     }else{
@@ -245,7 +266,17 @@
     }
 
 }
-//cell的高度
+
+#pragma mark - 点击查看专家介绍
+- (void)didClickIntro:(UIButton *)button
+{
+    NSLog(@"sb");
+    KDExpertIntroViewController * introVC = [[KDExpertIntroViewController alloc] init];
+    introVC.infoDic = self.dic;
+    [self.navigationController pushViewController:introVC animated:YES];
+}
+
+#pragma mark - heightForRow
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 2) {
@@ -258,6 +289,8 @@
         return 40;
     }
 }
+
+#pragma mark - 设置区头区尾的高度
 //区头的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -269,7 +302,8 @@
 {
     return 0.001;
 }
-//点击cell时的事件
+
+#pragma mark - didSelectRow
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 2) {
@@ -283,6 +317,7 @@
     }
 }
 
+#pragma mark - 设置区头
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     NSArray * array = @[@"label column",@"coverage area column",@"topic column",@"introduction column",@"comments column"];
@@ -292,20 +327,7 @@
     
     
 }
-//区头上箭头的点击事件
-- (void)didClickButton:(UIButton *)button
-{
-    if (button.tag == 101) {
-        KDExpertIntroViewController * introVC = [[KDExpertIntroViewController alloc] init];
-        introVC.infoDic = self.dic;
-        [self.navigationController pushViewController:introVC animated:YES];
-        
-    }else if (button.tag == 102){
-        KDExpertCommentTableViewController * commentTVC = [[KDExpertCommentTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:commentTVC animated:YES];
-    }
-    
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

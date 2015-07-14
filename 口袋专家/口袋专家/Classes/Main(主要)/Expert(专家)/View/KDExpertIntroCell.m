@@ -22,6 +22,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    CGRect frame = self.detail.frame;
+    self.detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _detailBtn.frame = frame;
+    [self.contentView addSubview:_detailBtn];
+    
     [KDHandle shareInstance].cellHeight = CGRectGetMaxY(self.detail.frame) + 16;
 }
 

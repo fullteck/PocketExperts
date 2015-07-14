@@ -11,7 +11,7 @@
 @interface KDExpertIntroCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headpic;
 @property (weak, nonatomic) IBOutlet UILabel *intro;
-
+@property(nonatomic,strong)UIButton * detailBtn;
 - (CGFloat)getHeight;
 + (CGFloat)getHeight;
 

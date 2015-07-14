@@ -11,4 +11,8 @@
 @interface KDExpertIntroHeader : UIView
 + (instancetype)instance;
 
+- (CGFloat)getHeight;
+@property (weak, nonatomic) IBOutlet UIImageView *headpic;
+@property (weak, nonatomic) IBOutlet UILabel *introduce;
+
 @end
