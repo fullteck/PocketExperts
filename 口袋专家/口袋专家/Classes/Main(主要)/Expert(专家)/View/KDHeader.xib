@@ -82,6 +82,7 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-DS-eAH">
                     <rect key="frame" x="0.0" y="421" width="494" height="64"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="HGn-a4-Bd2"/>
                     </constraints>

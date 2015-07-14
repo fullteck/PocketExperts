@@ -23,6 +23,10 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    NSLog(@"%f,%f",self.num.frame.size.width,self.num.frame.size.height);
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
